@@ -1,0 +1,18 @@
+.about-container{
+    background-color: #050505;
+    display: flex;
+    padding: 7rem 20%;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-img{
+    width: 15rem;
+    margin-right: 2rem;
+}
+
+.about-text{
+    color: #fff;
+    max-width: 20rem;
+    text-align: justify;
+}

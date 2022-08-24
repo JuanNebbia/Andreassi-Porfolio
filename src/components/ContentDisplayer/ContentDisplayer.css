@@ -1,0 +1,45 @@
+.content-displayer-container{
+    padding: 0 30%;
+    margin-top: -8rem;
+    position: relative;
+}
+
+.section-btn-container{
+    padding:  0;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.section-btn{
+    background: transparent;
+    border: none;
+    color: #bbb;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.5rem;
+}
+
+.section-btn:hover{
+    color: #fff;
+}
+
+.active{
+    color: #fff;
+}
+
+
+.photography-img-displayed-container{
+    position:absolute;
+    height: 100vh;
+    width: 100vh;
+    background-color: #000a;
+    z-index: 1000;
+} 
+
+.photography-img-displayed{
+    max-width:100%;
+    max-height:100%;
+    top:0; left:0; right:0; bottom:0;
+    margin:auto;
+}

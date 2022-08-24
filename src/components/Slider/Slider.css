@@ -1,0 +1,39 @@
+.carousel-caption{
+    top: 0;
+    left: 0;
+    padding: 0
+}
+
+.carousel-inner{
+    display: flex;
+}
+
+
+.slider-phrase-container{
+    position: relative;
+    top: 30%;
+    left: 15%;
+}
+
+.slider-phrase{
+    color: #eee;
+    text-align: left;
+    font-size: 2.5rem;
+    max-width: 70%;
+    font-family: Karla;
+}
+
+.slider-info-container{
+    position: relative;
+    top: 40%;
+    left: 60%;
+    max-width: 70%;
+}
+
+.slider-info{
+    color: #ddd;
+    text-align: justify;
+    font-size: 0.8rem;
+    max-width: 70%;
+    font-family: Karla;
+}
