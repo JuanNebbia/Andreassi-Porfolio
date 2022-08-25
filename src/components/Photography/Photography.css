@@ -6,12 +6,19 @@
     width: 33.5rem;
     height: 33.5rem;
     display: flex;
+    overflow: hidden;
 }
 
 .photography-img{
     display: block;
     width: 100%;
     object-fit: scale-down;
+    cursor: pointer;
+    transition: scale, 7s;
+}
+
+.photography-img:hover{
+    transform: scale(1.05);
 }
 
 
@@ -19,6 +26,7 @@
     background-color: transparent;
     border: none;
     padding: 0;
+    border-radius: 0.5rem;
 }
 
 .controller-prev{
@@ -38,29 +46,51 @@
     color: #aaa;
 }
 
-.thumbnail-container{
-    padding: 0.4rem 0;
-    display: flex;
-    justify-content: space-between;
+.outer-thumbnail-container{
     overflow: hidden;
+}
+
+.thumbnail-container{
+    padding: 1rem 0;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    transition: left, 0.5s;
 }
 
 .thumbnail{
     width: 3rem;
     filter: brightness(0.5) grayscale(0.5);
+    border: 1px solid #fff;
 }
 
 .active-thumbnail{
-    transform: scale(1.15);
+    transform: scale(1.4);
     filter: brightness(1) grayscale(0);
     transition: all 0.15s;
-
+    position: relative;
+    z-index: 500;
+    box-shadow: 0 0 5px #000;
 }
 
 .thumbnail-btn{
     border: none;
     background-color: transparent;
     padding: 0;
-    margin: 0 0.25rem;
+    margin: 0 0.4rem;
 }
 
+.rewind-btn{
+    background: none;
+    border: none;
+    margin-left: -2rem;
+}
+
+.rewind-icon{
+    color: #555;
+    font-size: 2rem;
+}
+
+.rewind-btn:hover .rewind-icon{
+    color: #fff;
+}

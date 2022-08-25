@@ -12,22 +12,25 @@
 .slider-phrase-container{
     position: relative;
     top: 30%;
-    left: 15%;
+    left: 22%;
 }
 
 .slider-phrase{
-    color: #eee;
+    color: #fff;
     text-align: left;
-    font-size: 2.5rem;
-    max-width: 70%;
+    font-size: 4.2rem;
+    max-width: 40%;
     font-family: Karla;
+    font-weight: 300;
+    line-height: 3.6rem;
+    letter-spacing: -0.35rem;
 }
 
 .slider-info-container{
     position: relative;
     top: 40%;
-    left: 60%;
-    max-width: 70%;
+    left: 85%;
+    max-width: 30%;
 }
 
 .slider-info{

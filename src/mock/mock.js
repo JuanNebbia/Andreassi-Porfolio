@@ -1,17 +1,24 @@
 export const photos =[
-    "https://i.ibb.co/yn2VHbf/tangobeat.png",
-    "https://i.ibb.co/B6Gqm4w/woodwind.png",
-    "https://i.ibb.co/9y3Bjf8/piano.png",
-    "https://i.ibb.co/P42f2fD/germany.png",
-    "https://i.ibb.co/VYn5B3K/lakdoapod-the-cover-of-an-album-of-a-tropical-music-band-of-wha-26398986-cb97-40e1-b781-e3d2047ee00c.png",
-    "https://i.ibb.co/hRdKm7f/johncage.png",
-    "https://i.ibb.co/MSyqRrZ/lake.png",
-    "https://i.ibb.co/SmC80TQ/lakdoapod-the-cover-of-a-music-album-of-a-band-of-seagulls-vint-e56ca1d3-3434-47d7-948b-3018459e9a11.png",
-    "https://i.ibb.co/TvB4RZx/volcano.png",
-    "https://i.ibb.co/Xj5zpGM/tristranundisolde.png",
-    "https://i.ibb.co/W6HB3pn/pianokaleidoscope.png",
-    "https://thumbs.dreamstime.com/b/panorama-del-bosque-con-los-rayos-de-la-luz-del-sol-53826213.jpg",
-    "https://thumbs.dreamstime.com/z/forme-el-retrato-de-una-muchacha-de-piel-morena-con-oro-59866836.jpg",
+    "https://i.ibb.co/p6HWShT/Fotografia-Mateo-Andreassi1.jpg",
+    "https://i.ibb.co/jLfq0GV/Fotografia-Mateo-Andreassi2.jpg",
+    "https://i.ibb.co/sVbymhq/Fotografia-Mateo-Andreassi3.jpg",
+    "https://i.ibb.co/MM4P1T2/Fotografia-Mateo-Andreassi4.jpg",
+    "https://i.ibb.co/bWWYy03/Fotografia-Mateo-Andreassi5.jpg",
+    "https://i.ibb.co/gP9qMYP/Fotografia-Mateo-Andreassi6.jpg",
+    "https://i.ibb.co/w6mXnRz/Fotografia-Mateo-Andreassi8.jpg",
+    "https://i.ibb.co/Rjq1c75/Fotografia-Mateo-Andreassi7.jpg",
+    "https://i.ibb.co/sqt7Wxn/Fotografia-Mateo-Andreassi9.jpg",
+    "https://i.ibb.co/1Jg6QxT/Fotografia-Mateo-Andreassi11.jpg",
+    "https://i.ibb.co/jhyy5TB/Fotografia-Mateo-Andreassi10.jpg",
+    "https://i.ibb.co/WPMvnTq/Fotografia-Mateo-Andreassi12.jpg",
+    "https://i.ibb.co/wdRS56G/Fotografia-Mateo-Andreassi13.jpg",
+    "https://i.ibb.co/mhmDbgL/Fotografia-Mateo-Andreassi14.jpg",
+    "https://i.ibb.co/2KzGxX8/Fotografia-Mateo-Andreassi15.jpg",
+    "https://i.ibb.co/dPgj8wf/Fotografia-Mateo-Andreassi16.jpg",
+    "https://i.ibb.co/qypFzHh/Fotografia-Mateo-Andreassi17.jpg",
+    "https://i.ibb.co/jwWfScz/Fotografia-Mateo-Andreassi18.jpg",
+    "https://i.ibb.co/Drv3FBL/Fotografia-Mateo-Andreassi19.jpg",
+    "https://i.ibb.co/T1kvWQf/Fotografia-Mateo-Andreassi20.jpg",
 ]
 
 
@@ -23,14 +30,23 @@ export const videos =[
     "https://kinsta.com/es/wp-content/uploads/sites/8/2020/03/soluciones-alojamiento-video-1024x512.jpg"
 ]
 
-export const messi =[
-    "https://upload.wikimedia.org/wikipedia/commons/c/c1/Lionel_Messi_20180626.jpg",
-    "https://s.yimg.com/ny/api/res/1.2/x3bYLq5VHuEjD1st5OIaMA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTM2MA--/https://s.yimg.com/uu/api/res/1.2/e4I3XHB15YQzZKHCGcIPLw--~B/aD0xMDgwO3c9MTkyMDthcHBpZD15dGFjaHlvbg--/https://media.zenfs.com/es/stats_perform_uses_152/09f871c0d5b1a3a035826972fe7ca5e7",
-    "https://cloudfront-us-east-1.images.arcpublishing.com/infobae/HT2IF345M46ZZ6GC7ZJCHWAH34.jpg",
-    "https://fotos.perfil.com/2022/08/22/trim/950/535/lionel-messi-1405917.jpg",
-    "https://img.a.transfermarkt.technology/portrait/big/28003-1631171950.jpg?lm=1",
-    "https://www.lanacion.com.ar/resizer/3AdgOl2arvhaiZ4XeUxtH1UBGz0=/309x206/smart/filters:format(webp):quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/4AVCDMLWJZF7DO4WBN7HS6HOJU.JPG",
-    "https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt40015891deaa4019/6265b5649084154bb3b408c0/Lionel_Messi.jpg",
+export const branding =[
+    "https://i.ibb.co/Rhp7J9P/Branding-Mateo-Andreassi.jpg",
+    "https://i.ibb.co/2WHC9wh/Branding-Mateo-Andreassi-2.jpg",
+    "https://i.ibb.co/vL1twmG/Branding-Mateo-Andreassi-3.jpg",
+    "https://i.ibb.co/gtNWYM3/Branding-Mateo-Andreassi-4.jpg",
+    "https://i.ibb.co/9Zg9Dhn/Branding-Mateo-Andreassi-5.jpg",
+    "https://i.ibb.co/x8B1cv3/Branding-Mateo-Andreassi-6.jpg",
+]
+
+export const diseño =[
+    "https://i.ibb.co/56wRYkk/Disen-o-Mateo-Andreassi2.jpg",
+    "https://i.ibb.co/Dpdz7tp/Disen-o-Mateo-Andreassi1.jpg",
+    "https://i.ibb.co/7KCzfLK/Disen-o-Mateo-Andreassi3.jpg",
+    "https://i.ibb.co/K0fy85G/Disen-o-Mateo-Andreassi4.jpg",
+    "https://i.ibb.co/bP5Hyx0/Disen-o-Mateo-Andreassi5.jpg",
+    "https://i.ibb.co/bPqnXQL/Disen-o-Mateo-Andreassi6.jpg",
+    "https://i.ibb.co/5vqLdvS/Disen-o-Mateo-Andreassi7.jpg",
 ]
 
 export const perritos =[

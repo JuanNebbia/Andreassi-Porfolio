@@ -1,7 +1,7 @@
 import React from 'react'
 import './Photography.css'
-import { IoIosArrowBack } from 'react-icons/io';
-import { IoIosArrowForward } from 'react-icons/io';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { MdOutlineSkipPrevious } from 'react-icons/md'
 
 
 const Photography = ({content, setDisplay, activeTake, setActiveTake}) => {
@@ -39,7 +39,8 @@ const Photography = ({content, setDisplay, activeTake, setActiveTake}) => {
                     <IoIosArrowForward className='next-icon'/>
                 </button>
             </div>
-            <div className="thumbnail-container">
+            <div className="outer-thumbnail-container">
+            <div className="thumbnail-container" style={{left:`-${activeTake*2.5}rem`}}>
                 {content.map((photo, i)=>
                     <button className={activeTake === i ? "thumbnail-btn active-thumbnail-btn" : "thumbnail-btn"} key={i}>
                         <img 
@@ -48,6 +49,13 @@ const Photography = ({content, setDisplay, activeTake, setActiveTake}) => {
                             alt="..." 
                             onClick={()=>setActiveTake(i)} />
                     </button>)} 
+                {activeTake > 1 &&
+                <button className='rewind-btn' onClick={()=>setActiveTake(0)}>
+                    <MdOutlineSkipPrevious className='rewind-icon'/>
+                </button>
+                }
+            </div>
+
             </div>
 
         </div>

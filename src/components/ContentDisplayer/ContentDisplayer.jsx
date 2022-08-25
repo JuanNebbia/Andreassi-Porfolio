@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Photography from '../Photography/Photography'
 import './ContentDisplayer.css'
 import ContentModal from '../../components/ContentModal/ContentModal';
-import { photos, videos, messi, perritos } from '../../mock/mock';
+import { photos, videos, branding, diseño, perritos } from '../../mock/mock';
 
 const ContentDisplayer = () => {
   const [display, setDisplay] = useState(null)
@@ -34,9 +34,14 @@ const ContentDisplayer = () => {
                   Video
               </button>
               <button 
-              className={content === messi ? 'section-btn active' : 'section-btn'} 
-              onClick={()=>newSection(messi)}>
-                Messi
+              className={content === branding ? 'section-btn active' : 'section-btn'} 
+              onClick={()=>newSection(branding)}>
+                Branding
+              </button>
+              <button 
+              className={content === diseño ? 'section-btn active' : 'section-btn'} 
+              onClick={()=>newSection(diseño)}>
+                Diseño
               </button>
               <button 
               className={content === perritos ? 'section-btn active' : 'section-btn'} 
