@@ -26,6 +26,10 @@
     border-bottom-left-radius: 0.5rem;
 }
 
+.modal-img-only{
+    border-radius: 0.5rem;
+}
+
 .modal-text-container{
     background-color: #000;
     margin: 0;
@@ -36,6 +40,12 @@
     border-bottom-right-radius: 0.5rem;
     width: 30rem;
 }
+
+.modal-title{
+    color: #fff;
+    font-size: 2rem;
+}
+
 .modal-text{
     text-align: justify;
     color: #fff;

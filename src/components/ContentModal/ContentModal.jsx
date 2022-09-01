@@ -17,20 +17,19 @@ const ContentModal = ({display, setDisplay, content}) => {
           initial={{y: '-100vh'}}
           animate={{y: 0}}>
         <img 
-          src={content[display]} 
+          src={content[display].picUrl} 
           alt="" 
-          className='modal-img'
+          className={content[display].description ? 'modal-img' : 'modal-img-only'}
           />
-        <div className="modal-text-container">
-        <button className='modal-close-btn close' onClick={closeModal}>
-          <IoIosClose className='modal-close-icon close'/>
-        </button>
-        <p className='modal-text'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-          Ratione officia ullam porro excepturi sed obcaecati voluptas voluptate quam magni harum animi repellendus, 
-          architecto omnis quibusdam iusto doloremque explicabo, nemo mollitia!
-        </p>
-        </div>
+          { content[display].description &&
+            <div className="modal-text-container">
+              <button className='modal-close-btn close' onClick={closeModal}>
+                <IoIosClose className='modal-close-icon close'/>
+              </button>
+                <h5 className='modal-title'> {content[display].title} </h5>
+                <p className='modal-text'> {content[display].description} </p>
+            </div>
+          }
       </motion.div>
     </div>
   )

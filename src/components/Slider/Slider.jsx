@@ -14,9 +14,9 @@ const Slider = () => {
                     <p className='slider-phrase'>Lo importante es no dejar de hacer preguntas</p>
                 </div>
                 <div className="slider-info-container">
-                    <p className='slider-info'>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Nemo suscipit odit exercitationem illo labore sed sunt tempora aspernatur expedita eaque? 
-                    Consequuntur quidem maiores libero, perspiciatis distinctio nulla voluptate quasi obcaecati!</p>
+                    <p className='slider-info'>Una de las fotografías tomadas del eclipse de 1919 durante la expedición de Arthur Eddington, 
+                    en el que se pudieron confirmar las predicciones de Einstein acerca de la curvatura de la luz 
+                    en presencia de un campo gravitatorio.</p>
                 </div>
             </div>
             </div>
