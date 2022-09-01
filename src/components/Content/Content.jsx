@@ -31,7 +31,7 @@ const Photography = ({section, content, setDisplay, activeTake, setActiveTake}) 
     return (
         <>
         {content.length ? 
-        <div className={`content-container ${section}-section`}>
+        <div className='content-container'>
             <div className='middle-section'>
                 <button className="controller-prev" onClick={()=>handleController('prev')}>
                     <IoIosArrowBack className='prev-icon'/>
@@ -40,17 +40,21 @@ const Photography = ({section, content, setDisplay, activeTake, setActiveTake}) 
                     {section === 'video' ?
                         <iframe
                             className="video-item" 
-                            width="560" height="315" 
-                            src={content[activeTake].videoUrl + '?autoplay=1&mute=1&controls=0'} title="YouTube video player" 
+                            width="400" height="1000" 
+                            src={content[activeTake].videoUrl + '?controls=0&showinfo=0&modestbranding=1&rel=0&autoplay=1&mute=1'} 
+                            title="YouTube video player" 
                             frameBorder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowFullScreen>
                         </iframe> :
-                        <img 
-                            src={content[activeTake].picUrl} 
-                            className="photography-img" 
-                            alt="..." 
-                            onClick={()=>setDisplay(activeTake)} />
+                        <div className="content-img-container">
+                            <img 
+                                src={content[activeTake].picUrl} 
+                                className="content-img" 
+                                alt="..." 
+                                onClick={()=>setDisplay(activeTake)}
+                                />
+                        </div>
                     }
                     {content[activeTake].description && 
                         <AiFillInfoCircle className='info-icon'
@@ -79,12 +83,6 @@ const Photography = ({section, content, setDisplay, activeTake, setActiveTake}) 
                     </button>)} 
             </div>
             </div>
-                <button className='rewind-btn' onClick={()=>setActiveTake(0)}>
-                    <MdOutlineSkipPrevious className='rewind-icon'/>
-                </button>
-                <button className='rewind-btn' onClick={()=>setActiveTake(content.length-1)}>
-                    <MdOutlineSkipNext className='rewind-icon'/>
-                </button>
         </div> : 
         <Loading />}
         </>

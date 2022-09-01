@@ -10,11 +10,10 @@
     margin-bottom: -15rem;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
-    transition: background-color 0.1s;
 }
 
 .contact-container:hover{
-    background-color: #111a;
+    background: linear-gradient(to right, #111, #0000);
 }
 
 .contact-btn-container{

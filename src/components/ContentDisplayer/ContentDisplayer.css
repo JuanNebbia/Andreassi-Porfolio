@@ -17,38 +17,23 @@
     color: #bbb;
     font-size: 1rem;
     font-weight: 600;
-    padding: 0.5rem;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
+    padding: 0.5rem 1rem;
+    border-top-left-radius: 0.7rem;
+    border-top-right-radius: 0.7rem;
 }
 
 .section-btn:hover{
     color: #fff;
 }
 
-.active-photography{
-    color: #fff;
-    background-color: #2b0c1e;
-    box-shadow: 0 -7px 5px #121212;
+.active-section{
+    color: #000;
+    background-color:#da9401;
 }
 
-.active-video{
-    color: #fff;
-    background-color: #2b1d08;
-    box-shadow: 0 -7px 5px #121212;
+.active-section:hover{
+    color: #000;
 }
-
-.active-branding{
-    color: #fff;
-    background-color: #062b0e;
-    box-shadow: 0 -7px 5px #121212;
-}
-.active-design{
-    color: #fff;
-    background-color: #160730;
-    box-shadow: 0 -7px 5px #121212;
-}
-
 
 .photography-img-displayed-container{
     position:absolute;

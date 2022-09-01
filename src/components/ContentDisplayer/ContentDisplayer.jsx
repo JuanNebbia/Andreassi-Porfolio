@@ -38,22 +38,22 @@ const ContentDisplayer = () => {
       <div className="content-displayer-container">
           <div className="section-btn-container">
               <button 
-                className={section === 'photography' ? `section-btn active-${section}` : 'section-btn'} 
+                className={section === 'photography' ? `section-btn active-section` : 'section-btn'} 
                 onClick={()=>newSection('photography')}>
                   Fotografía
               </button>
               <button 
-                className={section === 'video' ? `section-btn active-${section}` : 'section-btn'} 
+                className={section === 'video' ? `section-btn active-section` : 'section-btn'} 
                 onClick={()=>newSection('video')}>
                   Video
               </button>
               <button 
-              className={section === 'branding' ? `section-btn active-${section}` : 'section-btn'} 
+              className={section === 'branding' ? `section-btn active-section` : 'section-btn'} 
               onClick={()=>newSection('branding')}>
                 Branding
               </button>
               <button 
-              className={section === 'design' ? `section-btn active-${section}` : 'section-btn'} 
+              className={section === 'design' ? `section-btn active-section` : 'section-btn'} 
               onClick={()=>newSection('design')}>
                 Diseño
               </button>
