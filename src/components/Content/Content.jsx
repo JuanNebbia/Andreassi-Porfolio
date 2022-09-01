@@ -31,8 +31,8 @@ const Photography = ({section, content, setDisplay, activeTake, setActiveTake}) 
     return (
         <>
         {content.length ? 
-        <div className='photography-container'>
-            <div className="middle-section">
+        <div className={`content-container ${section}-section`}>
+            <div className='middle-section'>
                 <button className="controller-prev" onClick={()=>handleController('prev')}>
                     <IoIosArrowBack className='prev-icon'/>
                 </button>
@@ -65,11 +65,17 @@ const Photography = ({section, content, setDisplay, activeTake, setActiveTake}) 
             <div className="thumbnail-container" style={{left:`${calculate()}rem`}}>
                 {content.map((photo, i)=>
                     <button className={activeTake === i ? "thumbnail-btn active-thumbnail-btn" : "thumbnail-btn"} key={i}>
-                        <img 
-                            src={photo.picUrl} 
-                            className={activeTake === i ? "thumbnail active-thumbnail" : "thumbnail"}
-                            alt="..." 
-                            onClick={()=>setActiveTake(i)} />
+                        <div 
+                            className={activeTake === i ? 
+                            "active-thumbnail-img-container" : 
+                            "thumbnail-img-container"}
+                        >
+                            <img 
+                                src={photo.picUrl} 
+                                className={activeTake === i ? "thumbnail active-thumbnail" : "thumbnail"}
+                                alt="..." 
+                                onClick={()=>setActiveTake(i)} />
+                        </div>
                     </button>)} 
             </div>
             </div>

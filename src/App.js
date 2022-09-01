@@ -5,6 +5,7 @@ import ContentDisplayer from './components/ContentDisplayer/ContentDisplayer';
 import About from './components/About/About';
 import Footer from './components/Footer/Footer';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Contact from './Contact/Contact';
 // import { addDoc, collection, getFirestore } from 'firebase/firestore';
 // import { photos, videos, branding, design, perritos } from './mock/mock';
 // import { useEffect } from 'react';
@@ -25,6 +26,7 @@ function App() {
   return (
     <div className="App">
       <Slider />
+      <Contact />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to="/photography" replace />} />

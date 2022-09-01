@@ -1,0 +1,51 @@
+.contact-container{
+    position: sticky;
+    top: 40%;
+    left: 1rem;
+    z-index: 10000;
+    display: flex;
+    margin-left: auto;
+    padding: 2rem;
+    width: fit-content;
+    margin-bottom: -15rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    transition: background-color 0.1s;
+}
+
+.contact-container:hover{
+    background-color: #111a;
+}
+
+.contact-btn-container{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.floating-icon{
+    color: #888;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    transition: transform 0.2s;
+    border-radius: 50%;
+    padding: 0.2rem;
+}
+
+.football-floating-icon{
+    margin-bottom: 0;
+}
+
+.contact-btn-container:last-child{
+    margin-bottom: 0
+}
+
+.floating-icon-a{
+    cursor: pointer;
+}
+
+.floating-icon:hover{
+    color: #fff;
+    transform: scale(1.08);
+    border: 1px solid #fff;
+}
