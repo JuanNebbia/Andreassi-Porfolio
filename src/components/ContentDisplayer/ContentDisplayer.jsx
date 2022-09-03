@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 const ContentDisplayer = ({section}) => {
-  const [display, setDisplay] = useState(null)
+  const [display, setDisplay] = useState({})
   const [content, setContent] = useState([])
   const [activeTake, setActiveTake] = useState(0)
   const navigate = useNavigate()
@@ -20,7 +20,6 @@ const ContentDisplayer = ({section}) => {
     .catch((err) => console.log('err: ' + err))
   },[section])
 
-
   const newSection = (direction) => {
      navigate(`/${direction}`)
      if (content !== direction){
@@ -30,7 +29,7 @@ const ContentDisplayer = ({section}) => {
 
   return (
     <>
-      {display !==null &&
+      {display.id &&
         <ContentModal display={display} setDisplay={setDisplay} content={content} />
       }
       <div className="content-displayer-container">

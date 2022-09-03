@@ -2,12 +2,16 @@ import React from 'react'
 import './ContentModal.css'
 import { motion } from 'framer-motion'
 import { IoIosClose } from 'react-icons/io';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import EditModal from '../EditModal/EditModal';
 
-const ContentModal = ({display, setDisplay, content}) => {
+const ContentModal = ({display, setDisplay}) => {
+  const {logged} = useContext(AuthContext)
 
   const closeModal = (event) =>{
     if (event.target.classList.contains('close')){
-      setDisplay(null)
+      setDisplay({})
     }
   }
 
@@ -17,19 +21,20 @@ const ContentModal = ({display, setDisplay, content}) => {
           initial={{y: '-100vh'}}
           animate={{y: 0}}>
         <img 
-          src={content[display].picUrl} 
+          src={display.picUrl} 
           alt="" 
-          className={content[display].description ? 'modal-img' : 'modal-img-only'}
+          className={display.description || logged? 'modal-img' : 'modal-img-only'}
           />
-          { content[display].description &&
+          { display.description &&
             <div className="modal-text-container">
               <button className='modal-close-btn close' onClick={closeModal}>
                 <IoIosClose className='modal-close-icon close'/>
               </button>
-                <h5 className='modal-title'> {content[display].title} </h5>
-                <p className='modal-text'> {content[display].description} </p>
+                <h5 className='modal-title'> {display.title} </h5>
+                <p className='modal-text'> {display.description} </p>
             </div>
           }
+          {logged && <EditModal display={display} setDisplay={setDisplay} />}
       </motion.div>
     </div>
   )

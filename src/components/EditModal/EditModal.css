@@ -1,0 +1,19 @@
+.modal-tools-container{
+    background-color: #444;
+    margin: 0 0 0 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 5rem;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.modal-tool-btn{
+    background-color: transparent;
+    border: none;
+}
+
+.modal-tool-icon{
+    color: #fff;
+    font-size: 1.5rem;
+}

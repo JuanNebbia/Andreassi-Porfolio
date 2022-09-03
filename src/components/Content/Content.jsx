@@ -4,7 +4,7 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { AiFillInfoCircle } from 'react-icons/ai'
 import Loading from '../Loading/Loading';
 
-const Photography = ({section, content, setDisplay, activeTake, setActiveTake}) => {
+const Content = ({section, content, setDisplay, activeTake, setActiveTake}) => {
 
     const handleController = (direction) =>{
         if (direction === 'prev'){
@@ -21,7 +21,6 @@ const Photography = ({section, content, setDisplay, activeTake, setActiveTake}) 
             }
         }
     }
-
 
     const calculate = () => {
         return (- activeTake * 3.7)
@@ -51,13 +50,13 @@ const Photography = ({section, content, setDisplay, activeTake, setActiveTake}) 
                                 src={content[activeTake].picUrl} 
                                 className="content-img" 
                                 alt="..." 
-                                onClick={()=>setDisplay(activeTake)}
+                                onClick={()=>setDisplay(content[activeTake])}
                                 />
                         </div>
                     }
                     {content[activeTake].description && 
                         <AiFillInfoCircle className='info-icon'
-                        onClick={()=>setDisplay(activeTake)} />
+                        onClick={()=>setDisplay(content[activeTake])} />
                     }
                 </div>
                 <button className="controller-next" onClick={()=>handleController('next')}>
@@ -89,4 +88,4 @@ const Photography = ({section, content, setDisplay, activeTake, setActiveTake}) 
     )
 }
 
-export default Photography
+export default Content
