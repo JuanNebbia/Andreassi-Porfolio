@@ -2,7 +2,6 @@ import React from 'react'
 import './Content.css'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { AiFillInfoCircle } from 'react-icons/ai'
-import { MdOutlineSkipNext, MdOutlineSkipPrevious } from 'react-icons/md'
 import Loading from '../Loading/Loading';
 
 const Photography = ({section, content, setDisplay, activeTake, setActiveTake}) => {

@@ -1,11 +1,9 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Slider from './components/Slider/Slider';
-import ContentDisplayer from './components/ContentDisplayer/ContentDisplayer';
-import About from './components/About/About';
-import Footer from './components/Footer/Footer';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Contact from './Contact/Contact';
+import { AuthProvider } from './context/AuthContext';
+import Login from './components/Login/Login';
+import Main from './components/Main/Main';
 // import { addDoc, collection, getFirestore } from 'firebase/firestore';
 // import { photos, videos, branding, design, perritos } from './mock/mock';
 // import { useEffect } from 'react';
@@ -25,16 +23,15 @@ function App() {
 
   return (
     <div className="App">
-      <Slider />
-      <Contact />
       <BrowserRouter>
+        <AuthProvider>
         <Routes>
           <Route path="/" element={<Navigate to="/photography" replace />} />
-          <Route path='/:section' element={<ContentDisplayer />} />
+          <Route path='/:section' element={<Main />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
+        </AuthProvider>
       </BrowserRouter>
-      <About />
-      <Footer />
     </div>
   );
 }

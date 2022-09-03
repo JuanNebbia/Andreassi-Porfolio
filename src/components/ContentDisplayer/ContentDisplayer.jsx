@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react'
 import Content from '../Content/Content'
 import './ContentDisplayer.css'
 import ContentModal from '../../components/ContentModal/ContentModal';
-import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 
-const ContentDisplayer = () => {
+const ContentDisplayer = ({section}) => {
   const [display, setDisplay] = useState(null)
   const [content, setContent] = useState([])
   const [activeTake, setActiveTake] = useState(0)
-  const { section } = useParams()
   const navigate = useNavigate()
 
   useEffect(()=>{
