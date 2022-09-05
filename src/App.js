@@ -28,6 +28,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/photography" replace />} />
           <Route path='/:section' element={<Main />} />
+          <Route path='/:section/:contentId' element={<Main />} />
           <Route path='/login' element={<Login />} />
         </Routes>
         </AuthProvider>

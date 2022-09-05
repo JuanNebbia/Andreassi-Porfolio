@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react'
 import Content from '../Content/Content'
 import './ContentDisplayer.css'
 import ContentModal from '../../components/ContentModal/ContentModal';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 
-const ContentDisplayer = ({section}) => {
-  const [display, setDisplay] = useState({})
+const ContentDisplayer = () => {
   const [content, setContent] = useState([])
   const [activeTake, setActiveTake] = useState(0)
   const navigate = useNavigate()
+  const {section, contentId} = useParams()
 
   useEffect(()=>{
     const db = getFirestore();
@@ -29,9 +29,7 @@ const ContentDisplayer = ({section}) => {
 
   return (
     <>
-      {display.id &&
-        <ContentModal display={display} setDisplay={setDisplay} content={content} />
-      }
+      {contentId && <ContentModal /> }
       <div className="content-displayer-container">
           <div className="section-btn-container">
               <button 
@@ -55,7 +53,7 @@ const ContentDisplayer = ({section}) => {
                 Diseño
               </button>
           </div>
-          <Content section={section} content={content} setDisplay={setDisplay} activeTake={activeTake} setActiveTake={setActiveTake} />
+          <Content section={section} content={content} activeTake={activeTake} setActiveTake={setActiveTake} />
      </div>
     </>
   )

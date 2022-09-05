@@ -3,8 +3,10 @@ import './Content.css'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { AiFillInfoCircle } from 'react-icons/ai'
 import Loading from '../Loading/Loading';
+import { useNavigate } from 'react-router-dom';
 
 const Content = ({section, content, setDisplay, activeTake, setActiveTake}) => {
+    const navigate = useNavigate()
 
     const handleController = (direction) =>{
         if (direction === 'prev'){
@@ -50,7 +52,7 @@ const Content = ({section, content, setDisplay, activeTake, setActiveTake}) => {
                                 src={content[activeTake].picUrl} 
                                 className="content-img" 
                                 alt="..." 
-                                onClick={()=>setDisplay(content[activeTake])}
+                                onClick={()=>navigate(`/${section}/${content[activeTake].id}`)}
                                 />
                         </div>
                     }
