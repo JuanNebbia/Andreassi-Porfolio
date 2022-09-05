@@ -5,7 +5,7 @@ import { MdModeEditOutline } from 'react-icons/md'
 import { deleteDoc, doc, getFirestore } from 'firebase/firestore'
 import { useParams } from 'react-router-dom'
 
-const EditModal = ({ display, setDisplay }) => {
+const EditModal = ({ display, setDisplay, editMode, setEditMode }) => {
     const {section} = useParams()
 
     const deleteItem = () =>{
@@ -19,9 +19,11 @@ const EditModal = ({ display, setDisplay }) => {
         <button className='modal-tool-btn' onClick={deleteItem}>
             <BsFillTrashFill className='modal-tool-icon' />
         </button>
-        <button className='modal-tool-btn'>
-            <MdModeEditOutline className='modal-tool-icon' />
-        </button>
+        {display.description &&
+            <button className='modal-tool-btn' onClick={()=>setEditMode(!editMode)}>
+                <MdModeEditOutline className='modal-tool-icon' />
+            </button>
+        }
     </div>
   )
 }

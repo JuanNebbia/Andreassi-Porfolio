@@ -12,7 +12,7 @@ const Main = () => {
   return (
     <div>
         <Slider />
-        <Contact />
+        <Contact /> 
         <ContentDisplayer section={section} />
         <About />
         <Footer /> 
