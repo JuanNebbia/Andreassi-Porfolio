@@ -1,0 +1,22 @@
+.welcome-container{
+    display: flex;
+    background-color: #000;
+    padding: 1rem;
+}
+
+.welcome-title{
+    font-size: 1.3rem;
+    margin-bottom: 0;
+    color: #da9401;
+}
+
+.exit-btn{
+    background-color: transparent;
+    color: #777;
+    border: none;
+    margin: 0 0 0 auto;
+}
+
+.exit-btn:hover{
+    color: #999;
+}

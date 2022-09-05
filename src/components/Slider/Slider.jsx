@@ -1,16 +1,12 @@
 import React from 'react'
-import { useContext } from 'react'
-import { AuthContext } from '../../context/AuthContext'
 import Slider1 from '../../img/Slider1.jpg'
 import Slider2 from '../../img/Slider2.jpg'
 import './Slider.css'
 
 const Slider = () => {
-    const {logged} = useContext(AuthContext)
 
   return (
     <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="true">
-        {logged && <p className='welcome-sign'>Bienvenido Mateox, tas registrado</p>}
         <div className="carousel-inner">
             <div className="carousel-item active">
             <img src={Slider1} className="d-block w-100" alt="..."/>

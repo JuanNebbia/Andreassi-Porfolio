@@ -1,23 +1,33 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Content from '../Content/Content'
 import './ContentDisplayer.css'
-import ContentModal from '../../components/ContentModal/ContentModal';
 import { useNavigate, useParams } from 'react-router-dom';
-import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
+import ContentModalContainer from '../ContentModalContainer/ContentModalContainer';
+import { AuthContext } from '../../context/AuthContext';
 
 const ContentDisplayer = () => {
   const [content, setContent] = useState([])
   const [activeTake, setActiveTake] = useState(0)
   const navigate = useNavigate()
   const {section, contentId} = useParams()
+  const {logged} = useContext(AuthContext)
 
   useEffect(()=>{
     const db = getFirestore();
-    const itemsCollection = collection(db, section)
-    getDocs(itemsCollection).then((snapshot) => {
-      const data = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}));
-      setContent(data)})
-    .catch((err) => console.log('err: ' + err))
+    const contentCollection = collection(db, section)
+    if(logged){
+      getDocs(contentCollection).then((snapshot) => {
+        const data = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}));
+        setContent(data)})
+      .catch((err) => console.log('err: ' + err))
+    }else{
+      const q = query(contentCollection, where("hidden", "!=", true))
+      getDocs(q).then((snapshot) => {
+        const data = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}));
+        setContent(data)})
+      .catch((err) => console.log('err: ' + err))
+    }
   },[section])
 
   const newSection = (direction) => {
@@ -29,7 +39,7 @@ const ContentDisplayer = () => {
 
   return (
     <>
-      {contentId && <ContentModal /> }
+      {contentId && <ContentModalContainer /> }
       <div className="content-displayer-container">
           <div className="section-btn-container">
               <button 

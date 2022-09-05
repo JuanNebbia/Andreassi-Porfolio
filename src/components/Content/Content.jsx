@@ -50,13 +50,13 @@ const Content = ({section, content, setDisplay, activeTake, setActiveTake}) => {
                         <div className="content-img-container">
                             <img 
                                 src={content[activeTake].picUrl} 
-                                className="content-img" 
+                                className={content[activeTake].hidden ? "content-img-hidden" : "content-img"} 
                                 alt="..." 
                                 onClick={()=>navigate(`/${section}/${content[activeTake].id}`)}
                                 />
                         </div>
                     }
-                    {content[activeTake].description && 
+                    {(content[activeTake].description || content[activeTake].title) && 
                         <AiFillInfoCircle className='info-icon'
                         onClick={()=>setDisplay(content[activeTake])} />
                     }
