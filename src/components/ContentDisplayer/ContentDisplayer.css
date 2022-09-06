@@ -1,5 +1,6 @@
 .content-displayer-container{
     position: relative;
+    background-color: #171717;
 }
 
 .section-btn-container{
@@ -48,4 +49,16 @@
     max-height:100%;
     top:0; left:0; right:0; bottom:0;
     margin:auto;
+}
+
+.add-content-btn{
+    background-color: #da9401;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.add-content-icon{
+    font-size: 2.5rem;
+    text-align: center;
 }

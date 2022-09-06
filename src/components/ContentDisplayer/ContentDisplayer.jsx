@@ -5,10 +5,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 import ContentModalContainer from '../ContentModalContainer/ContentModalContainer';
 import { AuthContext } from '../../context/AuthContext';
+import { RiAddFill} from 'react-icons/ri'
+import AddView from '../AddView/AddView';
 
 const ContentDisplayer = () => {
   const [content, setContent] = useState([])
   const [activeTake, setActiveTake] = useState(0)
+  const [addItem, setAddItem] = useState(false)
   const navigate = useNavigate()
   const {section, contentId} = useParams()
   const {logged} = useContext(AuthContext)
@@ -28,7 +31,7 @@ const ContentDisplayer = () => {
         setContent(data)})
       .catch((err) => console.log('err: ' + err))
     }
-  },[section])
+  },[section, logged])
 
   const newSection = (direction) => {
      navigate(`/${direction}`)
@@ -39,6 +42,7 @@ const ContentDisplayer = () => {
 
   return (
     <>
+      {addItem && <AddView setAddItem={setAddItem}/>}
       {contentId && <ContentModalContainer /> }
       <div className="content-displayer-container">
           <div className="section-btn-container">
@@ -64,6 +68,7 @@ const ContentDisplayer = () => {
               </button>
           </div>
           <Content section={section} content={content} activeTake={activeTake} setActiveTake={setActiveTake} />
+          {logged && <button className='add-content-btn' onClick={()=>setAddItem(!addItem)}><RiAddFill className='add-content-icon' /></button>}
      </div>
     </>
   )

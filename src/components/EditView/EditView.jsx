@@ -6,7 +6,7 @@ import './EditView.css'
 
 const EditView = ({contentInfo}) => {
     const {title, description, picUrl, hidden} = contentInfo
-    const [newContent, setNewContent] = useState({})
+    const [updatedContent, setUpdatedContent] = useState({})
     const {section, contentId} = useParams()
     const navigate = useNavigate()
 
@@ -14,26 +14,26 @@ const EditView = ({contentInfo}) => {
         event.preventDefault()
         const db = getFirestore()
         const docRef = doc(db, section, contentId)
-        updateDoc(docRef, newContent)
+        updateDoc(docRef, updatedContent)
         .catch(error => {console.log(error)})
         .finally(()=>navigate(`/${section}`))
     }
     
   const handleOnChange = (event) =>{
-    setNewContent({
-      ...newContent, 
+    setUpdatedContent({
+      ...updatedContent, 
       [event.target.name]: event.target.value
     })
   }
 
   const hideContent = () =>{
     if(hidden){
-      setNewContent({
-        ...newContent, 
+      setUpdatedContent({
+        ...updatedContent, 
         hidden: false
       })
-    }else{setNewContent({
-      ...newContent, 
+    }else{setUpdatedContent({
+      ...updatedContent, 
       hidden: true
     })
 
