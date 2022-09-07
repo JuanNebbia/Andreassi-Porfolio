@@ -1,0 +1,53 @@
+.thumbnail-displayer-container{
+    display: flex;
+}
+
+.inner-thumbnail-container{
+    display: flex;
+    align-items: center;
+    margin: 1rem auto 0;
+    width: 27rem;
+    justify-content: space-between;
+}
+
+.thumbnail-img-container{
+    transition: all 1s;
+    cursor: pointer;
+}
+
+.first-thumbnail{
+    height: 2.5rem;
+    width: 2.5rem;
+    filter: brightness(0.5);
+}
+
+.second-thumbnail{
+    height: 3.7rem;
+    width: 3.7rem;
+    filter: brightness(0.7);
+}
+
+.third-thumbnail{
+    height: 5rem;
+    width: 5rem;
+}
+
+.fourth-thumbnail{
+    height: 3.7rem;
+    width: 3.7rem;
+    filter: brightness(0.7);
+}
+
+.fifth-thumbnail{
+    height: 2.5rem;
+    width: 2.5rem;
+    filter: brightness(0.5);
+}
+
+
+
+.thumbnail-img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}

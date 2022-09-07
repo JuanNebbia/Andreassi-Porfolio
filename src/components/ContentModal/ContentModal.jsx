@@ -29,7 +29,7 @@ const ContentModal = ({contentInfo}) => {
             src={picUrl} 
             alt="" 
             className={description || title? 'modal-img' : 'modal-img-only'}
-            id={hidden && 'hidden-content'}
+            id={hidden ? 'hidden-content' : ''}
             />
             {edit && logged ?
               <EditView contentInfo={contentInfo}/>

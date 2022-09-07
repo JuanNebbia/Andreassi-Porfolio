@@ -4,6 +4,7 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { AiFillInfoCircle } from 'react-icons/ai'
 import Loading from '../Loading/Loading';
 import { useNavigate } from 'react-router-dom';
+import ThumbnailDisplayer from '../ThumbnailDisplayer/ThumbnailDisplayer';
 
 const Content = ({section, content, setDisplay, activeTake, setActiveTake}) => {
     const navigate = useNavigate()
@@ -24,9 +25,9 @@ const Content = ({section, content, setDisplay, activeTake, setActiveTake}) => {
         }
     }
 
-    const calculate = () => {
-        return (- activeTake * 3.7)
-    }
+    // const calculate = () => {
+    //     return (- activeTake * 3.7)
+    // }
 
     return (
         <>
@@ -65,24 +66,25 @@ const Content = ({section, content, setDisplay, activeTake, setActiveTake}) => {
                     <IoIosArrowForward className='next-icon'/>
                 </button>
             </div>
-            <div className="outer-thumbnail-container">
-            <div className="thumbnail-container" style={{left:`${calculate()}rem`}}>
-                {content.map((photo, i)=>
-                    <button className={activeTake === i ? "thumbnail-btn active-thumbnail-btn" : "thumbnail-btn"} key={i}>
-                        <div 
-                            className={activeTake === i ? 
-                            "active-thumbnail-img-container" : 
-                            "thumbnail-img-container"}
-                        >
-                            <img 
-                                src={photo.picUrl} 
-                                className={activeTake === i ? "thumbnail active-thumbnail" : "thumbnail"}
-                                alt="..." 
-                                onClick={()=>setActiveTake(i)} />
-                        </div>
-                    </button>)} 
-            </div>
-            </div>
+            <ThumbnailDisplayer content={content} activeTake={activeTake} setActiveTake= {setActiveTake}/>
+            {/* <div className="outer-thumbnail-container">
+                <div className="thumbnail-container" style={{left:`${calculate()}rem`}}>
+                    {content.map((photo, i)=>
+                        <button className={activeTake === i ? "thumbnail-btn active-thumbnail-btn" : "thumbnail-btn"} key={i}>
+                            <div 
+                                className={activeTake === i ? 
+                                "active-thumbnail-img-container" : 
+                                "thumbnail-img-container"}
+                            >
+                                <img 
+                                    src={photo.picUrl} 
+                                    className={activeTake === i ? "thumbnail active-thumbnail" : "thumbnail"}
+                                    alt="..." 
+                                    onClick={()=>setActiveTake(i)} />
+                            </div>
+                        </button>)} 
+                </div>
+            </div> */}
         </div> : 
         <Loading />}
         </>

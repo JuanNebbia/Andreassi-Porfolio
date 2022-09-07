@@ -9,11 +9,19 @@ const AddView = ({setAddItem}) => {
     const {section} = useParams()
 
     const handleOnChange = (event) =>{
-        setNewContent({
-          ...newContent, 
-          [event.target.name]: event.target.value
-        })
-        console.log(newContent)
+        if (event.target.name === 'hidden'){
+            const isTrueSet = (event.target.value === 'true');
+            setNewContent({
+                ...newContent, 
+                hidden: isTrueSet
+              })
+        }
+        else{
+            setNewContent({
+              ...newContent, 
+              [event.target.name]: event.target.value
+            })   
+        }
     }
 
     
@@ -56,6 +64,10 @@ const AddView = ({setAddItem}) => {
                 name='picUrl'
                 onChange={handleOnChange}
                 required />
+            <input type='radio' name='hidden' value={false} id='hide-input-false' defaultChecked onChange={handleOnChange} />
+            <label htmlFor='hide-input-false' className='hide-input-label'>No ocultar</label>
+            <input type='radio' name='hidden' value={true} id='hide-input-true' onChange={handleOnChange}/>
+            <label htmlFor='hide-input-true' className='hide-input-label'>Ocultar</label>
             <button type='submit' className='add-submit'>Guardar Cambios</button>
             </form>
         </div>
