@@ -34,7 +34,7 @@ const ThumbnailDisplayer = ({content, activeTake, setActiveTake}) => {
         let actualThumbnail;
         if (activeTake === content.length - position){
             actualThumbnail = 0
-        } else if (activeTake > content.length - position){
+        }else if (activeTake > content.length - position){
             actualThumbnail = 1
         }
         else{
@@ -43,11 +43,11 @@ const ThumbnailDisplayer = ({content, activeTake, setActiveTake}) => {
         setActiveTake(actualThumbnail)
     }
 
-    const toPrev = (position) =>{
+    const toPrev = ( position) =>{
         let actualThumbnail;
         if (activeTake - position === (-1)){
             actualThumbnail = content.length-1
-        } else if (activeTake > content.length - position){
+        } else if (activeTake - position === (-2)){
             actualThumbnail = content.length-2
         }
         else{
@@ -60,30 +60,29 @@ const ThumbnailDisplayer = ({content, activeTake, setActiveTake}) => {
         <div className="thumbnail-displayer-container">
             <div className="inner-thumbnail-container">
                 {content.length > 4 && 
-                    <div className='thumbnail-img-container first-thumbnail' onClick={()=>toPrev(2)}>
+                    <div className='thumbnail-img-container' onClick={()=>toPrev(2)}>
                         <img className='thumbnail-img' src={calculatePrevThumbnail(2)} alt='' />
                     </div>
                 }
                 {content.length > 2 &&  
-                    <div className='thumbnail-img-container second-thumbnail' onClick={()=>toPrev(1)}>
-                        <img className='thumbnail-img' src={calculatePrevThumbnail(1)} alt='' />
-                    </div>
+                    <div className='thumbnail-img-container' onClick={()=>toPrev(1)}>
+                    <img className='thumbnail-img' src={calculatePrevThumbnail(1)} alt='' />
+                </div>
                 }     
-                <div className='thumbnail-img-container third-thumbnail'>
+                <div className='thumbnail-img-container selected-thumbnail' >
                     <img className='thumbnail-img' src={content[activeTake].picUrl} alt='' />
                 </div>
                 {content.length > 1 &&  
-                    <div className='thumbnail-img-container fourth-thumbnail' onClick={()=>toNext(1)}>
+                    <div className='thumbnail-img-container' onClick={()=>toNext(1)}>
                         <img className='thumbnail-img' src={calculateNextThumbnail(1)} alt='' />
-                    </div>
+                </div>
                 } 
                 {content.length > 3 &&  
-                    <div className='thumbnail-img-container fifth-thumbnail' onClick={()=>toNext(2)}>
-                        <img className='thumbnail-img' src={calculateNextThumbnail(2)} alt='' />
-                    </div>
+                        <div className='thumbnail-img-container' onClick={()=>toNext(2)}>
+                            <img className='thumbnail-img' src={calculateNextThumbnail(2)} alt='' />
+                        </div>
                 }  
             </div>
-            
         </div>
     )
 }

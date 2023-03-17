@@ -1,7 +1,11 @@
+.carousel{
+    height: 100vh;
+}
+
 .carousel-caption{
     top: 0;
     left: 0;
-    padding: 0
+    padding: 0;
 }
 
 .carousel-inner{

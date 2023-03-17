@@ -7,7 +7,7 @@ import EditModal from '../EditModal/EditModal';
 import { useNavigate, useParams } from 'react-router-dom';
 import EditView from '../EditView/EditView';
 
-const ContentModal = ({contentInfo}) => {
+const ContentModal = ({contentInfo, setContentInfo}) => {
   const {title, description, picUrl, hidden} = contentInfo
   const {section, edit} = useParams()
   const {logged} = useContext(AuthContext)
@@ -47,7 +47,7 @@ const ContentModal = ({contentInfo}) => {
             }
               </>
             }
-            {logged && <EditModal contentInfo={contentInfo} />}
+            {logged && <EditModal contentInfo={contentInfo} setContentInfo={setContentInfo} />}
         </motion.div>
       </div>
   )

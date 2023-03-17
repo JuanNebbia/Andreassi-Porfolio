@@ -1,7 +1,7 @@
 import React from 'react'
 import './Content.css'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import { AiFillInfoCircle } from 'react-icons/ai'
+import { AiOutlineFullscreen } from 'react-icons/ai'
 import Loading from '../Loading/Loading';
 import { useNavigate } from 'react-router-dom';
 import ThumbnailDisplayer from '../ThumbnailDisplayer/ThumbnailDisplayer';
@@ -25,10 +25,6 @@ const Content = ({section, content, setDisplay, activeTake, setActiveTake}) => {
         }
     }
 
-    // const calculate = () => {
-    //     return (- activeTake * 3.7)
-    // }
-
     return (
         <>
         {content.length ? 
@@ -41,7 +37,7 @@ const Content = ({section, content, setDisplay, activeTake, setActiveTake}) => {
                     {section === 'video' ?
                         <iframe
                             className="video-item" 
-                            width="400" height="1000" 
+                            width="400" height="400" 
                             src={content[activeTake].videoUrl + '?controls=0&showinfo=0&modestbranding=1&rel=0&autoplay=1&mute=1'} 
                             title="YouTube video player" 
                             frameBorder="0" 
@@ -58,33 +54,14 @@ const Content = ({section, content, setDisplay, activeTake, setActiveTake}) => {
                         </div>
                     }
                     {(content[activeTake].description || content[activeTake].title) && 
-                        <AiFillInfoCircle className='info-icon'
-                        onClick={()=>setDisplay(content[activeTake])} />
+                        <AiOutlineFullscreen className='fullscreen-icon' onClick={()=>navigate(`/${section}/${content[activeTake].id}`)}/>
                     }
                 </div>
                 <button className="controller-next" onClick={()=>handleController('next')}>
-                    <IoIosArrowForward className='next-icon'/>
+                    <IoIosArrowForward className='next-icon' />
                 </button>
             </div>
             <ThumbnailDisplayer content={content} activeTake={activeTake} setActiveTake= {setActiveTake}/>
-            {/* <div className="outer-thumbnail-container">
-                <div className="thumbnail-container" style={{left:`${calculate()}rem`}}>
-                    {content.map((photo, i)=>
-                        <button className={activeTake === i ? "thumbnail-btn active-thumbnail-btn" : "thumbnail-btn"} key={i}>
-                            <div 
-                                className={activeTake === i ? 
-                                "active-thumbnail-img-container" : 
-                                "thumbnail-img-container"}
-                            >
-                                <img 
-                                    src={photo.picUrl} 
-                                    className={activeTake === i ? "thumbnail active-thumbnail" : "thumbnail"}
-                                    alt="..." 
-                                    onClick={()=>setActiveTake(i)} />
-                            </div>
-                        </button>)} 
-                </div>
-            </div> */}
         </div> : 
         <Loading />}
         </>

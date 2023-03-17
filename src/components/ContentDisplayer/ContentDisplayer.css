@@ -1,6 +1,11 @@
 .content-displayer-container{
     position: relative;
     background-color: #171717;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 5rem;
 }
 
 .section-btn-container{
@@ -8,7 +13,7 @@
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
-    width: 27rem;
+    width: 40%;
 
 }
 
@@ -16,11 +21,10 @@
     background: transparent;
     border: none;
     color: #bbb;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 400;
     padding: 0.5rem 1rem;
-    border-top-left-radius: 0.7rem;
-    border-top-right-radius: 0.7rem;
+    min-width: 7.7rem
 }
 
 .section-btn:hover{
@@ -28,12 +32,7 @@
 }
 
 .active-section{
-    color: #000;
-    background-color:#da9401;
-}
-
-.active-section:hover{
-    color: #000;
+    color:#fff;
 }
 
 .photography-img-displayed-container{

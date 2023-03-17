@@ -1,4 +1,5 @@
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
+import { motion } from 'framer-motion'
 import React from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -42,7 +43,9 @@ const AddView = ({setAddItem}) => {
 
   return (
     <div className="add-modal-container close" onClick={closeModal}>
-        <div className="add-item-info-container">
+        <motion.div className="add-item-info-container"
+            initial={{y: '-100vh'}}
+            animate={{y: 0}}>
             <h6 className='add-mode-title'>NUEVO CONTENIDO</h6>
             <form action="" className='add-item-form' onSubmit={addContent}>
             <label htmlFor='add-title-input' className='add-input-label'>Titulo</label>
@@ -70,7 +73,7 @@ const AddView = ({setAddItem}) => {
             <label htmlFor='hide-input-true' className='hide-input-label'>Ocultar</label>
             <button type='submit' className='add-submit'>Guardar Cambios</button>
             </form>
-        </div>
+        </motion.div>
     </div>
   )
 }

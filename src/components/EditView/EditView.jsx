@@ -5,39 +5,25 @@ import { useNavigate, useParams } from 'react-router-dom'
 import './EditView.css'
 
 const EditView = ({contentInfo}) => {
-    const {title, description, picUrl, hidden} = contentInfo
-    const [updatedContent, setUpdatedContent] = useState({})
-    const {section, contentId} = useParams()
-    const navigate = useNavigate()
+  const {title, description, picUrl, hidden} = contentInfo
+  const [updatedContent, setUpdatedContent] = useState({})
+  const {section, contentId} = useParams()
+  const navigate = useNavigate()
 
-    const updateContent = (event) =>{
-        event.preventDefault()
-        const db = getFirestore()
-        const docRef = doc(db, section, contentId)
-        updateDoc(docRef, updatedContent)
-        .catch(error => {console.log(error)})
-        .finally(()=>navigate(`/${section}`))
-    }
+  const updateContent = (event) =>{
+      event.preventDefault()
+      const db = getFirestore()
+      const docRef = doc(db, section, contentId)
+      updateDoc(docRef, updatedContent)
+      .catch(error => {console.log(error)})
+      .finally(()=>navigate(`/${section}`))
+  }
     
   const handleOnChange = (event) =>{
     setUpdatedContent({
       ...updatedContent, 
       [event.target.name]: event.target.value
     })
-  }
-
-  const hideContent = () =>{
-    if(hidden){
-      setUpdatedContent({
-        ...updatedContent, 
-        hidden: false
-      })
-    }else{setUpdatedContent({
-      ...updatedContent, 
-      hidden: true
-    })
-
-    }
   }
 
   return (
@@ -67,16 +53,9 @@ const EditView = ({contentInfo}) => {
             name='picUrl'
             onChange={handleOnChange}
             required />
-          {hidden?
-          <div className="show-btn-container">
-            <p className='hidden-show-text'>Este contenido se encuentra oculto</p>
-            <button onClick={hideContent} className="show-content-btn">Mostrar</button>
-          </div>:
-          <div className="show-btn-container">
-            <p className='hidden-show-text' >Este contenido se encuentra visible</p>
-            <button onClick={hideContent} className="hide-content-btn">Ocultar</button>
-          </div>
-          }
+            <p className='hidden-show-text'>
+              {hidden?'Este contenido se encuentra oculto':'Este contenido se encuentra visible'}
+            </p>: 
           <button type='submit' className='edit-submit'>Guardar Cambios</button>
         </form>
       </div>
