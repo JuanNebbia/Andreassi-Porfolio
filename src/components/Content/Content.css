@@ -6,7 +6,6 @@
 .middle-section{
     display: flex;
     justify-content: center;
-    gap: 2rem; 
 }
 
 .video-item{
@@ -36,6 +35,7 @@
     transition-property: transform;
     transition-duration: 5s;
     border-radius: 0.1rem;
+    box-shadow: inset 0 3px 3px white;
 }
 
 .content-img:hover{
@@ -58,20 +58,35 @@
 }
 
 .controller-prev{
-    margin-left: -6rem;
+    width: calc((100vw - 70vh) / 2);
+    margin-left: calc((100vw - 70vh) / -2);
 }
 
 .controller-next{
-    margin-right: -6rem;
+    width: calc((100vw - 70vh) / 2);
+    margin-right: calc((100vw - 70vh) / -2);
 }
 
 .prev-icon, .next-icon{
     font-size: 4rem;
     color: #555;
+    margin: 0 2rem;
+}
+
+.prev-icon{
+    float: right;
+}
+
+.next-icon{
+    float: left;
+}
+
+.icon-invisible{
+    color: transparent;
 }
 
 .controller-prev:hover .prev-icon, .controller-next:hover .next-icon{
-    color: #aaa;
+    color: #fff;
 }
 
 

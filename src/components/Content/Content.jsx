@@ -3,11 +3,12 @@ import './Content.css'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { AiOutlineFullscreen } from 'react-icons/ai'
 import Loading from '../Loading/Loading';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import ThumbnailDisplayer from '../ThumbnailDisplayer/ThumbnailDisplayer';
 
 const Content = ({section, content, setDisplay, activeTake, setActiveTake}) => {
     const navigate = useNavigate()
+    const {contentId} = useParams()
 
     const handleController = (direction) =>{
         if (direction === 'prev'){
@@ -31,7 +32,7 @@ const Content = ({section, content, setDisplay, activeTake, setActiveTake}) => {
         <div className='content-container'>
             <div className='middle-section'>
                 <button className="controller-prev" onClick={()=>handleController('prev')}>
-                    <IoIosArrowBack className='prev-icon'/>
+                    <IoIosArrowBack className={!contentId ? 'prev-icon' : 'icon-invisible'}/>
                 </button>
                 <div className='photography-img-container'>
                     {section === 'video' ?
@@ -58,7 +59,7 @@ const Content = ({section, content, setDisplay, activeTake, setActiveTake}) => {
                     }
                 </div>
                 <button className="controller-next" onClick={()=>handleController('next')}>
-                    <IoIosArrowForward className='next-icon' />
+                    <IoIosArrowForward className={!contentId ? 'next-icon' : 'icon-invisible'}/>
                 </button>
             </div>
             <ThumbnailDisplayer content={content} activeTake={activeTake} setActiveTake= {setActiveTake}/>

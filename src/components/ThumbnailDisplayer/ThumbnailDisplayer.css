@@ -1,23 +1,23 @@
 .thumbnail-displayer-container{
     display: flex;
-    margin: 1rem auto 0;
+    margin: 0.5rem auto 0;
 }
 
 .inner-thumbnail-container{
     display: flex;
     align-items: center;
     margin: auto;
-    width: 50%;
+    width: 70vh;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .thumbnail-img-container{
-    height: 12vh;
-    width: 12vh;
-    filter: brightness(0.6) grayscale(0.7);
+    height: 9vh;
+    width: 9vh;
+    filter: brightness(0.8) grayscale(0.5);
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.2s;
 }
 
 .thumbnail-img-container:hover{
@@ -26,8 +26,8 @@
 
 .selected-thumbnail{
     filter: none;
-    height: 13vh;
-    width: 13vh;
+    height: 11vh;
+    width: 11vh;
     box-shadow: 0 0 10px #030303;
 }
 

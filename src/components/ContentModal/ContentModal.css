@@ -10,6 +10,7 @@
     justify-content: center;
     z-index: 1000;
     padding: 3%;
+    backdrop-filter: grayscale(80%) blur(0.08rem);
 }
 
 .modal-card-container{

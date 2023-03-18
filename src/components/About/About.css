@@ -1,19 +1,133 @@
 .about-container{
-    background-color: #1f1e23;
-    display: flex;
-    padding: 3rem 20%;
-    align-items: center;
-    justify-content: center;
+    background-color: #171717;
+    width: 70vh;
+    margin: 5rem auto;
 }
 
-.about-img{
-    width: 20rem;
-    margin-right: 2rem;
+.row{
+    margin-bottom: 1rem;
+}
+
+.col-6, .col-12{
+    min-height: 35vh;
+    background-color: #171717;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0.5rem;
+}
+
+.card{
+    width: 100%;
+    height: 100%;
+    background-color: #171717;
+    border: none;
+    border-radius: 0;
+    margin: 0.5rem;
+    padding: 0;
+
+}
+
+.card-side{
+    transition: all 0.8s ease;
+    backface-visibility: hidden;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #2b2b2b;
+    border-radius: 1.5rem;
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.card-side.card-img{
+    padding: 0;
+}
+
+.card-side.back.small {
+    transform: rotateY(-180deg);
+    display: flex;
+    align-items: center;
+    background-color: #171717;
+    transition-duration: 0.5s;
+}
+
+.card:hover .card-side.front.small {
+    transform : rotateY(180deg);
+    transition-duration: 0.5s;
+}
+
+.card:hover .card-side.back.small {
+    transform: rotateY(0deg);
+    transition-duration: 0.5s;
+}
+
+.card-side.back.large {
+    transform: rotateX(-180deg);
+    transition-duration: 0.5s;
+    display: flex;
+    align-items: center;
+    background-color: #171717;
+}
+
+.card:hover .card-side.front.large {
+    transform : rotateX(180deg);
+    transition-duration: 0.5s;
+}
+
+.card:hover .card-side.back.large {
+    transform: rotateX(0deg);
+    transition-duration: 0.5s;
+}
+
+.card-side>img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.back-text{
+    margin: auto;
+    color: #f9f9f9;
+    font-size: 2rem;
+}
+
+.about-title{
+    color: #f9f9f9;
+    font-size: 2rem;
+    text-align: left;
 }
 
 .about-text{
-    color: #fff;
-    max-width: 20rem;
-    text-align: justify;
-    font-family: 'Roboto';
+    color: #f9f9f9;
+    text-align:justify;
+}
+
+.heart-icon{
+    color: #f9f9f9;
+    font-size: 4.5rem;
+    margin: auto;
+}
+
+.icons-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.adobe-logo{
+    width: 30%;
+}
+
+.adobe-title{
+    color: #f9f9f9;
+    font-size: 270%;
+    margin: auto;
+    margin-top: auto;
+    text-align: center;
 }

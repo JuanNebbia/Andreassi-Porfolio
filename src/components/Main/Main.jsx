@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom'
-import Contact from '../Contact/Contact'
 import { AuthContext } from '../../context/AuthContext'
 import About from '../About/About'
 import ContentDisplayer from '../ContentDisplayer/ContentDisplayer'
@@ -16,7 +15,6 @@ const Main = () => {
     <div>
         {logged && <Welcome />}
         <Slider />
-        <Contact /> 
         <ContentDisplayer section={section} />
         <About />
         <Footer /> 

@@ -19,18 +19,12 @@ const ContentDisplayer = () => {
   useEffect(()=>{
     const db = getFirestore();
     const contentCollection = collection(db, section)
-    if(logged){
-      getDocs(contentCollection).then((snapshot) => {
+    const q = logged ? contentCollection : query(contentCollection, where("hidden", "!=", true))
+    getDocs(q)
+      .then((snapshot) => {
         const data = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}));
         setContent(data)})
       .catch((err) => console.log('err: ' + err))
-    }else{
-      const q = query(contentCollection, where("hidden", "!=", true))
-      getDocs(q).then((snapshot) => {
-        const data = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}));
-        setContent(data)})
-      .catch((err) => console.log('err: ' + err))
-    }
   },[section, logged])
 
   const newSection = (direction) => {
@@ -49,22 +43,27 @@ const ContentDisplayer = () => {
               <button 
                 className={section === 'photography' ? `section-btn active-section` : 'section-btn'} 
                 onClick={()=>newSection('photography')}>
-                  Fotografía
+                  fotografía
               </button>
               <button 
                 className={section === 'video' ? `section-btn active-section` : 'section-btn'} 
                 onClick={()=>newSection('video')}>
-                  Video
+                  video
               </button>
               <button 
               className={section === 'branding' ? `section-btn active-section` : 'section-btn'} 
               onClick={()=>newSection('branding')}>
-                Branding
+                branding
               </button>
               <button 
               className={section === 'design' ? `section-btn active-section` : 'section-btn'} 
               onClick={()=>newSection('design')}>
-                Diseño
+                diseño
+              </button>
+              <button 
+              className={section === 'animación' ? `section-btn active-section` : 'section-btn'} 
+              onClick={()=>newSection('animacion')}>
+                animación
               </button>
           </div>
           <Content section={section} content={content} activeTake={activeTake} setActiveTake={setActiveTake} />
