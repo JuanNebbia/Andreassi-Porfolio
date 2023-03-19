@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import './About.css'
 import profileGif from '../../img/GifFoto.gif'
 import ps from '../../img/icons/adobe/Recurso 8@2x.png'
@@ -15,6 +15,15 @@ import mac from '../../img/icons/productividad/Recurso 6@2x.png'
 import drive from '../../img/icons/productividad/Recurso 7@2x.png'
 
 const About = () => {
+  const heart = useRef()
+
+  const transform = () =>{
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    const randomAngle = Math.floor(Math.random()*360)
+    heart.current.style.color = '#' + randomColor
+    heart.current.style.transform = `rotate(${randomAngle}deg)`
+  }
+
   return (
     <div className='about-container'>
         <div className="row">
@@ -39,7 +48,7 @@ const About = () => {
                   <img src={ai} alt="" className='adobe-logo' />
                   <img src={ae} alt="" className='adobe-logo' />
                 </div>
-                <h6 className='adobe-title'>Adobe Suit</h6>
+                <h6 className='tech-title'>Adobe Suit</h6>
               </div>
               <div className="card-side back small">
                 <p className='back-text'>importante</p>
@@ -74,6 +83,7 @@ const About = () => {
                   <img src={mac} alt="" className='adobe-logo' />
                   <img src={drive} alt="" className='adobe-logo' />
                 </div>
+                <h6 className='tech-title'>Productividad</h6>
               </div>
               <div className="card-side back small">
                 <p className='back-text'>de hacer</p>
@@ -82,8 +92,8 @@ const About = () => {
           </div>
           <div className="col-6">
             <div className="card">
-              <div className="card-side front small">
-                <p className='heart-icon'>&lt;3</p>
+              <div className="card-side front small" onMouseLeave={()=>transform()}>
+                <p className='heart-icon' ref={heart}>&lt;3</p>
               </div>
               <div className="card-side back small">
                 <p className='back-text'>preguntas.</p>

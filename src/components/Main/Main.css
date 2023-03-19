@@ -1,0 +1,7 @@
+.section-divider{
+    height: 0.33rem;
+    width: 45vh;
+    border-radius: 0.5rem;
+    background-color: #da9401;
+    margin: 3rem auto
+}

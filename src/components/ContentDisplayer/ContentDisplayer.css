@@ -5,16 +5,27 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 5rem;
+    margin-top: -4rem;
 }
 
 .section-btn-container{
     padding:  0;
     display: flex;
-    justify-content:space-between;
+    flex-direction: column;
     margin: 0 auto;
     width: 65vh;
+}
 
+.section-row{
+    display: flex;
+    margin: 0;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.col-2{
+    display: flex;
+    justify-content: center;
 }
 
 .section-btn{
@@ -59,4 +70,16 @@
 .add-content-icon{
     font-size: 2.5rem;
     text-align: center;
+}
+
+.selector-container{
+    width: 65vh;
+    margin: 0 auto;
+}
+
+.section-selector{
+    height: 0.3rem;
+    width: 1.7rem;
+    border-radius: 0.5rem;
+    background-color: #da9401;
 }

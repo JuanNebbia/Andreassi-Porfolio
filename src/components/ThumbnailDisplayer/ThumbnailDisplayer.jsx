@@ -8,8 +8,11 @@ const ThumbnailDisplayer = ({content, activeTake, setActiveTake}) => {
         if (activeTake === content.length - position){
             actualImg = content[0]
         }
-        else if (activeTake > content.length - position){
+        else if (activeTake === content.length - position + 1){
             actualImg = content[1]
+        }
+        else if (activeTake === content.length - position + 2){
+            actualImg = content[2]
         }
         else {
             actualImg = content[activeTake + position]
@@ -51,6 +54,8 @@ const ThumbnailDisplayer = ({content, activeTake, setActiveTake}) => {
             actualThumbnail = content.length-1
         } else if (activeTake - position === (-2)){
             actualThumbnail = content.length-2
+        }else if (activeTake - position === (-3)){
+            actualThumbnail = content.length-3
         }
         else{
             actualThumbnail = activeTake - position
@@ -89,7 +94,7 @@ const ThumbnailDisplayer = ({content, activeTake, setActiveTake}) => {
                             <img className='thumbnail-img' src={calculateNextThumbnail(2)} alt='' />
                         </div>
                 }  
-                {content.length > 5 &&  
+                {content.length > 6 &&  
                         <div className='thumbnail-img-container' onClick={()=>toNext(3)}>
                             <img className='thumbnail-img' src={calculateNextThumbnail(3)} alt='' />
                         </div>

@@ -6,7 +6,7 @@ import Loading from '../Loading/Loading';
 import { useNavigate, useParams } from 'react-router-dom';
 import ThumbnailDisplayer from '../ThumbnailDisplayer/ThumbnailDisplayer';
 
-const Content = ({section, content, setDisplay, activeTake, setActiveTake}) => {
+const Content = ({section, content, activeTake, setActiveTake}) => {
     const navigate = useNavigate()
     const {contentId} = useParams()
 
@@ -38,7 +38,7 @@ const Content = ({section, content, setDisplay, activeTake, setActiveTake}) => {
                     {section === 'video' ?
                         <iframe
                             className="video-item" 
-                            width="400" height="400" 
+                            width="600" height="600" 
                             src={content[activeTake].videoUrl + '?controls=0&showinfo=0&modestbranding=1&rel=0&autoplay=1&mute=1'} 
                             title="YouTube video player" 
                             frameBorder="0" 

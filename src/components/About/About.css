@@ -1,7 +1,7 @@
 .about-container{
     background-color: #171717;
     width: 70vh;
-    margin: 5rem auto;
+    margin: 5rem auto 2rem ;
 }
 
 .row{
@@ -107,9 +107,12 @@
 }
 
 .heart-icon{
-    color: #f9f9f9;
     font-size: 4.5rem;
     margin: auto;
+    color: #f9f9f9;
+    letter-spacing: -0.2rem;
+    font-family:cursive;
+    transition-duration: 0.5s;
 }
 
 .icons-container{
@@ -124,9 +127,9 @@
     width: 30%;
 }
 
-.adobe-title{
+.tech-title{
     color: #f9f9f9;
-    font-size: 270%;
+    font-size: 2.8vh;
     margin: auto;
     margin-top: auto;
     text-align: center;

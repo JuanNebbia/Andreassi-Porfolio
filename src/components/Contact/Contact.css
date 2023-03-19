@@ -1,0 +1,42 @@
+.contact-container{
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+}
+
+.contact{
+    background-color: #000;
+    border-radius: 1.5rem;
+    border-bottom-right-radius: 0;
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    width: 70vh;
+    height: 35vh;
+}
+
+.text-area-mail{
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    color: #eee;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.send-msg-btn{
+    background-color: transparent;
+    margin-left: auto;
+    color: #ddd;
+    border: 2px solid #ddd;
+    border-radius: 0.5rem;
+    border-bottom-right-radius: 0;
+    font-size: 1.5rem;
+    padding: 0 0.6rem;
+}
+
+.send-msg-btn:hover{
+    color: #fff;
+    border: 2px solid #fff;
+}

@@ -40,31 +40,50 @@ const ContentDisplayer = () => {
       {contentId && <ContentModalContainer /> }
       <div className="content-displayer-container">
           <div className="section-btn-container">
+            <div className="row section-row">
               <button 
-                className={section === 'photography' ? `section-btn active-section` : 'section-btn'} 
+                className={section === 'photography' ? `section-btn active-section col-2` : 'section-btn col-2'} 
                 onClick={()=>newSection('photography')}>
                   fotografía
               </button>
               <button 
-                className={section === 'video' ? `section-btn active-section` : 'section-btn'} 
+                className={section === 'video' ? `section-btn active-section col-2` : 'section-btn col-2'} 
                 onClick={()=>newSection('video')}>
                   video
               </button>
               <button 
-              className={section === 'branding' ? `section-btn active-section` : 'section-btn'} 
+              className={section === 'branding' ? `section-btn active-section col-2` : 'section-btn col-2'} 
               onClick={()=>newSection('branding')}>
                 branding
               </button>
               <button 
-              className={section === 'design' ? `section-btn active-section` : 'section-btn'} 
+              className={section === 'design' ? `section-btn active-section col-2` : 'section-btn col-2'} 
               onClick={()=>newSection('design')}>
                 diseño
               </button>
               <button 
-              className={section === 'animación' ? `section-btn active-section` : 'section-btn'} 
-              onClick={()=>newSection('animacion')}>
+              className={section === 'animation' ? `section-btn active-section col-2` : 'section-btn col-2'} 
+              onClick={()=>newSection('animation')}>
                 animación
               </button>
+            </div>
+            <div className="section-row">
+              <div className="col-2">
+                {section === 'photography' && <div className="section-selector"></div>}
+              </div>
+              <div className="col-2">
+              {section === 'video' && <div className="section-selector"></div>}
+              </div>
+              <div className="col-2">
+              {section === 'branding' && <div className="section-selector"></div>}
+              </div>
+              <div className="col-2">
+              {section === 'design' && <div className="section-selector"></div>}
+              </div>
+              <div className="col-2">
+              {section === 'animation' && <div className="section-selector"></div>}
+              </div>
+            </div>
           </div>
           <Content section={section} content={content} activeTake={activeTake} setActiveTake={setActiveTake} />
           {logged && <button className='add-content-btn' onClick={()=>setAddItem(!addItem)}><RiAddFill className='add-content-icon' /></button>}
