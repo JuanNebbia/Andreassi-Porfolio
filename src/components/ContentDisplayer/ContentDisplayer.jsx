@@ -38,7 +38,7 @@ const ContentDisplayer = () => {
     <>
       {addItem && <AddView setAddItem={setAddItem}/>}
       {contentId && <ContentModalContainer /> }
-      <div className="content-displayer-container">
+      <div className="content-displayer-container" id='content-displayer-container'>
           <div className="section-btn-container">
             <div className="row section-row">
               <button 

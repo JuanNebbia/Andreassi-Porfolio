@@ -5,11 +5,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: -4rem;
+    margin-top: 7rem;
 }
 
 .section-btn-container{
-    padding:  0;
+    padding:  2rem 0 0 0;
     display: flex;
     flex-direction: column;
     margin: 0 auto;

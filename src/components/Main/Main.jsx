@@ -1,6 +1,5 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useParams } from 'react-router-dom'
-import { AuthContext } from '../../context/AuthContext'
 import About from '../About/About'
 import Contact from '../Contact/Contact'
 import ContentDisplayer from '../ContentDisplayer/ContentDisplayer'
@@ -11,11 +10,10 @@ import './Main.css'
 
 const Main = () => {
     const {section} = useParams()
-    const {logged} = useContext(AuthContext)
 
   return (
     <div>
-        {logged && <Welcome />}
+        <Welcome />
         <Slider />
         <ContentDisplayer section={section} />
         <About />

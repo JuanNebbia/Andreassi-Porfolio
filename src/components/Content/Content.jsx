@@ -1,6 +1,6 @@
 import React from 'react'
 import './Content.css'
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { AiOutlineFullscreen } from 'react-icons/ai'
 import Loading from '../Loading/Loading';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -32,7 +32,7 @@ const Content = ({section, content, activeTake, setActiveTake}) => {
         <div className='content-container'>
             <div className='middle-section'>
                 <button className="controller-prev" onClick={()=>handleController('prev')}>
-                    <IoIosArrowBack className={!contentId ? 'prev-icon' : 'icon-invisible'}/>
+                    <SlArrowLeft className={!contentId ? 'prev-icon' : 'icon-invisible'}/>
                 </button>
                 <div className='photography-img-container'>
                     {section === 'video' ?
@@ -59,7 +59,7 @@ const Content = ({section, content, activeTake, setActiveTake}) => {
                     }
                 </div>
                 <button className="controller-next" onClick={()=>handleController('next')}>
-                    <IoIosArrowForward className={!contentId ? 'next-icon' : 'icon-invisible'}/>
+                    <SlArrowRight className={!contentId ? 'next-icon' : 'icon-invisible'}/>
                 </button>
             </div>
             <ThumbnailDisplayer content={content} activeTake={activeTake} setActiveTake= {setActiveTake}/>

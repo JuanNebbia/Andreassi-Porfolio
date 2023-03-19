@@ -43,3 +43,15 @@
     max-width: 70%;
     font-family: Karla;
 }
+
+.scroll-down-icon{
+    color: #fff;
+    font-size: 3rem;
+    position: absolute;
+    bottom: 0;
+    z-index: 1000;
+}
+
+.scroll-down-icon:hover{
+    color: #ccc;
+}
