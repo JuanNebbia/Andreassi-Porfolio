@@ -13,7 +13,8 @@ const Contact = () => {
     const newMessage = {
       date: new Date(),
       message: messageArea.current.value,
-      subject: messageSubject.current.value
+      subject: messageSubject.current.value,
+      hidden: false
     }
     messageArea.current.value = ''
     messageSubject.current.value = ''
