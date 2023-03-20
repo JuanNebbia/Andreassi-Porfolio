@@ -1,0 +1,46 @@
+.messages-container{
+    height: 100vh;
+    margin: 0 auto;
+    background-color: #171717;
+    padding: 10rem 35vh;
+}
+
+.messages-inner-container{
+    padding: 2rem;
+}
+
+.message-box{
+    display: flex;
+    color: #fff;
+    padding: 1rem;
+    background-color: #2a2a2a;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    border-radius: 1.5rem;
+    border-bottom-right-radius: 0;
+}
+
+.message-text, .message-date, .message-subject{
+    margin: 0;
+}
+
+.message-subject{
+    width: fit-content;
+    font-weight: 600;
+    color: #da9401;
+}
+
+.message-text{
+    font-size: 1.3rem;
+    margin: 1rem 0;
+}
+
+.message-date{
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.no-messages-tag{
+    color: #ddd;
+    font-size: 2rem;
+}

@@ -13,7 +13,7 @@ const Main = () => {
 
   return (
     <div>
-        <Welcome />
+        <Welcome parent='main' />
         <Slider />
         <ContentDisplayer section={section} />
         <About />
