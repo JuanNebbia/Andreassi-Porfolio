@@ -45,15 +45,41 @@
 }
 
 .scroll-down-icon{
-    color: #fff;
+    color: #ccc;
     font-size: 3rem;
     position: absolute;
     bottom: 0;
     left: 0;
     z-index: 1000;
     width: 100%;
+    padding: 1rem 0;
+    animation: 13s ease-in 10s infinite reverse both running move;
 }
 
 .scroll-down-icon:hover{
-    color: #ccc;
+    color: #fff;
+}
+
+@keyframes move {
+    0%, 1%{
+        transform: translateY(0.2rem);
+    }
+    2%{
+        transform: translateY(-0.2rem);
+    }
+    3%{
+        transform: translateY(0.2rem);
+    }
+    4%{
+        transform: translateY(-0.2rem);
+    }
+    5%{
+        transform: translateY(0.2rem);
+    }
+    6%{
+        transform: translateY(-0.2rem);
+    }
+    7%, 100%{
+        transform: translateY(0.2rem);
+    }
 }

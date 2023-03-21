@@ -64,7 +64,13 @@
     background-color: #da9401;
     border: none;
     border-radius: 0.5rem;
-    padding: 0.5rem;
+    padding: 0.5rem 3rem;
+    width: fit-content;
+    margin: auto;
+}
+
+.add-content-btn:hover{
+    background-color: #fab431;
 }
 
 .add-content-icon{
