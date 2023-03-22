@@ -74,6 +74,7 @@ function Inbox() {
                                     )
                                 })}
                             </div>
+                            <hr />
                             <div className="hidden-msg-container">
                                 {content.map((message, i)=>{
                                     return (

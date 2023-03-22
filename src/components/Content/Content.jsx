@@ -41,7 +41,6 @@ const Content = ({section, content, activeTake, setActiveTake}) => {
                             width="600" height="600" 
                             src={content[activeTake].videoUrl + '?controls=0&showinfo=0&modestbranding=1&rel=0&autoplay=1&mute=1'} 
                             title="YouTube video player" 
-                            frameBorder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowFullScreen>
                         </iframe> :

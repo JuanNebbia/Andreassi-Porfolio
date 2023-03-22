@@ -16,6 +16,11 @@
 .hidden-msg-container{
     margin-top: auto;
 }
+
+.visible-msg-container{
+    margin-bottom: 3rem;
+}
+
 .message-box{
     display: flex;
     color: #fff;
@@ -27,6 +32,10 @@
     border-bottom-right-radius: 0;
 }
 
+hr{
+    color: #aaa;
+    margin: 0 0 4rem;
+}
 
 .message-text, .message-date, .message-subject{
     margin: 0;
@@ -56,8 +65,9 @@
 .hidden{
     background-color: #888;
     color: #171717;
-    margin-top: auto;
-    padding: 0.5rem
+    margin: auto auto 1rem;
+    padding: 0.5rem 1rem;
+    width: 70%;
 }
 
 .hidden>.message-subject{
