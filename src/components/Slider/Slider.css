@@ -19,7 +19,7 @@
 }
 
 .slider-phrase{
-    color: #fff;
+    color: #eee;
     text-align: left;
     font-size: 4.2rem;
     max-width: 40%;
@@ -46,13 +46,13 @@
 
 .scroll-down-icon{
     color: #ccc;
-    font-size: 3rem;
+    font-size: 2rem;
     position: absolute;
     bottom: 0;
     left: 0;
     z-index: 1000;
     width: 100%;
-    padding: 1rem 0;
+    padding: 2rem 0;
     animation: 13s ease-in 10s infinite reverse both running move;
 }
 

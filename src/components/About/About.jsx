@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import './About.css'
 import profileGif from '../../img/GifFoto.gif'
 import ps from '../../img/icons/adobe/Recurso 8@2x.png'
@@ -15,15 +15,6 @@ import mac from '../../img/icons/productividad/Recurso 6@2x.png'
 import drive from '../../img/icons/productividad/Recurso 7@2x.png'
 
 const About = () => {
-  const heart = useRef()
-
-  const transform = () =>{
-    const randomColor = Math.floor(Math.random()*16777215).toString(16);
-    const randomAngle = Math.floor(Math.random()*360)
-    heart.current.style.color = '#' + randomColor
-    heart.current.style.transform = `rotate(${randomAngle}deg)`
-  }
-
   return (
     <div className='about-container'>
         <div className="row">
@@ -32,27 +23,23 @@ const About = () => {
               <div className="card-side front small card-img">
                 <img src={profileGif} alt="" />
               </div>
-              <div className="card-side back small">
-                <p className='back-text'>Lo</p>
-              </div>
             </div>
           </div>
           <div className="col-6">
             <div className="card">
-              <div className="card-side front small">
-                <div className="icons-container">
-                  <img src={ps} alt="" className='adobe-logo' />
-                  <img src={pr} alt="" className='adobe-logo' />
-                  <img src={me} alt="" className='adobe-logo' />
-                  <img src={lrc} alt="" className='adobe-logo' />
-                  <img src={ai} alt="" className='adobe-logo' />
-                  <img src={ae} alt="" className='adobe-logo' />
-                </div>
-                <h6 className='tech-title'>Adobe Suit</h6>
+              <div className="icons-container">
+                  <div className="icons-row">
+                    <img src={ps} alt="" className='adobe-logo' />
+                    <img src={pr} alt="" className='adobe-logo' />
+                    <img src={me} alt="" className='adobe-logo' />
+                  </div>
+                  <div className="icons-row">
+                    <img src={lrc} alt="" className='adobe-logo' />
+                    <img src={ai} alt="" className='adobe-logo' />
+                    <img src={ae} alt="" className='adobe-logo' />
+                  </div>
               </div>
-              <div className="card-side back small">
-                <p className='back-text'>importante</p>
-              </div>
+              <h6 className='tech-title'>Adobe Suit</h6>
             </div>
           </div>
         </div>
@@ -60,13 +47,10 @@ const About = () => {
           <div className="col-12">
             <div className="card">
               <div className="card-side front large">
-                <h6 className='about-title'>Sobre Mí</h6>
+                <h6 className='about-title'>Sobre mí</h6>
                 <p className='about-text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa placeat illum cumque quas, 
                   libero magni porro accusantium cum dolores similique perferendis earum, 
                   pariatur voluptate velit illo architecto aperiam assumenda. Suscipit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus dolorum repellendus cupiditate ab asperiores minima quos iusto non incidunt sit, tenetur eligendi ad iste quidem magnam iure nihil et natus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum ad, pariatur vero rem distinctio, temporibus nemo recusandae soluta aut dolor ullam? Velit perferendis quod cumque aliquam magnam! Nemo, ut tenetur!</p>
-              </div>
-              <div className="card-side back large">
-                <p className='back-text'>es nunca dejar</p>
               </div>
             </div>
           </div>
@@ -74,30 +58,27 @@ const About = () => {
         <div className="row">
           <div className="col-6">
             <div className="card">
-              <div className="card-side front small">
-                <div className="icons-container">
+              <div className="icons-container">
+                <div className="icons-row">
                   <img src={win} alt="" className='adobe-logo' />
                   <img src={ob} alt="" className='adobe-logo' />
                   <img src={not} alt="" className='adobe-logo' />
+                </div>
+                <div className="icons-row">
                   <img src={gpt} alt="" className='adobe-logo' />
                   <img src={mac} alt="" className='adobe-logo' />
                   <img src={drive} alt="" className='adobe-logo' />
                 </div>
-                <h6 className='tech-title'>Productividad</h6>
               </div>
-              <div className="card-side back small">
-                <p className='back-text'>de hacer</p>
-              </div>
+              <h6 className='tech-title'>Productividad</h6>
             </div>
           </div>
           <div className="col-6">
             <div className="card">
-              <div className="card-side front small" onMouseLeave={()=>transform()}>
-                <p className='heart-icon' ref={heart}>&lt;3</p>
+              <div className="landscape-container">
+                <img src="https://media.tycsports.com/files/2023/02/10/532928/lionel-messi_w416.webp" alt="" className='landscape-img' />
               </div>
-              <div className="card-side back small">
-                <p className='back-text'>preguntas.</p>
-              </div>
+              <h6 className='tech-title'>Acá nací</h6>
             </div>
           </div>
         </div>
@@ -107,9 +88,6 @@ const About = () => {
               <div className="card-side front large">
                 <h6 className='about-title'>Formación</h6>
                 <p className='about-text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa placeat illum cumque quas, libero magni porro accusantium cum dolores similique perferendis earum, pariatur voluptate velit illo architecto aperiam assumenda. Suscipit!</p>
-              </div>
-              <div className="card-side back large">
-                <p className='back-text'>&lt;3</p>
               </div>
             </div>
           </div>

@@ -1,7 +1,15 @@
 .contact-container{
     height: 50vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    min-height: 25rem;
+    margin-bottom: 5rem;
+}
+
+.leave-a-msg-tag{
+    color: #ccc;
+    font-size: 1.2rem;
 }
 
 .contact{
@@ -11,12 +19,14 @@
     padding: 1.8rem;
     width: 70vh;
     height: 35vh;
+    min-height: 25rem;
+    margin: auto;
 }
 
 .contact form{
     display: flex;
     flex-direction: column;
-    height: 95%;
+    height: 100%;
 }
 
 .text-area-mail{
@@ -30,20 +40,49 @@
     font-size: 1.2rem;
 }
 
+.text-area-mail::-webkit-scrollbar {
+    width: 0.5rem;
+    z-index: 10;
+}
+
+.text-area-mail::-webkit-scrollbar-track {
+    background-color: #171717
+}
+
+.text-area-mail::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #444;
+    box-shadow: inset 0 0 3px #000;
+}
+
+.text-area-mail::-webkit-scrollbar-thumb:hover {
+    background-color: #666;
+}
+
+textarea:focus, input:focus {
+    outline: none;
+}
+
 .send-msg-btn{
     background-color: transparent;
+    margin-top: auto;
     margin-left: auto;
-    color: #ddd;
-    border: 2px solid #ddd;
+    background-color: #da9401;
+    color: #000;
+    border: none;
     border-radius: 0.5rem;
-    border-bottom-right-radius: 0;
-    font-size: 1.5rem;
-    padding: 0 0.6rem;
+    font-size: 1.6rem;
+    padding: 0 1rem;
+    font-weight: 600;
+    letter-spacing: -2px;
 }
 
 .send-msg-btn:hover{
-    color: #fff;
-    border: 2px solid #fff;
+    background-color: #eaa411;
+}
+
+.send-msg-btn:disabled{
+    background-color: #a5843c;
 }
 
 .subject-mail{
@@ -51,9 +90,24 @@
     border: none;
     border-bottom: 1px solid #ccc;
     height: 3rem;
-    width: 50%;
+    width: 100%;
     color: #eee;
     font-size: 1.2rem;
     margin-bottom: 1rem;
     padding: 0.5rem;
 }
+
+.custom-tooltip .tooltip-inner {
+    padding: 1rem;
+    font-size: 1.1rem;
+    color: #43b443;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.tooltip-text{
+    margin: 0;
+}
+
+

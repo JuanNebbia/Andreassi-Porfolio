@@ -44,27 +44,27 @@ const ContentDisplayer = () => {
               <button 
                 className={section === 'photography' ? `section-btn active-section col-2` : 'section-btn col-2'} 
                 onClick={()=>newSection('photography')}>
-                  fotografía
+                  Fotografía
               </button>
               <button 
                 className={section === 'video' ? `section-btn active-section col-2` : 'section-btn col-2'} 
                 onClick={()=>newSection('video')}>
-                  video
+                  Video
               </button>
               <button 
               className={section === 'branding' ? `section-btn active-section col-2` : 'section-btn col-2'} 
               onClick={()=>newSection('branding')}>
-                branding
+                Branding
               </button>
               <button 
               className={section === 'design' ? `section-btn active-section col-2` : 'section-btn col-2'} 
               onClick={()=>newSection('design')}>
-                diseño
+                Diseño
               </button>
               <button 
               className={section === 'animation' ? `section-btn active-section col-2` : 'section-btn col-2'} 
               onClick={()=>newSection('animation')}>
-                animación
+                Animación
               </button>
             </div>
             <div className="section-row">

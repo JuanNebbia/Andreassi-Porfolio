@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import './Content.css'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
-import { AiOutlineFullscreen } from 'react-icons/ai'
+import { RxEnterFullScreen } from 'react-icons/rx'
 import Loading from '../Loading/Loading';
 import { useNavigate, useParams } from 'react-router-dom';
 import ThumbnailDisplayer from '../ThumbnailDisplayer/ThumbnailDisplayer';
+import Overlay from 'react-bootstrap/Overlay';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 const Content = ({section, content, activeTake, setActiveTake}) => {
     const navigate = useNavigate()
     const {contentId} = useParams()
+    const [show, setShow] = useState(false);
+    const fullscreenIcon = useRef(null);
 
     const handleController = (direction) =>{
         if (direction === 'prev'){
@@ -54,7 +58,16 @@ const Content = ({section, content, activeTake, setActiveTake}) => {
                         </div>
                     }
                     {(content[activeTake].description || content[activeTake].title) && 
-                        <AiOutlineFullscreen className='fullscreen-icon' onClick={()=>navigate(`/${section}/${content[activeTake].id}`)}/>
+                    <div className="full-screen-icon-container" ref={fullscreenIcon} onMouseEnter={(()=>setShow(true))} onMouseLeave={(()=>setShow(false))}>
+                            <RxEnterFullScreen className='fullscreen-icon' onClick={()=>navigate(`/${section}/${content[activeTake].id}`)}/>
+                        <Overlay target={fullscreenIcon.current} show={show} placement="left">
+                            {(props) => (
+                            <Tooltip id="tooltip" {...props} className='info-tooltip' delay={{ show: 250, hide: 400 }}>
+                                <p className='tooltip-text'>Hacé click para ver contenido adicional</p>
+                            </Tooltip>
+                            )}
+                        </Overlay>
+                    </div>
                     }
                 </div>
                 <button className="controller-next" onClick={()=>handleController('next')}>
