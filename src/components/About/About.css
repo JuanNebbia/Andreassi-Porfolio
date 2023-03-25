@@ -33,6 +33,11 @@
 
 }
 
+.card-side{
+    height: 100%;
+    width: 100%;
+}
+
 .card-side.card-img{
     padding: 0;
 }
@@ -106,4 +111,44 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+
+.about-title-row{
+    display: flex;
+}
+
+.about-edit-button{
+    margin-left: auto;
+    background-color: transparent;
+    border: none;
+    color: #ccc;
+    font-size: 1.5rem;
+}
+
+.about-edit-button:hover{
+    color: #fff;
+}
+
+.edit-about-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-about-form label{
+    color: #fff;
+    text-align: left;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.edit-about-input{
+    margin-bottom: 0.5rem;
+}
+
+#edit-about-title-input{
+    margin-bottom: 0.5rem;
+}
+
+.submit-about-general{
+    margin-top: auto;
 }

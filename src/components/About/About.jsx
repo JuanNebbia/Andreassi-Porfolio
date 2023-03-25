@@ -1,5 +1,6 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useRef } from 'react'
 import { AuthContext } from '../../context/AuthContext';
+import { MdModeEditOutline } from 'react-icons/md'
 import './About.css'
 import profileGif from '../../img/GifFoto.gif'
 import ps from '../../img/icons/adobe/Recurso 8@2x.png'
@@ -15,8 +16,33 @@ import gpt from '../../img/icons/productividad/Recurso 5@2x.png'
 import mac from '../../img/icons/productividad/Recurso 6@2x.png'
 import drive from '../../img/icons/productividad/Recurso 7@2x.png'
 
-const About = () => {
+const About = ({ info, setInfo, updateContent }) => {
   const {logged} = useContext(AuthContext)
+  const [editMode, setEditMode] = useState(false)
+  const aboutTitleInput = useRef()
+  const aboutDescriptionInput = useRef()
+  const trainingTitleInput = useRef()
+  const trainingDescriptionInput = useRef()
+
+  const setNewInfo = (event) =>{
+    event.preventDefault()
+    const newInfo = {
+      ...info,
+      about:{
+        general: {
+          title: aboutTitleInput.current.value,
+          description: aboutDescriptionInput.current.value
+        },
+        training: {
+          title: trainingTitleInput.current.value,
+          description: trainingDescriptionInput.current.value
+        }
+      }
+    }
+    setInfo(newInfo)
+    updateContent(newInfo)
+    setEditMode(false)
+  }
 
   return (
     <div className='about-container'>
@@ -49,12 +75,44 @@ const About = () => {
         <div className="row">
           <div className="col-12">
             <div className="card">
-              <div className="card-side front large">
-                <h6 className='about-title'>Sobre mí</h6>
-                <p className='about-text' contentEditable={logged}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa placeat illum cumque quas, 
-                  libero magni porro accusantium cum dolores similique perferendis earum, 
-                  pariatur voluptate velit illo architecto aperiam assumenda. Suscipit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus dolorum repellendus cupiditate ab asperiores minima quos iusto non incidunt sit, tenetur eligendi ad iste quidem magnam iure nihil et natus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum ad, pariatur vero rem distinctio, temporibus nemo recusandae soluta aut dolor ullam? Velit perferendis quod cumque aliquam magnam! Nemo, ut tenetur!</p>
+              { !editMode ? <div className="card-side">
+                <div className="about-title-row">
+                  <h6 className='about-title'>{info.about?.general.title}</h6>
+                  {logged && 
+                    <button className='about-edit-button' onClick={()=>setEditMode(!editMode)}><MdModeEditOutline /></button>
+                  }
+                </div>
+                <p className='about-text'>{info.about?.general.description}</p>
+              </div> :
+              <div className="card-side">
+                <div className="about-title-row">
+                  <h6 className='about-title'>{info.about?.general.title}: Editando</h6>
+                </div>
+                <form action="" className='edit-about-form' onSubmit={setNewInfo}>
+                  <label htmlFor='edit-about-title-input'>Titulo</label>
+                  <input 
+                    type="text" 
+                    defaultValue={info.about?.general.title} 
+                    id='edit-about-title-input' 
+                    className='edit-about-input' 
+                    name='title'
+                    ref={aboutTitleInput}
+                  />
+                  <label htmlFor='edit-about-description-input'>Descripción</label>
+                  <textarea 
+                    defaultValue={info.about?.general.description} 
+                    id='edit-about-description-input' 
+                    className='edit-about-input'  
+                    name='description'
+                    ref={aboutDescriptionInput}
+                  />
+                  <div className="buttons-container">
+                    <input type="submit" value='Guardar' className='submit-about-general'/>
+                    <button onClick={()=>setEditMode(false)}>Cancelar</button>
+                  </div>
+                </form>
               </div>
+              }
             </div>
           </div>
         </div>
@@ -88,10 +146,44 @@ const About = () => {
         <div className="row">
           <div className="col-12">
             <div className="card">
-              <div className="card-side front large">
-                <h6 className='about-title'>Formación</h6>
-                <p className='about-text' contentEditable={logged}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa placeat illum cumque quas, libero magni porro accusantium cum dolores similique perferendis earum, pariatur voluptate velit illo architecto aperiam assumenda. Suscipit!</p>
+            { !editMode ? <div className="card-side">
+                <div className="about-title-row">
+                  <h6 className='about-title'>{info.about?.training.title}</h6>
+                  {logged && 
+                    <button className='about-edit-button' onClick={()=>setEditMode(!editMode)}><MdModeEditOutline /></button>
+                  }
+                </div>
+                <p className='about-text'>{info.about?.training.description}</p>
+              </div> :
+              <div className="card-side">
+                <div className="about-title-row">
+                  <h6 className='about-title'>{info.about?.training.title}: Editando</h6>
+                </div>
+                <form action="" className='edit-about-form' onSubmit={setNewInfo}>
+                  <label htmlFor='edit-about-title-input'>Titulo</label>
+                  <input 
+                    type="text" 
+                    defaultValue={info.about?.training.title} 
+                    id='edit-about-title-input' 
+                    className='edit-about-input' 
+                    name='title'
+                    ref={trainingTitleInput}
+                  />
+                  <label htmlFor='edit-about-description-input'>Descripción</label>
+                  <textarea 
+                    defaultValue={info.about?.training.description} 
+                    id='edit-about-description-input' 
+                    className='edit-about-input'  
+                    name='description'
+                    ref={trainingDescriptionInput}
+                  />
+                  <div className="buttons-container">
+                    <input type="submit" value='Guardar' className='submit-about-training'/>
+                    <button onClick={()=>setEditMode(false)}>Cancelar</button>
+                  </div>
+                </form>
               </div>
+              }
             </div>
           </div>
         </div>
