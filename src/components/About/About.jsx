@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../context/AuthContext';
 import './About.css'
 import profileGif from '../../img/GifFoto.gif'
 import ps from '../../img/icons/adobe/Recurso 8@2x.png'
@@ -15,6 +16,8 @@ import mac from '../../img/icons/productividad/Recurso 6@2x.png'
 import drive from '../../img/icons/productividad/Recurso 7@2x.png'
 
 const About = () => {
+  const {logged} = useContext(AuthContext)
+
   return (
     <div className='about-container'>
         <div className="row">
@@ -48,7 +51,7 @@ const About = () => {
             <div className="card">
               <div className="card-side front large">
                 <h6 className='about-title'>Sobre mí</h6>
-                <p className='about-text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa placeat illum cumque quas, 
+                <p className='about-text' contentEditable={logged}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa placeat illum cumque quas, 
                   libero magni porro accusantium cum dolores similique perferendis earum, 
                   pariatur voluptate velit illo architecto aperiam assumenda. Suscipit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus dolorum repellendus cupiditate ab asperiores minima quos iusto non incidunt sit, tenetur eligendi ad iste quidem magnam iure nihil et natus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum ad, pariatur vero rem distinctio, temporibus nemo recusandae soluta aut dolor ullam? Velit perferendis quod cumque aliquam magnam! Nemo, ut tenetur!</p>
               </div>
@@ -87,7 +90,7 @@ const About = () => {
             <div className="card">
               <div className="card-side front large">
                 <h6 className='about-title'>Formación</h6>
-                <p className='about-text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa placeat illum cumque quas, libero magni porro accusantium cum dolores similique perferendis earum, pariatur voluptate velit illo architecto aperiam assumenda. Suscipit!</p>
+                <p className='about-text' contentEditable={logged}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa placeat illum cumque quas, libero magni porro accusantium cum dolores similique perferendis earum, pariatur voluptate velit illo architecto aperiam assumenda. Suscipit!</p>
               </div>
             </div>
           </div>

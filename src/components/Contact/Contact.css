@@ -83,6 +83,7 @@ textarea:focus, input:focus {
 
 .send-msg-btn:disabled{
     background-color: #a5843c;
+    cursor: not-allowed;
 }
 
 .subject-mail{

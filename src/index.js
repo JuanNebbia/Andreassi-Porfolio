@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { initializeApp } from "firebase/app";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB8yAX95FPFRlesf0RNV-fjev_rhzxZWe0",
@@ -16,7 +17,9 @@ const firebaseConfig = {
 };
 
 
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+
+export const storage = getStorage(app);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

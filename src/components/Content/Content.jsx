@@ -50,7 +50,7 @@ const Content = ({section, content, activeTake, setActiveTake}) => {
                         </iframe> :
                         <div className="content-img-container">
                             <img 
-                                src={content[activeTake].picUrl} 
+                                src={content[activeTake].picUrl || content[activeTake].fileUrl } 
                                 className={content[activeTake].hidden ? "content-img-hidden" : "content-img"} 
                                 alt="..." 
                                 onClick={()=>navigate(`/${section}/${content[activeTake].id}`)}

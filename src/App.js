@@ -6,22 +6,8 @@ import Login from './components/Login/Login';
 import Main from './components/Main/Main';
 import Inbox from './components/Inbox/Inbox';
 import Page404 from './components/Page404/Page404';
-// import { addDoc, collection, getFirestore } from 'firebase/firestore';
-// import { photos, videos, branding, design, perritos } from './mock/mock';
-// import { useEffect } from 'react';
 
 function App() {
-
-
-  // useEffect(()=>{
-  //     const db = getFirestore()
-  //     const designCollection = collection(db, 'design')
-  //     design.map((item)=>{
-  //       addDoc(designCollection, item)
-  //       .then(({ id }) => console.log({id}))
-  //     })
-  //   },[])
-  
 
   return (
     <div className="App">
