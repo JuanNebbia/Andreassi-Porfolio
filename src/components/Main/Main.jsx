@@ -4,7 +4,7 @@ import AboutContainer from '../AboutContainer/AboutContainer'
 import Contact from '../Contact/Contact'
 import ContentDisplayer from '../ContentDisplayer/ContentDisplayer'
 import Footer from '../Footer/Footer'
-import Slider from '../Slider/Slider'
+import Banner from '../Banner/Banner'
 import Welcome from '../Welcome/Welcome'
 import './Main.css'
 
@@ -14,7 +14,7 @@ const Main = () => {
   return (
     <div>
         <Welcome parent='main' />
-        <Slider />
+        <Banner />
         <ContentDisplayer section={section} />
         <AboutContainer />
         <div className="section-divider"></div>
