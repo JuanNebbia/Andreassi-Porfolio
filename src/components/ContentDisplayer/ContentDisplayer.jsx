@@ -10,7 +10,7 @@ import AddView from '../AddView/AddView';
 
 const ContentDisplayer = () => {
   const [content, setContent] = useState([])
-  const [activeTake, setActiveTake] = useState(0)
+  const [activeTake, setActiveTake] = useState(3)
   const [addItem, setAddItem] = useState(false)
   const navigate = useNavigate()
   const {section, contentId} = useParams()
@@ -30,7 +30,7 @@ const ContentDisplayer = () => {
   const newSection = (direction) => {
      navigate(`/${direction}`)
      if (content !== direction){
-       setActiveTake(0)
+       setActiveTake(3)
      }
    }
 

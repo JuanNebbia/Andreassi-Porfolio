@@ -7,21 +7,25 @@ import { useNavigate, useParams } from 'react-router-dom';
 import ThumbnailDisplayer from '../ThumbnailDisplayer/ThumbnailDisplayer';
 import Overlay from 'react-bootstrap/Overlay';
 import Tooltip from 'react-bootstrap/Tooltip';
+import ThumbnailDisplayer2 from '../ThumbnailDisplayer2/ThumbnailDisplayer2.jsx';
 
 const Content = ({section, content, activeTake, setActiveTake}) => {
     const navigate = useNavigate()
     const {contentId} = useParams()
     const [show, setShow] = useState(false);
+    const [direction, setDirection] = useState(1)
     const fullscreenIcon = useRef(null);
 
-    const handleController = (direction) =>{
-        if (direction === 'prev'){
+    const handleController = (backwards) =>{
+        if (backwards){
+            setDirection(-1)
             if (activeTake === (0)){
                 setActiveTake(content.length - 1)
             }else{
                 setActiveTake(activeTake - 1)
             }
         }else{
+            setDirection(1)
             if (activeTake === (content.length - 1)){
                 setActiveTake(0)
             }else{
@@ -35,7 +39,7 @@ const Content = ({section, content, activeTake, setActiveTake}) => {
         {content.length ? 
         <div className='content-container'>
             <div className='middle-section'>
-                <button className="controller-prev" onClick={()=>handleController('prev')}>
+                <button className="controller-prev" onClick={()=>handleController(true)}>
                     <SlArrowLeft className={!contentId ? 'prev-icon' : 'icon-invisible'}/>
                 </button>
                 <div className='photography-img-container'>
@@ -48,7 +52,7 @@ const Content = ({section, content, activeTake, setActiveTake}) => {
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowFullScreen>
                         </iframe> :
-                        <div className="content-img-container">
+                        <div className="content-img-container" >
                             <img 
                                 src={content[activeTake].picUrl || content[activeTake].fileUrl } 
                                 className={content[activeTake].hidden ? "content-img-hidden" : "content-img"} 
@@ -70,11 +74,11 @@ const Content = ({section, content, activeTake, setActiveTake}) => {
                     </div>
                     }
                 </div>
-                <button className="controller-next" onClick={()=>handleController('next')}>
+                <button className="controller-next" onClick={()=>handleController(false)}>
                     <SlArrowRight className={!contentId ? 'next-icon' : 'icon-invisible'}/>
                 </button>
             </div>
-            <ThumbnailDisplayer content={content} activeTake={activeTake} setActiveTake= {setActiveTake}/>
+            <ThumbnailDisplayer2 content={content} activeTake={activeTake} setActiveTake= {setActiveTake} direction={direction}/>
         </div> : 
         <Loading />}
         </>

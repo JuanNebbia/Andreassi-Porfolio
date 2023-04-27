@@ -1,0 +1,42 @@
+.thumbnail-displayer-container2{
+    display: flex;
+    width: 49rem;
+    overflow: hidden; 
+    margin-top: 1.3rem;
+    margin-left: calc((100vw - 49rem) / 2);
+}
+
+.inner-thumbnail-container2{
+    display: flex;
+    position: relative;
+    gap: 1rem;
+    transition: all 0.5s;
+    align-items: center;
+    height: 13vh;
+    padding: 0 0.3rem;
+} 
+
+.thumbnail-img-container2{
+    height: 6rem;
+    width: 6rem;
+    filter: brightness(0.8) grayscale(0.5);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.thumbnail-img-container2:hover{
+    filter: none;
+}
+
+.selected-thumbnail2{
+    filter: none;
+    height: 12vh;
+    width: 12vh;
+    box-shadow: 0 0 7px #030303;
+}
+
+.thumbnail-img2{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
