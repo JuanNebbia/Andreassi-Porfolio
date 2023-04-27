@@ -1,6 +1,5 @@
 .content-container{
     padding: 1rem 0 10rem;
-    background-color: #171717;
 }
 
 .middle-section{
@@ -65,7 +64,7 @@
 
 .prev-icon, .next-icon{
     font-size: 2rem;
-    color: #555;
+    color: #777;
     margin: 0 2rem;
 }
 

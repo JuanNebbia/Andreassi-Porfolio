@@ -7,7 +7,6 @@ const ThumbnailDisplayer2 = ({content, activeTake, setActiveTake, direction}) =>
 
 
     useEffect(() => {
-        console.log(direction);
         if(externalMove && innerContainer.current.children.length > 7){
             move(activeTake + direction)
         }
@@ -60,7 +59,7 @@ const ThumbnailDisplayer2 = ({content, activeTake, setActiveTake, direction}) =>
     }, [activeTake, setActiveTake])
 
     return (
-    <div className="thumbnail-displayer-container2">
+    <div className="thumbnail-displayer-container2" style={{width: `${content.length > 6 ? 50 : content.length * 7 + 1}rem`, marginLeft: `calc((100vw - ${content.length > 6 ? 49 : content.length * 7 + 1}rem) / 2)`}}>
             <div className="inner-thumbnail-container2" ref={innerContainer}>
                 {content.map((item, index) => {
                     return <div className={activeTake === index ? 'thumbnail-img-container2 selected-thumbnail2' : 'thumbnail-img-container2'} key={index} onClick={(event)=> handleOnClick(event, index)}>

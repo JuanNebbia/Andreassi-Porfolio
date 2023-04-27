@@ -1,11 +1,11 @@
 .content-displayer-container{
     position: relative;
-    background-color: #171717;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-top: 7rem;
+    background: radial-gradient(#252527 0%, #171718 75%);
 }
 
 .section-btn-container{
