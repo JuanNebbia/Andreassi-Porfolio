@@ -12,6 +12,7 @@ const ContentDisplayer = () => {
   const [content, setContent] = useState([])
   const [activeTake, setActiveTake] = useState(3)
   const [addItem, setAddItem] = useState(false)
+  const [sectionNumber, setSectionNumber] = useState(0)
   const navigate = useNavigate()
   const {section, contentId} = useParams()
   const {logged} = useContext(AuthContext)
@@ -27,12 +28,13 @@ const ContentDisplayer = () => {
       .catch((err) => console.log('err: ' + err))
   },[section, logged])
 
-  const newSection = (direction) => {
-     navigate(`/${direction}`)
-     if (content !== direction){
-       setActiveTake(3)
-     }
-   }
+  const newSection = (direction, newSectionNumber) => {
+    setSectionNumber(newSectionNumber)
+    navigate(`/${direction}`)
+    if (content !== direction){
+      setActiveTake(3)
+    }
+  }
 
   return (
     <>
@@ -40,49 +42,35 @@ const ContentDisplayer = () => {
       {contentId && <ContentModalContainer /> }
       <div className="content-displayer-container" id='content-displayer-container'>
           <div className="section-btn-container">
-            <div className="row section-row">
+            <div className="section-row">
               <button 
-                className={section === 'photography' ? `section-btn active-section col-2` : 'section-btn col-2'} 
-                onClick={()=>newSection('photography')}>
+                className={section === 'photography' ? `section-btn active-section` : 'section-btn'} 
+                onClick={()=>newSection('photography', 0)}>
                   Fotografía
               </button>
               <button 
-                className={section === 'video' ? `section-btn active-section col-2` : 'section-btn col-2'} 
-                onClick={()=>newSection('video')}>
+                className={section === 'video' ? `section-btn active-section` : 'section-btn'} 
+                onClick={()=>newSection('video', 1)}>
                   Video
               </button>
               <button 
-              className={section === 'branding' ? `section-btn active-section col-2` : 'section-btn col-2'} 
-              onClick={()=>newSection('branding')}>
+              className={section === 'branding' ? `section-btn active-section` : 'section-btn'} 
+              onClick={()=>newSection('branding', 2)}>
                 Branding
               </button>
               <button 
-              className={section === 'design' ? `section-btn active-section col-2` : 'section-btn col-2'} 
-              onClick={()=>newSection('design')}>
+              className={section === 'design' ? `section-btn active-section` : 'section-btn'} 
+              onClick={()=>newSection('design', 3)}>
                 Diseño
               </button>
               <button 
-              className={section === 'animation' ? `section-btn active-section col-2` : 'section-btn col-2'} 
-              onClick={()=>newSection('animation')}>
+              className={section === 'animation' ? `section-btn active-section` : 'section-btn'} 
+              onClick={()=>newSection('animation', 4)}>
                 Animación
               </button>
             </div>
             <div className="section-row">
-              <div className="col-2">
-                {section === 'photography' && <div className="section-selector"></div>}
-              </div>
-              <div className="col-2">
-              {section === 'video' && <div className="section-selector"></div>}
-              </div>
-              <div className="col-2">
-              {section === 'branding' && <div className="section-selector"></div>}
-              </div>
-              <div className="col-2">
-              {section === 'design' && <div className="section-selector"></div>}
-              </div>
-              <div className="col-2">
-              {section === 'animation' && <div className="section-selector"></div>}
-              </div>
+              <div className="section-selector" style={{left: `calc((70vh / 5) * ${sectionNumber} + (70vh / 5 / 2 - 0.85rem))`}}></div>
             </div>
           </div>
           <Content section={section} content={content} activeTake={activeTake} setActiveTake={setActiveTake} />

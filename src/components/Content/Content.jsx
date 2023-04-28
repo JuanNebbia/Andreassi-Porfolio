@@ -13,6 +13,7 @@ const Content = ({section, content, activeTake, setActiveTake}) => {
     const navigate = useNavigate()
     const {contentId} = useParams()
     const [show, setShow] = useState(false);
+    const [clickeable, setClickleable] = useState(true)
     const [direction, setDirection] = useState(1)
     const fullscreenIcon = useRef(null);
 
@@ -32,14 +33,18 @@ const Content = ({section, content, activeTake, setActiveTake}) => {
                 setActiveTake(activeTake +1)
             }
         }
+        setClickleable(false)
+        setTimeout(()=> {
+            setClickleable(true)
+        }, 300)
     }
-
+    
     return (
         <>
         {content.length ? 
         <div className='content-container'>
             <div className='middle-section'>
-                <button className="controller-prev" onClick={()=>handleController(true)}>
+                <button className="controller-prev" onClick={()=> clickeable && handleController(true)}>
                     <SlArrowLeft className={!contentId ? 'prev-icon' : 'icon-invisible'}/>
                 </button>
                 <div className='photography-img-container'>
@@ -74,7 +79,7 @@ const Content = ({section, content, activeTake, setActiveTake}) => {
                     </div>
                     }
                 </div>
-                <button className="controller-next" onClick={()=>handleController(false)}>
+                <button className="controller-next" onClick={()=> clickeable && handleController(false)}>
                     <SlArrowRight className={!contentId ? 'next-icon' : 'icon-invisible'}/>
                 </button>
             </div>
