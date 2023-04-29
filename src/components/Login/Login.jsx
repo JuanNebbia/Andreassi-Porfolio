@@ -28,12 +28,12 @@ const Login = () => {
 
   const sendData = (event) =>{
     event.preventDefault()
-    if (userData.email === 'juan.nebbia@gmail.com' && userData.password === '123456'){
+    if (userData.email === process.env.REACT_APP_ADMIN_EMAIL && userData.password === process.env.REACT_APP_ADMIN_PASS){
       setLogged(true)
       setWrongData(false)
-  }else{
-    setWrongData(true)
-  }
+    }else{
+      setWrongData(true)
+    }
   }
 
   return (
