@@ -28,7 +28,7 @@ const Login = () => {
 
   const sendData = (event) =>{
     event.preventDefault()
-    if (userData.email === process.env.REACT_APP_ADMIN_EMAIL && userData.password === process.env.REACT_APP_ADMIN_PASS){
+    if (userData.email === process.env.NEXT_PUBLIC_ADMIN_EMAIL && userData.password === process.env.NEXT_PUBLIC_ADMIN_PASS){
       setLogged(true)
       setWrongData(false)
     }else{
