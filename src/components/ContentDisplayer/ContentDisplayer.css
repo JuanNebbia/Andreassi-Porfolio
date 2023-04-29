@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: center;
     margin-top: 7rem;
-    background: radial-gradient(#252527 0%, #171718 65%);
+    background: radial-gradient(#252527 0%, #171718 70%);
 }
 
 .section-btn-container{
@@ -64,7 +64,7 @@
     border-radius: 0.5rem;
     padding: 0.5rem 3rem;
     width: fit-content;
-    margin: auto;
+    margin: 0 auto;
 }
 
 .add-content-btn:hover{

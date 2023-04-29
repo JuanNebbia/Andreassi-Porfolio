@@ -35,7 +35,6 @@ function Inbox() {
 
     const switchVisibility = (id) =>{
         const thisMessage = content.find(mes => mes.id===id)
-        console.log(thisMessage);
         thisMessage.hidden = !thisMessage.hidden
         const newContent = content.map(mes =>{
             if(mes.id === id){
