@@ -10,10 +10,12 @@ const Welcome = ({ parent }) => {
     
   return (
     <div className='welcome-container'>
+      <a href="/" className='home-link'>
         <div className="profile-picture-container">
           <img src={profilePicture} alt="mateo profile" className='profile-picture'/>
         </div>
         <h5 className='name-title'>Mateo Andreassi</h5>
+      </a>
         <p className='subtitle'>Portfolio</p>
         {logged && 
           <div>

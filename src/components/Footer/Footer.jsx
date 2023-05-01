@@ -7,16 +7,17 @@ const Footer = () => {
   return (
     <div className='footer-container'>
         <div className="link-container">
-            <GrInstagram className='net-icon'/>
+            <h6 className='footer-title'>LinkedIn</h6>
+            <a href="https://www.linkedin.com/in/mateo-andreassi-172507170/" target='!BLANK' className="net-link">/mateoandreassi</a>
+        </div>
+        <div className="link-container">
+            <h6 className='footer-title'>Instagram</h6>
             <a href="https://www.instagram.com/mateoandreassi/" target='!BLANK' className="net-link">/mateoandreassi</a>
         </div>
         <div className="link-container">
-            <GrFacebookOption className='net-icon' />
-            <a href="https://www.facebook.com/mafandre" target='!BLANK' className="net-link">/mafandre</a>
-        </div>
-        <div className="link-container">
-            <GiSoccerBall className='net-icon' />
-            <a href="https://www.google.com/search?q=messi&rlz=1C1CHBD_esAR964AR964&sxsrf=ALiCzsaM-5KGeisZLlbjb1P5SbNOG1HGIA:1661394227960&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjW5afm9-D5AhXVQ7gEHYKJBoYQ_AUoAXoECAIQAw&biw=1366&bih=635&dpr=1#imgrc=baTTHQUMt2oN3M" target='!BLANK' className="net-link">Messi</a>
+            <h6 className='footer-title'>Contacto</h6>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=andreassimate@gmail.com" target='!BLANK' className="net-link">andreassimate@gmail.com</a>
+            <a href="https://wa.me/543517713517?text=Hola%20Mateo,%20he%20visitado%20tu%20porfolio%20y%20me%20encanta%20tu%20trabajo!" target='!BLANK' className="net-link">3517713517</a>
         </div>
     </div>
   )

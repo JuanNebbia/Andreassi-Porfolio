@@ -8,6 +8,12 @@
     width: 100%;
 }
 
+.home-link{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
 .profile-picture-container{
     height: 4rem;
     width: 4rem;

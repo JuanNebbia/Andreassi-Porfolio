@@ -71,18 +71,23 @@
 @keyframes move {
     0%, 1%{
         transform: translateY(0.2rem);
+        color: #da9401;
     }
     2%{
         transform: translateY(-0.2rem);
+        color: #7ada01;
     }
     3%{
         transform: translateY(0.2rem);
+        color: #7a01da;
     }
     4%{
         transform: translateY(-0.2rem);
+        color: #017ada;
     }
     5%{
         transform: translateY(0.2rem);
+        color: #fff;
     }
     6%{
         transform: translateY(-0.2rem);
