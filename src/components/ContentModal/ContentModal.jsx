@@ -4,19 +4,20 @@ import { IoIosClose } from 'react-icons/io';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import EditModal from '../EditModal/EditModal';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import EditView from '../EditView/EditView';
+import ReactPlayer from 'react-player'
 
-const ContentModal = ({contentInfo, setContentInfo}) => {
-  const {title, description, picUrl, hidden} = contentInfo
-  const {section, edit} = useParams()
+const ContentModal = ({contentInfo, updateLocalContent, setShowModal}) => {
+  const {title, description, picUrl, videoUrl, hidden} = contentInfo
+  const {edit} = useParams()
   const {logged} = useContext(AuthContext)
-  const navigate = useNavigate()
+
 
 
   const closeModal = (event) =>{
     if (event.target.classList.contains('close')){
-      navigate(`/${section}`)
+      setShowModal(false)
     }
   }
 
@@ -25,29 +26,39 @@ const ContentModal = ({contentInfo, setContentInfo}) => {
         <motion.div className="modal-card-container" 
             initial={{y: '-100vh'}}
             animate={{y: 0}}>
-          <img 
-            src={picUrl} 
-            alt="" 
-            className={description || title? 'modal-img' : 'modal-img-only'}
-            id={hidden ? 'hidden-content' : ''}
+          {videoUrl ? 
+            <ReactPlayer 
+              playing
+              loop
+              controls
+              width='fit-content'
+              height='100%'
+              url={videoUrl}  />
+            :
+            <img 
+              src={picUrl} 
+              alt="" 
+              className={description || title? 'modal-img' : 'modal-img-only'}
+              id={hidden ? 'hidden-content' : ''}
             />
-            {edit && logged ?
-              <EditView contentInfo={contentInfo}/>
-              :<>
-            { (description || title) &&
-              <div className="modal-text-container">
-                <button className='modal-close-btn close' onClick={closeModal}>
-                  <IoIosClose className='modal-close-icon close'/>
-                </button>
-                    <div className="item-info-container">
-                      <h5 className='modal-title'> {title} </h5>
-                      <p className='modal-text'> {description} </p>
-                    </div>
-              </div>
-            }
-              </>
-            }
-            {logged && <EditModal contentInfo={contentInfo} setContentInfo={setContentInfo} />}
+          }
+          {edit && logged ?
+            <EditView contentInfo={contentInfo} updateLocalContent={updateLocalContent} />
+            :<>
+              { (description || title) &&
+                <div className="modal-text-container">
+                  <button className='modal-close-btn close' onClick={closeModal}>
+                    <IoIosClose className='modal-close-icon close'/>
+                  </button>
+                      <div className="item-info-container">
+                        <h5 className='modal-title'> {title} </h5>
+                        <p className='modal-text'> {description} </p>
+                      </div>
+                </div>
+              }
+            </>
+          }
+            {logged && <EditModal contentInfo={contentInfo} updateLocalContent={updateLocalContent} />}
         </motion.div>
       </div>
   )

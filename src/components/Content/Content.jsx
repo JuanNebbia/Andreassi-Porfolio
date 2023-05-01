@@ -3,17 +3,18 @@ import './Content.css'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { RxEnterFullScreen } from 'react-icons/rx'
 import Loading from '../Loading/Loading';
-import { useNavigate, useParams } from 'react-router-dom';
-import ThumbnailDisplayer from '../ThumbnailDisplayer/ThumbnailDisplayer';
+import { useNavigate } from 'react-router-dom';
 import Overlay from 'react-bootstrap/Overlay';
 import Tooltip from 'react-bootstrap/Tooltip';
-import ThumbnailDisplayer2 from '../ThumbnailDisplayer2/ThumbnailDisplayer2.jsx';
+import ThumbnailDisplayer from '../ThumbnailDisplayer/ThumbnailDisplayer.jsx';
+import ReactPlayer from 'react-player'
+import ContentModal from '../ContentModal/ContentModal.jsx';
 
-const Content = ({ section, content, activeTake, setActiveTake }) => {
+const Content = ({ section, content, setContent, activeTake, setActiveTake }) => {
     const navigate = useNavigate()
-    const {contentId} = useParams()
     const [show, setShow] = useState(false);
     const [clickeable, setClickleable] = useState(true)
+    const [showModal, setShowModal] = useState(false)
     const fullscreenIcon = useRef(null);
     const innerContainer = useRef(null)
 
@@ -67,7 +68,6 @@ const Content = ({ section, content, activeTake, setActiveTake }) => {
             }
             if (index < activeTake){
                 movingElements.push(innerContainer.current.children[innerContainer.current.children.length - (i + 1)])
-                console.log(innerContainer.current.children[innerContainer.current.children.length - (i + 1)].children);
             }
         }
         const transition = () => {
@@ -90,32 +90,46 @@ const Content = ({ section, content, activeTake, setActiveTake }) => {
     }, [activeTake, setActiveTake])
 
 
-    
+    const updateLocalContent = (newContentObject) =>{
+        const newContent = content.map(item => {
+            if(item.id === newContentObject.id){
+                return newContentObject
+            }
+            return item
+        })
+        setContent(newContent)
+    }    
 
     return (
         <>
+        {showModal && <ContentModal contentInfo={content[activeTake]} updateLocalContent={updateLocalContent} setShowModal={setShowModal} /> }
         {content.length ? 
         <div className='content-container'>
             <div className='middle-section'>
                 <button className="controller-prev" onClick={()=> clickeable && handleController(true)}>
-                    <SlArrowLeft className={!contentId ? 'prev-icon' : 'icon-invisible'}/>
+                    <SlArrowLeft className={!showModal ? 'prev-icon' : 'icon-invisible'}/>
                 </button>
                 <div className='photography-img-container'>
                     {section === 'video' ?
-                        <iframe
-                            className="video-item" 
-                            width="600" height="600" 
-                            src={content[activeTake].videoUrl + '?controls=0&showinfo=0&modestbranding=1&rel=0&autoplay=1&mute=1'} 
-                            title="YouTube video player" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowFullScreen>
-                        </iframe> :
+                        <div className="content-video-container">
+                            <ReactPlayer 
+                                playing = {!showModal}
+                                loop
+                                muted
+                                width='100%'
+                                height='100%'
+                                url={content[activeTake].videoUrl}
+                                className={content[activeTake].hidden ? "content-video-hidden" : "content-video"}
+                                onClick={()=>setShowModal(true)}
+                            />
+                        </div>
+                        :
                         <div className="content-img-container" >
                             <img 
                                 src={content[activeTake].picUrl || content[activeTake].fileUrl } 
                                 className={content[activeTake].hidden ? "content-img-hidden" : "content-img"} 
                                 alt="..." 
-                                onClick={()=>navigate(`/${section}/${content[activeTake].id}`)}
+                                onClick={()=>setShowModal(true)}
                                 />
                         </div>
                     }
@@ -125,7 +139,7 @@ const Content = ({ section, content, activeTake, setActiveTake }) => {
                         <Overlay target={fullscreenIcon.current} show={show} placement="left">
                             {(props) => (
                             <Tooltip id="tooltip" {...props} className='info-tooltip' delay={{ show: 250, hide: 400 }}>
-                                <p className='tooltip-text'>Hacé click para ver contenido adicional</p>
+                                <p className='tooltip-text'>Haz click para ver contenido adicional</p>
                             </Tooltip>
                             )}
                         </Overlay>
@@ -133,22 +147,21 @@ const Content = ({ section, content, activeTake, setActiveTake }) => {
                     }
                 </div>
                 <button className="controller-next" onClick={()=> clickeable && handleController(false)}>
-                    <SlArrowRight className={!contentId ? 'next-icon' : 'icon-invisible'}/>
+                    <SlArrowRight className={!showModal ? 'next-icon' : 'icon-invisible'}/>
                 </button>
             </div>
-            <ThumbnailDisplayer2 content={content}>
-                <div className="inner-thumbnail-container2" ref={innerContainer}>
+            <ThumbnailDisplayer content={content}>
+                <div className="inner-thumbnail-container" ref={innerContainer}>
                     {content.map((item, index) => {
-                        return <div className={activeTake === index ? 'thumbnail-img-container2 selected-thumbnail2' : 'thumbnail-img-container2'} key={index} >
-                            <img className='thumbnail-img2' src={item.picUrl} alt='' />
+                        return <div className={activeTake === index ? 'thumbnail-img-container selected-thumbnail' : 'thumbnail-img-container'} key={index} >
+                            <img className='thumbnail-img' src={item.picUrl || item.posterUrl} alt='' />
                         </div>
                     })}
                 </div>
-            </ThumbnailDisplayer2>
+            </ThumbnailDisplayer>
         </div> : 
         <Loading />}
-        </>
-        
+        </>  
     )
 }
 

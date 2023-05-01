@@ -30,8 +30,6 @@ const Login = () => {
     event.preventDefault()
     const adminEmail = process.env.REACT_APP_ADMIN_EMAIL
     const adminPass = process.env.REACT_APP_ADMIN_PASS
-    console.log('Email: ', adminEmail);
-    console.log('Pass: ', adminPass);
     if (userData.email === adminEmail && userData.password === adminPass){
       setLogged(true)
       setWrongData(false)

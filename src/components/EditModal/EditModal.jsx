@@ -6,21 +6,21 @@ import { BiHide, BiShow } from 'react-icons/bi'
 import { deleteDoc, doc, getFirestore, updateDoc } from 'firebase/firestore'
 import { useNavigate, useParams } from 'react-router-dom'
 
-const EditModal = ({contentInfo, setContentInfo}) => {
-    const {section, edit, contentId} = useParams()
+const EditModal = ({ contentInfo, updateLocalContent }) => {
+    const { section, edit } = useParams()
     const navigate = useNavigate()
 
     const deleteItem = () =>{
         const db = getFirestore()
-        deleteDoc(doc(db, section, contentId))
+        deleteDoc(doc(db, section, contentInfo.id))
         .then(()=>navigate(`/${section}`))
     }
 
     const switchMode = () => {
         if (edit){
-            navigate(`/${section}/${contentId}`)
+            navigate(`/${section}`)
         }else{
-            navigate(`./edit`)
+            navigate(`./${contentInfo.id}/edit`)
         }
     }
     
@@ -29,9 +29,9 @@ const EditModal = ({contentInfo, setContentInfo}) => {
             ...contentInfo,
             hidden: !contentInfo.hidden
         }
-        setContentInfo(alterVisibility)
+        updateLocalContent(alterVisibility)
         const db = getFirestore()
-        const docRef = doc(db, section, contentId)
+        const docRef = doc(db, section, contentInfo.id)
         updateDoc(docRef, alterVisibility)
         .catch(error => {console.log(error)})
     }

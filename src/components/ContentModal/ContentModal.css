@@ -89,6 +89,7 @@
 .modal-close-btn{
     background: none;
     margin-left: auto;
+    border: none;
 }
 
 .modal-close-icon{

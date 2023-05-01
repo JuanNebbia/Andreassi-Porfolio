@@ -4,16 +4,17 @@ import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import './EditView.css'
 
-const EditView = ({contentInfo}) => {
-  const {title, description, picUrl, hidden} = contentInfo
+const EditView = ({contentInfo,updateLocalContent}) => {
+  const {title, description, picUrl, videoUrl, posterUrl, hidden} = contentInfo
   const [updatedContent, setUpdatedContent] = useState({})
-  const {section, contentId} = useParams()
+  const {section} = useParams()
   const navigate = useNavigate()
 
   const updateContent = (event) =>{
       event.preventDefault()
+      updateLocalContent({...contentInfo, ...updatedContent,})
       const db = getFirestore()
-      const docRef = doc(db, section, contentId)
+      const docRef = doc(db, section, contentInfo.id)
       updateDoc(docRef, updatedContent)
       .catch(error => {console.log(error)})
       .finally(()=>navigate(`/${section}`))
@@ -45,14 +46,36 @@ const EditView = ({contentInfo}) => {
             id="edit-description-input" 
             name='description'
             onChange={handleOnChange} />
-          <label htmlFor='edit-img-input' className='edit-input-label'>Link a la imagen</label>
-          <input 
-            type='text' 
-            defaultValue={picUrl} 
-            id="edit-img-input" 
-            name='picUrl'
-            onChange={handleOnChange}
-            required />
+          {section === 'video' || section === 'animation' ? 
+            <>
+              <label htmlFor='edit-video-input' className='edit-input-label'>Link al video</label>
+              <input 
+                type='text' 
+                defaultValue={videoUrl} 
+                id="edit-video-input" 
+                name='videoUrl'
+                onChange={handleOnChange}
+                required />
+              <label htmlFor='edit-poster-input' className='edit-input-label'>Link a la miniatura</label>
+              <input 
+                type='text' 
+                defaultValue={posterUrl} 
+                id="edit-poster-input" 
+                name='posterUrl'
+                onChange={handleOnChange}
+                required />
+            </>:
+            <>
+              <label htmlFor='edit-img-input' className='edit-input-label'>Link a la imagen</label>
+              <input 
+                type='text' 
+                defaultValue={picUrl} 
+                id="edit-img-input" 
+                name='picUrl'
+                onChange={handleOnChange}
+                required />
+            </>
+          }
             <p className='hidden-show-text'>
               {hidden?'Este contenido se encuentra oculto':'Este contenido se encuentra visible'}
             </p>: 
