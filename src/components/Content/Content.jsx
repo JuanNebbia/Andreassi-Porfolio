@@ -110,7 +110,7 @@ const Content = ({ section, content, setContent, activeTake, setActiveTake }) =>
                     <SlArrowLeft className={!showModal ? 'prev-icon' : 'icon-invisible'}/>
                 </button>
                 <div className='photography-img-container'>
-                    {section === 'video' ?
+                    {(section === 'video' || section === 'animation') ?
                         <div className="content-video-container">
                             <ReactPlayer 
                                 playing = {!showModal}
