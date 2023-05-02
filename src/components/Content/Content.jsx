@@ -103,7 +103,7 @@ const Content = ({ section, content, setContent, activeTake, setActiveTake }) =>
     return (
         <>
         {showModal && <ContentModal contentInfo={content[activeTake]} updateLocalContent={updateLocalContent} setShowModal={setShowModal} /> }
-        {content.length ? 
+        {content.length &&
         <div className='content-container'>
             <div className='middle-section'>
                 <button className="controller-prev" onClick={()=> clickeable && handleController(true)}>
@@ -159,8 +159,7 @@ const Content = ({ section, content, setContent, activeTake, setActiveTake }) =>
                     })}
                 </div>
             </ThumbnailDisplayer>
-        </div> : 
-        <Loading />}
+        </div>}
         </>  
     )
 }

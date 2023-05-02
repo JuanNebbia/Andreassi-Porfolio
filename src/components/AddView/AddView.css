@@ -90,17 +90,32 @@
     margin-bottom: 2rem;
 }
 
-#add-description-input, #add-title-input, #add-img-input{
+.text-input, input::file-selector-button{
     background-color: transparent;
     border: 1px solid #444;
     color: #fff;
     padding: 0.3rem;
     border-radius: 0.5rem;
+}
+
+input, textarea{
     margin-bottom: 1.5rem;
 }
 
+input::file-selector-button{
+    background-color: #da9401;
+    color: #fff;
+    cursor: pointer;
+}
 
-#add-description-input:focus, #add-title-input:focus, #add-img-input:focus{
+input[type='file']{
+    background-color: #aaaaaa;
+    border-radius: 0.5rem;
+    width: fit-content;
+    padding-right: 1rem;
+}
+
+.text-input:focus{
     outline: 1px solid #da9401;
     border: none;
     background-color: transparent;
