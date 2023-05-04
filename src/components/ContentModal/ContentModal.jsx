@@ -1,17 +1,16 @@
 import './ContentModal.css'
 import { motion } from 'framer-motion'
 import { IoIosClose } from 'react-icons/io';
-import { useContext } from 'react';
-import { AuthContext } from '../../context/AuthContext';
 import EditModal from '../EditModal/EditModal';
 import { useParams } from 'react-router-dom';
 import EditView from '../EditView/EditView';
 import ReactPlayer from 'react-player'
+import { useUser } from 'reactfire';
 
 const ContentModal = ({contentInfo, updateLocalContent, setShowModal}) => {
   const {title, description, picUrl, videoUrl, hidden} = contentInfo
   const {edit} = useParams()
-  const {logged} = useContext(AuthContext)
+  const { status, data: user } = useUser();
 
 
 
@@ -42,7 +41,7 @@ const ContentModal = ({contentInfo, updateLocalContent, setShowModal}) => {
               id={hidden ? 'hidden-content' : ''}
             />
           }
-          {edit && logged ?
+          {edit && user ?
             <EditView contentInfo={contentInfo} updateLocalContent={updateLocalContent} />
             :<>
               { (description || title) &&
@@ -58,7 +57,7 @@ const ContentModal = ({contentInfo, updateLocalContent, setShowModal}) => {
               }
             </>
           }
-            {logged && <EditModal contentInfo={contentInfo} updateLocalContent={updateLocalContent} />}
+            {user && <EditModal contentInfo={contentInfo} updateLocalContent={updateLocalContent} />}
         </motion.div>
       </div>
   )

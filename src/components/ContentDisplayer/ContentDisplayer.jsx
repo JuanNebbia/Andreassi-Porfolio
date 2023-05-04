@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import Content from '../Content/Content'
 import './ContentDisplayer.css'
 import { useNavigate, useParams } from 'react-router-dom';
 import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
-import { AuthContext } from '../../context/AuthContext';
 import { RiAddFill} from 'react-icons/ri'
 import AddView from '../AddView/AddView';
+import { useUser } from 'reactfire';
 
 const ContentDisplayer = () => {
   const {section} = useParams()
@@ -14,12 +14,12 @@ const ContentDisplayer = () => {
   const [addItem, setAddItem] = useState(false)
   const [sectionNumber, setSectionNumber] = useState(0)
   const navigate = useNavigate()
-  const {logged} = useContext(AuthContext)
+  const { status, data: user } = useUser();
 
   useEffect(()=>{
     const db = getFirestore();
     const contentCollection = collection(db, section)
-    const q = logged ? contentCollection : query(contentCollection, where("hidden", "!=", true))
+    const q = user ? contentCollection : query(contentCollection, where("hidden", "!=", true))
     getDocs(q)
       .then((snapshot) => {
         const data = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}));
@@ -33,7 +33,7 @@ const ContentDisplayer = () => {
         }
       }).then(()=> setSectionNumber(sections.indexOf(section)))
       .catch((err) => console.log('err: ' + err))
-  },[section, logged])
+  },[section, user])
 
   const newSection = (newSection) => {
     navigate(`/${newSection}`)
@@ -69,7 +69,7 @@ const ContentDisplayer = () => {
             </div>
           </div>
           <Content section={section} content={content} setContent={setContent} activeTake={activeTake} setActiveTake={setActiveTake} />
-          {logged && <button className='add-content-btn' onClick={()=>setAddItem(!addItem)}><RiAddFill className='add-content-icon' /></button>}
+          {user && <button className='add-content-btn' onClick={()=>setAddItem(!addItem)}><RiAddFill className='add-content-icon' /></button>}
      </div>
     </>
   )

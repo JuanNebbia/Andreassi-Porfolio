@@ -1,5 +1,4 @@
-import React, { useContext, useState, useRef } from 'react'
-import { AuthContext } from '../../context/AuthContext';
+import React, { useState, useRef } from 'react'
 import { MdModeEditOutline } from 'react-icons/md'
 import './About.css'
 import profileGif from '../../img/GifFoto.gif'
@@ -15,9 +14,10 @@ import not from '../../img/icons/productividad/Recurso 4@2x.png'
 import gpt from '../../img/icons/productividad/Recurso 5@2x.png'
 import mac from '../../img/icons/productividad/Recurso 6@2x.png'
 import drive from '../../img/icons/productividad/Recurso 7@2x.png'
+import { useUser } from 'reactfire';
 
 const About = ({ info, setInfo, updateContent }) => {
-  const {logged} = useContext(AuthContext)
+  const { status, data: user } = useUser();
   const [editMode, setEditMode] = useState(false)
   const aboutTitleInput = useRef()
   const aboutDescriptionInput = useRef()
@@ -78,7 +78,7 @@ const About = ({ info, setInfo, updateContent }) => {
               { !editMode ? <div className="card-side">
                 <div className="about-title-row">
                   <h6 className='about-title'>{info.about?.general.title}</h6>
-                  {logged && 
+                  {user && 
                     <button className='about-edit-button' onClick={()=>setEditMode(!editMode)}><MdModeEditOutline /></button>
                   }
                 </div>
@@ -149,7 +149,7 @@ const About = ({ info, setInfo, updateContent }) => {
             { !editMode ? <div className="card-side">
                 <div className="about-title-row">
                   <h6 className='about-title'>{info.about?.training.title}</h6>
-                  {logged && 
+                  {user && 
                     <button className='about-edit-button' onClick={()=>setEditMode(!editMode)}><MdModeEditOutline /></button>
                   }
                 </div>

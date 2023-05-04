@@ -1,12 +1,20 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { AuthContext } from '../../context/AuthContext'
 import profilePicture from '../../img/favicon.jpg'
 import './Welcome.css'
+import { getAuth, signOut } from 'firebase/auth'
+import { useUser } from 'reactfire'
 
 const Welcome = ({ parent }) => {
-    const {logged, setLogged} = useContext(AuthContext)
+  const { status, data: user } = useUser();
     const navigate = useNavigate()
+
+    
+  const auth = getAuth()
+    
+  const logout = async () =>{
+    await signOut(auth)
+  } 
     
   return (
     <div className='welcome-container'>
@@ -17,7 +25,7 @@ const Welcome = ({ parent }) => {
         <h5 className='name-title'>Mateo Andreassi</h5>
       </a>
         <p className='subtitle'>Portfolio</p>
-        {logged && 
+        {user && 
           <div>
             {parent === 'main' &&
               <button onClick={()=>navigate('/messages')} className='messages-btn'>Mensajes</button>
@@ -25,7 +33,7 @@ const Welcome = ({ parent }) => {
             {parent === 'inbox' &&
               <button onClick={()=>navigate('/')} className='messages-btn'>Inicio</button>
             }
-            <button onClick={()=>setLogged(false)} className='exit-btn'>
+            <button onClick={logout} className='exit-btn'>
               Cerrar sesión
             </button>
           </div>
