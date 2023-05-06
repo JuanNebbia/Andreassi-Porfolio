@@ -5,8 +5,8 @@ import { SlCheck } from 'react-icons/sl';
 import { SlClose } from 'react-icons/sl';
 import './Login.css'
 import ProfilePic from '../../img/mateo-profile.jpg'
-import { GoogleAuthProvider, browserSessionPersistence, getAuth, setPersistence, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
-import { useAuth, useFirebaseApp, useUser } from 'reactfire'
+import { browserSessionPersistence, setPersistence, signInWithEmailAndPassword } from 'firebase/auth'
+import { useAuth, useUser } from 'reactfire'
 
 const Login = () => {
   const [userData, setUserData] = useState({})
@@ -15,7 +15,6 @@ const Login = () => {
   
   //Firebase auth
   const auth = useAuth()
-  const firebase = useFirebaseApp()
   const { status, data: user } = useUser();
 
 

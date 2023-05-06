@@ -1,7 +1,5 @@
 import React from 'react'
 import './Footer.css'
-import { GrInstagram, GrFacebookOption } from 'react-icons/gr'
-import { GiSoccerBall } from 'react-icons/gi'
 
 const Footer = () => {
   return (

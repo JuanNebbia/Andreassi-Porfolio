@@ -1,11 +1,10 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
-import { getAuth } from 'firebase/auth'
 import firebaseConfig from './config/firebase.config.js';
 import { FirebaseAppProvider } from 'reactfire';
 

@@ -5,8 +5,9 @@ import Login from './components/Login/Login';
 import Main from './components/Main/Main';
 import Inbox from './components/Inbox/Inbox';
 import Page404 from './components/Page404/Page404';
-import { AuthProvider, useFirebaseApp } from 'reactfire';
+import { AuthProvider, useFirebaseApp, useUser } from 'reactfire';
 import { getAuth } from 'firebase/auth';
+import Protected from './components/Protected/Protected.jsx';
 
 function App() {
   const firebase = useFirebaseApp()
@@ -19,9 +20,29 @@ function App() {
           <Routes>
             <Route path="/" element={<Navigate to="/photography" replace />} />
             <Route path='/:section' element={<Main />} />
-            <Route path='/:section/:contentId' element={<Main />} />
-            <Route path='/:section/:contentId/:edit' element={<Main />} />
-            <Route path='/messages' element={<Inbox />} />
+              <Route 
+                path='/:section/:contentId' 
+                element={
+                  <Protected>
+                    <Main />
+                  </Protected>
+                } 
+              />
+              <Route 
+                path='/:section/:contentId/:edit' 
+                element={
+                  <Protected>
+                    <Main />
+                  </Protected>
+                } 
+              />
+              <Route 
+                path='/messages' 
+                element={
+                  <Protected>
+                    <Inbox />
+                  </Protected>
+                } />
             <Route path='/login' element={<Login />} />
             <Route path='*' element={<Page404 />} />
           </Routes>
