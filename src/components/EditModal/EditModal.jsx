@@ -6,7 +6,7 @@ import { BiHide, BiShow } from 'react-icons/bi'
 import { deleteDoc, doc, getFirestore, updateDoc } from 'firebase/firestore'
 import { useNavigate, useParams } from 'react-router-dom'
 
-const EditModal = ({ contentInfo, updateLocalContent }) => {
+const EditModal = ({ contentInfo, updateLocalContent, editionMode, setEditonMode }) => {
     const { section, edit } = useParams()
     const navigate = useNavigate()
 
@@ -17,11 +17,7 @@ const EditModal = ({ contentInfo, updateLocalContent }) => {
     }
 
     const switchMode = () => {
-        if (edit){
-            navigate(`/${section}`)
-        }else{
-            navigate(`./${contentInfo.id}/edit`)
-        }
+        setEditonMode(!editionMode)
     }
     
     const switchVisibility = () =>{

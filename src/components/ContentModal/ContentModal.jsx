@@ -2,15 +2,17 @@ import './ContentModal.css'
 import { motion } from 'framer-motion'
 import { IoIosClose } from 'react-icons/io';
 import EditModal from '../EditModal/EditModal';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import EditView from '../EditView/EditView';
 import ReactPlayer from 'react-player'
 import { useUser } from 'reactfire';
+import { useState } from 'react';
 
 const ContentModal = ({contentInfo, updateLocalContent, setShowModal}) => {
   const {title, description, picUrl, videoUrl, hidden} = contentInfo
-  const {edit} = useParams()
+  const [editionMode, setEditonMode]= useState(false)
   const { status, data: user } = useUser();
+  const navigate = useNavigate()
 
 
 
@@ -41,7 +43,7 @@ const ContentModal = ({contentInfo, updateLocalContent, setShowModal}) => {
               id={hidden ? 'hidden-content' : ''}
             />
           }
-          {edit && user ?
+          {editionMode && user ?
             <EditView contentInfo={contentInfo} updateLocalContent={updateLocalContent} />
             :<>
               { (description || title) &&
@@ -57,7 +59,7 @@ const ContentModal = ({contentInfo, updateLocalContent, setShowModal}) => {
               }
             </>
           }
-            {user && <EditModal contentInfo={contentInfo} updateLocalContent={updateLocalContent} />}
+          {user && <EditModal contentInfo={contentInfo} updateLocalContent={updateLocalContent} editionMode={editionMode} setEditonMode={setEditonMode} />}
         </motion.div>
       </div>
   )

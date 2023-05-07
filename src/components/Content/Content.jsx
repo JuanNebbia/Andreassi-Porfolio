@@ -1,22 +1,29 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import './Content.css'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { RxEnterFullScreen } from 'react-icons/rx'
 import Loading from '../Loading/Loading';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Overlay from 'react-bootstrap/Overlay';
 import Tooltip from 'react-bootstrap/Tooltip';
 import ThumbnailDisplayer from '../ThumbnailDisplayer/ThumbnailDisplayer.jsx';
 import ReactPlayer from 'react-player'
 import ContentModal from '../ContentModal/ContentModal.jsx';
 
-const Content = ({ section, content, setContent, activeTake, setActiveTake }) => {
+const Content = ({ section, data, activeTake, setActiveTake }) => {
     const navigate = useNavigate()
+    const { contentId } = useParams()
     const [show, setShow] = useState(false);
     const [clickeable, setClickleable] = useState(true)
+    const [content, setContent] = useState(data)
     const [showModal, setShowModal] = useState(false)
     const fullscreenIcon = useRef(null);
     const innerContainer = useRef(null)
+
+    useEffect(()=>{
+        setContent(data)
+        contentId ? setShowModal(true) : setShowModal(false)
+    },[data])
 
     //Move by clicking arrows
     const handleController = (backwards) =>{
@@ -100,6 +107,12 @@ const Content = ({ section, content, setContent, activeTake, setActiveTake }) =>
         setContent(newContent)
     }    
 
+    const openElement = () =>{
+        setShowModal(true)
+        !contentId && navigate(`./${content[activeTake].id}`)
+        
+    }
+
     return (
         <>
         {showModal && <ContentModal contentInfo={content[activeTake]} updateLocalContent={updateLocalContent} setShowModal={setShowModal} /> }
@@ -120,7 +133,7 @@ const Content = ({ section, content, setContent, activeTake, setActiveTake }) =>
                                 height='100%'
                                 url={content[activeTake].videoUrl}
                                 className={content[activeTake].hidden ? "content-video-hidden" : "content-video"}
-                                onClick={()=>setShowModal(true)}
+                                onClick={openElement}
                             />
                         </div>
                         :
@@ -129,7 +142,7 @@ const Content = ({ section, content, setContent, activeTake, setActiveTake }) =>
                                 src={content[activeTake].picUrl || content[activeTake].fileUrl } 
                                 className={content[activeTake].hidden ? "content-img-hidden" : "content-img"} 
                                 alt="..." 
-                                onClick={()=>setShowModal(true)}
+                                onClick={openElement}
                                 />
                         </div>
                     }

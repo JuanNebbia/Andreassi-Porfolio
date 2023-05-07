@@ -2,44 +2,53 @@ import React, { useState, useEffect } from 'react'
 import Content from '../Content/Content'
 import './ContentDisplayer.css'
 import { useNavigate, useParams } from 'react-router-dom';
-import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
+import { collection, query, where } from "firebase/firestore";
 import { RiAddFill} from 'react-icons/ri'
 import AddView from '../AddView/AddView';
-import { useUser } from 'reactfire';
+import { useFirestore, useFirestoreCollectionData, useUser } from 'reactfire';
+import Loading from '../Loading/Loading.jsx';
 
 const ContentDisplayer = () => {
   const {section} = useParams()
-  const [content, setContent] = useState([])
   const [activeTake, setActiveTake] = useState(3)
   const [addItem, setAddItem] = useState(false)
   const [sectionNumber, setSectionNumber] = useState(0)
   const navigate = useNavigate()
-  const { status, data: user } = useUser();
+  const { data: user } = useUser();
+
+  const collectionRef = collection(useFirestore(), section)
+  const collectionQuery = user ? collectionRef : query(collectionRef, where("hidden", "!=", true))
+  const  { status: dataStatus , data} = useFirestoreCollectionData(collectionQuery, {
+    idField: 'id'
+  });
 
   useEffect(()=>{
-    const db = getFirestore();
-    const contentCollection = collection(db, section)
-    const q = user ? contentCollection : query(contentCollection, where("hidden", "!=", true))
-    getDocs(q)
-      .then((snapshot) => {
-        const data = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}));
-        setContent(data)
-        return data})
-      .then((data)=> {
-        if(data.length > 6){
-          setActiveTake(3)
-        }else{
-          setActiveTake(0)
-        }
-      }).then(()=> setSectionNumber(sections.indexOf(section)))
-      .catch((err) => console.log('err: ' + err))
-  },[section, user])
+    setSectionNumber(sections.indexOf(section))
+  },[user, section] )
+
+  // useEffect(()=>{
+    // const db = getFirestore();
+    // const contentCollection = collection(db, section)
+    // const q = user ? contentCollection : query(contentCollection, where("hidden", "!=", true))
+    // getDocs(q)
+    //   .then((snapshot) => {
+    //     const data = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}));
+    //     setContent(data)
+    //     return data})
+    //   .then((data)=> {
+    //     if(data.length > 6){
+    //       setActiveTake(3)
+    //     }else{
+    //       setActiveTake(0)
+    //     }
+    //   }).then(()=> setSectionNumber(sections.indexOf(section)))
+    //   .catch((err) => console.log('err: ' + err))
+  // },[section, user])
 
   const newSection = (newSection) => {
     navigate(`/${newSection}`)
   }
 
-  
   const sections = ['photography', 'video', 'branding', 'design', 'animation']
   
   const sectionsTitle = ['Fotografía', 'Video', 'Branding', 'Diseño', 'Animación']
@@ -56,7 +65,12 @@ const ContentDisplayer = () => {
       </button>)
   })
 
+  if (dataStatus === 'loading') {
+    return <Loading></Loading>
+  }
+
   return (
+    
     <>
       {addItem && <AddView setAddItem={setAddItem}/>}
       <div className="content-displayer-container" id='content-displayer-container'>
@@ -68,7 +82,7 @@ const ContentDisplayer = () => {
               <div className="section-selector" style={{left: `calc((70vh / 5) * ${sectionNumber} + (70vh / 5 / 2 - 0.85rem))`}}></div>
             </div>
           </div>
-          <Content section={section} content={content} setContent={setContent} activeTake={activeTake} setActiveTake={setActiveTake} />
+          <Content section={section} data={data} activeTake={activeTake} setActiveTake={setActiveTake} />
           {user && <button className='add-content-btn' onClick={()=>setAddItem(!addItem)}><RiAddFill className='add-content-icon' /></button>}
      </div>
     </>
