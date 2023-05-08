@@ -9,15 +9,16 @@ import { useNavigate, useParams } from 'react-router-dom'
 const EditModal = ({ contentInfo, updateLocalContent, editionMode, setEditonMode }) => {
     const { section, edit } = useParams()
     const navigate = useNavigate()
+    
+    const switchMode = () => {
+        setEditonMode(!editionMode)
+    }
 
     const deleteItem = () =>{
         const db = getFirestore()
         deleteDoc(doc(db, section, contentInfo.id))
+        .then(()=>updateLocalContent({...contentInfo, delete: true}))
         .then(()=>navigate(`/${section}`))
-    }
-
-    const switchMode = () => {
-        setEditonMode(!editionMode)
     }
     
     const switchVisibility = () =>{

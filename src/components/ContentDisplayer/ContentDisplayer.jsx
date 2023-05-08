@@ -60,7 +60,8 @@ const ContentDisplayer = () => {
       <button 
         className={section === item ? `section-btn active-section` : 'section-btn'} 
         onClick={()=>newSection(item)}
-        key={item}>
+        key={item}
+        disabled={dataStatus === 'loading'}>
           {sectionsTitle[sections.indexOf(item)]}
       </button>)
   })

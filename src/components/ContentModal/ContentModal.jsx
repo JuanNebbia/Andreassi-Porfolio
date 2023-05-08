@@ -2,7 +2,6 @@ import './ContentModal.css'
 import { motion } from 'framer-motion'
 import { IoIosClose } from 'react-icons/io';
 import EditModal from '../EditModal/EditModal';
-import { useNavigate, useParams } from 'react-router-dom';
 import EditView from '../EditView/EditView';
 import ReactPlayer from 'react-player'
 import { useUser } from 'reactfire';
@@ -11,8 +10,7 @@ import { useState } from 'react';
 const ContentModal = ({contentInfo, updateLocalContent, setShowModal}) => {
   const {title, description, picUrl, videoUrl, hidden} = contentInfo
   const [editionMode, setEditonMode]= useState(false)
-  const { status, data: user } = useUser();
-  const navigate = useNavigate()
+  const { data: user } = useUser();
 
 
 

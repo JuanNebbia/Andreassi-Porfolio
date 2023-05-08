@@ -98,19 +98,25 @@ const Content = ({ section, data, activeTake, setActiveTake }) => {
 
 
     const updateLocalContent = (newContentObject) =>{
-        const newContent = content.map(item => {
-            if(item.id === newContentObject.id){
-                return newContentObject
-            }
-            return item
-        })
+        let newContent
+        if (newContentObject.delete) {
+            newContent = content.filter(item => {
+                return item.id !== newContentObject.id
+            })
+        }else{
+            newContent = content.map(item => {
+                if(item.id === newContentObject.id){
+                    return newContentObject
+                }
+                return item
+            })
+        }
         setContent(newContent)
     }    
 
     const openElement = () =>{
         setShowModal(true)
-        !contentId && navigate(`./${content[activeTake].id}`)
-        
+        contentId !== content[activeTake].id  && navigate(`/${section}/${content[activeTake].id}`)
     }
 
     return (
