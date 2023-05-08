@@ -46,6 +46,7 @@ const ContentDisplayer = () => {
   // },[section, user])
 
   const newSection = (newSection) => {
+    setActiveTake(3)
     navigate(`/${newSection}`)
   }
 
