@@ -37,7 +37,7 @@
     object-fit: cover;
 }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
 
     .thumbnail-displayer-container{
         display: none

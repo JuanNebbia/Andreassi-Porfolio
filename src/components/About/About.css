@@ -140,7 +140,7 @@
     margin-top: auto;
 }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
 
     .about-container{
         background-color: #171718;
