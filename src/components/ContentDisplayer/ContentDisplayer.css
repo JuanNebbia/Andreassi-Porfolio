@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    width: 70vh;
+    width: '70vh';
 }
 
 .section-row{
@@ -43,21 +43,6 @@
     color:#fff;
 }
 
-.photography-img-displayed-container{
-    position:absolute;
-    height: 100vh;
-    width: 100vw;
-    background-color: #000a;
-    z-index: 1000;
-} 
-
-.photography-img-displayed{
-    max-width:100%;
-    max-height:100%;
-    top:0; left:0; right:0; bottom:0;
-    margin:auto;
-}
-
 .add-content-btn{
     background-color: #da9401;
     border: none;
@@ -83,4 +68,72 @@
     background-color: #da9401;
     position: relative;
     transition: 200ms ease-out all;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .content-displayer-container{
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 0;
+        padding: 1rem;
+        background: radial-gradient(#202020 0%, #171718 70%);
+    }
+
+    .section-btn-container{
+        padding: 2rem 0 0 0;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 100%;
+    }
+    
+    .section-row{
+        display: flex;
+        margin: 0;
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .section-btn{
+        background: transparent;
+        border: none;
+        color: #ccc;
+        font-size: 1rem; 
+        font-weight: 600;
+        letter-spacing: -1px;
+        width: 20%;
+        padding: 0;
+    }
+    
+    .add-content-btn{
+        background-color: #da9401;
+        border: none;
+        border-radius: 0.5rem;
+        padding: 0.5rem 3rem;
+        width: fit-content;
+        margin: 0 auto;
+    }
+    
+    .add-content-btn:hover{
+        background-color: #fab431;
+    }
+    
+    .add-content-icon{
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    
+    .section-selector{
+        height: 0.2rem;
+        width: 1.7rem;
+        border-radius: 0.5rem;
+        background-color: #da9401;
+        position: relative;
+        transition: 200ms ease-out all;
+    }
+
 }

@@ -20,6 +20,8 @@
     width: 4vw;
     filter: brightness(0.8) grayscale(0.5);
     transition: all 0.2s;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 .selected-thumbnail{
@@ -35,13 +37,9 @@
     object-fit: cover;
 }
 
-@media (max-width: 480px) {
+@media only screen and (max-width: 768px) {
 
     .thumbnail-displayer-container{
         display: none
     }
-}
-
-@media (min-width: 30em) and (orientation: landscape) {
-  /* … */
 }

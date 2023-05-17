@@ -17,7 +17,7 @@ import drive from '../../img/icons/productividad/Recurso 7@2x.png'
 import { useUser } from 'reactfire';
 
 const About = ({ info, setInfo, updateContent }) => {
-  const { status, data: user } = useUser();
+  const { data: user } = useUser();
   const [editMode, setEditMode] = useState(false)
   const aboutTitleInput = useRef()
   const aboutDescriptionInput = useRef()
@@ -48,9 +48,9 @@ const About = ({ info, setInfo, updateContent }) => {
     <div className='about-container'>
         <div className="row">
           <div className="col-6">
-            <div className="card">
-              <div className="card-side front small card-img">
-                <img src={profileGif} alt="" />
+            <div className="card mateo-gif-card">
+              <div className="card-side front small card-img ">
+                <img src={profileGif} alt="Mateo gif" className='mateo-gif' />
               </div>
             </div>
           </div>

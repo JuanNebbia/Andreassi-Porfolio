@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Content from '../Content/Content'
 import './ContentDisplayer.css'
 import { useNavigate, useParams } from 'react-router-dom';
@@ -15,6 +15,7 @@ const ContentDisplayer = () => {
   const [sectionNumber, setSectionNumber] = useState(0)
   const navigate = useNavigate()
   const { data: user } = useUser();
+  const windowSize = useRef([window.innerWidth, window.innerHeight]);
 
   const collectionRef = collection(useFirestore(), section)
   const collectionQuery = user ? collectionRef : query(collectionRef, where("hidden", "!=", true))
@@ -48,6 +49,7 @@ const ContentDisplayer = () => {
   const newSection = (newSection) => {
     setActiveTake(3)
     navigate(`/${newSection}`)
+    console.log(windowSize[0] > 768);
   }
 
   const sections = ['photography', 'video', 'branding', 'design', 'animation']
@@ -71,6 +73,10 @@ const ContentDisplayer = () => {
     return <Loading></Loading>
   }
 
+  const selectorStyle = {
+    left: windowSize.current[0] > 768 ? `calc((70vh / 5) * ${sectionNumber} + (70vh / 5 / 2 - 0.85rem))` : `calc(((100vw - 2.2rem) / 5) * ${sectionNumber} + ((100vw - 2rem) / 5 / 2 - 0.85rem))`
+  }
+
   return (
     
     <>
@@ -81,7 +87,7 @@ const ContentDisplayer = () => {
               {buttons}
             </div>
             <div className="section-row">
-              <div className="section-selector" style={{left: `calc((70vh / 5) * ${sectionNumber} + (70vh / 5 / 2 - 0.85rem))`}}></div>
+              <div className="section-selector" style={selectorStyle}></div>
             </div>
           </div>
           <Content section={section} data={data} activeTake={activeTake} setActiveTake={setActiveTake} />

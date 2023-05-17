@@ -96,3 +96,41 @@
         transform: translateY(0.2rem);
     }
 }
+
+@media only screen and (max-width: 768px) {
+
+    .background-banner{
+        position: absolute;
+        width: 100%;
+        height: 85%;
+        left: 0;
+        object-fit: cover;
+    }
+
+    .banner-phrase-container{
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .banner-phrase{
+        position: relative;
+        text-align:justify;
+        text-align-last: center;
+        font-size: 1.6rem;
+        max-width: 100%;
+        font-weight: 300;
+        line-height: 2.5rem;
+        letter-spacing: -0.1rem;
+        margin: auto;
+        font-weight: 600;
+        text-shadow: 0 0 3px black;
+        top: 0;
+        left: 0;
+    }
+
+    .banner-info{
+        display: none;
+    }
+
+}

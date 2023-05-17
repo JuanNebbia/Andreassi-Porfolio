@@ -11,7 +11,7 @@ const Banner = () => {
             <div className="banner-inner">
                 <img src={Slider1} className="background-banner" alt="..."/>
                 <div className="banner-phrase-container">
-                    <p className='banner-phrase'>Lo importante es no dejar de hacer preguntas</p>
+                    <h2 className='banner-phrase'>Lo importante es no dejar de hacer preguntas</h2>
                     <p className='banner-info'>Una de las fotografías tomadas del eclipse de 1919 durante la expedición de Arthur Eddington, 
                     en el que se pudieron confirmar las predicciones de Einstein acerca de la curvatura de la luz 
                     en presencia de un campo gravitatorio.</p>
