@@ -141,13 +141,11 @@
     .modal-img{
         border-top-right-radius: 0.5rem;
         border-bottom-left-radius: 0;
-        height: calc(100vw - 2rem);
         width: calc(100vw - 2rem);
     }
     
     .modal-img-only{
         border-radius: 0.5rem;
-        height: calc(100vw - 2rem);
         width: calc(100vw - 2rem);
     }
     
