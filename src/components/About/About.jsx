@@ -68,7 +68,7 @@ const About = ({ info, setInfo, updateContent }) => {
                     <img src={ae} alt="" className='adobe-logo' />
                   </div>
               </div>
-              <h6 className='tech-title'>Adobe Suit</h6>
+              <h6 className='tech-title'>Adobe Suite</h6>
             </div>
           </div>
         </div>

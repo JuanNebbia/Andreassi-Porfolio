@@ -82,7 +82,6 @@ textarea:focus, input:focus {
 }
 
 .send-msg-btn:disabled{
-    background-color: #a5843c;
     cursor: not-allowed;
 }
 
@@ -112,3 +111,84 @@ textarea:focus, input:focus {
 }
 
 
+@media (max-width: 768px) { 
+    .contact-container{
+        padding: 1rem;
+        height: fit-content;
+        margin-bottom: 2rem;
+    }
+    
+    .leave-a-msg-tag{
+        color: #ccc;
+        font-size: 1rem;
+    }
+    
+    .contact{
+        padding: 1.2rem;
+        width: 100%;
+        height: fit-content;
+        margin: auto;
+        min-height:0 
+    }
+    
+    .contact form{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    
+    .subject-mail{
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid #ccc;
+        height: 3rem;
+        width: 100%;
+        color: #eee;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+    }
+
+    .text-area-mail{
+        background-color: transparent;
+        border: none;
+        width: 100%;
+        height: 7rem;
+        color: #eee;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+    }
+    
+    .send-msg-btn{
+        background-color: transparent;
+        margin-top: auto;
+        margin-left: auto;
+        background-color: #da9401;
+        color: #000;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 1.4rem;
+        padding: 0 0.8rem;
+        font-weight: 600;
+        letter-spacing: -2px;
+    }
+    
+    .send-msg-btn:hover{
+        background-color: #eaa411;
+    }    
+    
+    .custom-tooltip .tooltip-inner {
+        padding: 1rem;
+        font-size: 1.1rem;
+        color: #43b443;
+        display: flex;
+        gap: 5px;
+        align-items: center;
+    }
+    
+    .tooltip-text{
+        margin: 0;
+    }
+
+}

@@ -5,3 +5,9 @@
     background-color: #da9401;
     margin: 3rem auto
 }
+
+@media (max-width: 768px) {
+    .section-divider{
+        width: 45%;
+    }
+}

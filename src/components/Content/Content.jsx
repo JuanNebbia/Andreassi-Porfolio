@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import './Content.css'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { RxEnterFullScreen } from 'react-icons/rx'
-import Loading from '../Loading/Loading';
 import { useNavigate, useParams } from 'react-router-dom';
 import Overlay from 'react-bootstrap/Overlay';
 import Tooltip from 'react-bootstrap/Tooltip';

@@ -15,7 +15,7 @@ const ContentModal = ({contentInfo, updateLocalContent, setShowModal}) => {
 
 
   const closeModal = (event) =>{
-    if (event.target.classList.contains('close')){
+    if (event.target.classList.contains('close') || event.target.parentNode.classList.contains('close')){
       setShowModal(false)
     }
   }
@@ -26,6 +26,10 @@ const ContentModal = ({contentInfo, updateLocalContent, setShowModal}) => {
             initial={{y: '-100vh'}}
             animate={{y: 0}}>
           {videoUrl ? 
+          <div>
+            <button className='modal-close-btn-mobile close' onClick={closeModal}>
+              <IoIosClose className='modal-close-icon close' onClick={closeModal}/>
+            </button>
             <ReactPlayer 
               playing
               loop
@@ -33,13 +37,19 @@ const ContentModal = ({contentInfo, updateLocalContent, setShowModal}) => {
               width='fit-content'
               height='100%'
               url={videoUrl}  />
+          </div>
             :
-            <img 
-              src={picUrl} 
-              alt="" 
-              className={description || title? 'modal-img' : 'modal-img-only'}
-              id={hidden ? 'hidden-content' : ''}
-            />
+            <div>
+              <button className='modal-close-btn-mobile close' onClick={closeModal}>
+                <IoIosClose className='modal-close-icon close' onClick={closeModal}/>
+              </button>
+              <img 
+                src={picUrl} 
+                alt="" 
+                className={description || title? 'modal-img' : 'modal-img-only'}
+                id={hidden ? 'hidden-content' : ''}
+              />
+            </div>
           }
           {editionMode && user ?
             <EditView contentInfo={contentInfo} updateLocalContent={updateLocalContent} />

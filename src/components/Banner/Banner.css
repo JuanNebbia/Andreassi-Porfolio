@@ -31,7 +31,6 @@
     color: #eee;
     text-align: left;
     font-size: 4.2rem;
-    max-width: 30%;
     font-weight: 300;
     line-height: 3.6rem;
     letter-spacing: -0.35rem;
@@ -108,28 +107,27 @@
     }
 
     .banner-phrase-container{
-        padding: 2rem;
+        padding: 3rem;
         display: flex;
         flex-direction: column;
     }
 
     .banner-phrase{
         position: relative;
-        text-align:justify;
-        text-align-last: center;
-        font-size: 1.6rem;
+        font-size: 2.4rem;
         max-width: 100%;
-        font-weight: 300;
         line-height: 2.5rem;
         letter-spacing: -0.1rem;
-        margin: auto;
-        font-weight: 600;
-        text-shadow: 0 0 3px black;
-        top: 0;
+        text-shadow: 0 0 3px #222;
+        top: 30%;
         left: 0;
     }
 
     .banner-info{
+        display: none;
+    }
+
+    .scroll-down-icon{
         display: none;
     }
 

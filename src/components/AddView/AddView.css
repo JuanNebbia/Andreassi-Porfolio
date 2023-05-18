@@ -30,15 +30,6 @@
     border-radius: 0.5rem;
 }
 
-.modal-img{
-    border-top-left-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
-}
-
-.modal-img-only{
-    border-radius: 0.5rem;
-}
-
 .add-item-info-container::-webkit-scrollbar {
     width: 0.5rem;
     z-index: 10;

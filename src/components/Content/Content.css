@@ -127,14 +127,20 @@
         aspect-ratio: 1/1;
         display: flex;
     }
+
+    .content-img{
+        object-fit: contain;
+        border-radius: 0.6rem;
+    }
     
     .content-img-container, .content-video-container{
         width: 100%;
-        height: calc(100vw - 2rem);
+        height: calc(100vw + 3rem);
         display: flex;
         background-size: cover;
-        border-radius: 0.1rem;
+        border-radius: 0.6rem;
         overflow: hidden;
+        background-color: #5551;
     }
     
     .content-img-hidden{
@@ -151,7 +157,7 @@
         position: absolute;
         border: none;
         color: #fff;
-        margin-top: calc((100vw - 2rem) / 2 - 1.25rem);
+        margin-top: calc((100vw + 3rem) / 2 - 1.25rem);
         z-index: 1000;
     }
     
@@ -173,7 +179,6 @@
         background-color: #8885;
         padding: 0.3rem;
         border-radius: 50%;
-        box-shadow: 0 0 2px #333;
         margin: 0;
     }
     
