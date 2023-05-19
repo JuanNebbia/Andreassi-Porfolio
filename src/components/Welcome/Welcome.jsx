@@ -24,9 +24,9 @@ const Welcome = ({ parent }) => {
         </div>
         <h5 className='name-title'>Mateo Andreassi</h5>
       </a>
-        <p className='subtitle'>Portfolio</p>
+      { !user && <p className='subtitle'>Portfolio</p> }
         {user && 
-          <div>
+          <div className="welcome-button-container">
             {parent === 'main' &&
               <button onClick={()=>navigate('/messages')} className='messages-btn'>Mensajes</button>
             }
