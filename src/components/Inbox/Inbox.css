@@ -4,6 +4,7 @@
     background-color: #171717;
     padding: 10rem 35vh 0;
     display: flex;
+    text-align: left;
 }
 
 .messages-inner-container{
@@ -76,4 +77,89 @@ hr{
 
 .hidden>.message-text{
     margin: 0;
+}
+
+@media (max-width: 768px) { 
+
+    .messages-container{
+        min-height: 100vh;
+        margin: 0 auto;
+        background-color: #171717;
+        padding: 8rem 1rem 0;
+        display: flex;
+    }
+    
+    .messages-inner-container{
+        padding: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .hidden-msg-container{
+        margin-top: auto;
+    }
+    
+    .visible-msg-container{
+        margin-bottom: 3rem;
+    }
+    
+    .message-box{
+        display: flex;
+        color: #fff;
+        padding: 1rem;
+        background-color: #2a2a2a;
+        margin-bottom: 1rem;
+        flex-direction: column;
+        border-radius: 1.5rem;
+        border-bottom-right-radius: 0;
+    }
+    
+    hr{
+        color: #aaa;
+        margin: 0 0 4rem;
+    }
+    
+    .message-text, .message-date, .message-subject{
+        margin: 0;
+    }
+    
+    .message-subject{
+        width: fit-content;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #da9401;
+    }
+    
+    .message-text{
+        font-size: 0.9rem;
+        margin: 1rem 0;
+    }
+    
+    .message-date{
+        font-size: 0.9rem;
+        color: #aaa;
+    }
+    
+    .no-messages-tag{
+        color: #ddd;
+        font-size: 1.5rem;
+    }
+    
+    .hidden{
+        background-color: #888;
+        color: #171717;
+        margin: auto auto 1rem;
+        padding: 0.5rem 1rem;
+        width: 80%;
+    }
+    
+    .hidden>.message-subject{
+        color: #444;
+    }
+    
+    .hidden>.message-text{
+        margin: 0;
+    }
+
 }

@@ -49,7 +49,6 @@ const ContentDisplayer = () => {
   const newSection = (newSection) => {
     setActiveTake(3)
     navigate(`/${newSection}`)
-    console.log(windowSize[0] > 768);
   }
 
   const sections = ['photography', 'video', 'branding', 'design', 'animation']

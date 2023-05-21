@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import React, { useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import { storage } from '../../index.js'
+import { IoIosClose } from 'react-icons/io';
 import './AddView.css'
 
 const AddView = ({setAddItem}) => {
@@ -72,6 +73,9 @@ const AddView = ({setAddItem}) => {
         <motion.div className="add-item-info-container"
             initial={{y: '-100vh'}}
             animate={{y: 0}}>
+            <button className='add-modal-close-btn close' onClick={closeModal}>
+                <IoIosClose className='modal-close-icon close' onClick={closeModal}/>
+            </button>
             <h6 className='add-mode-title'>NUEVO CONTENIDO PARA {section.toUpperCase()}</h6>
             <form action="" className='add-item-form' onSubmit={ section === 'video' || section === 'animation' ? addVideoContent : addContent}>
             <label htmlFor='add-title-input' className='add-input-label'>Titulo</label>
@@ -144,8 +148,8 @@ const AddView = ({setAddItem}) => {
                     />
                 </>
             }
-            <input type='checkbox' name='hidden' id='hide-input-false' ref={hideInput} />
             <label htmlFor='hide-input-false' className='hide-input-label'>Ocultar</label>
+            <input type='checkbox' name='hidden' id='hide-input-false' ref={hideInput} />
             <button type='submit' className='add-submit'>Guardar Cambios</button>
             </form>
         </motion.div>

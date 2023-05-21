@@ -26,6 +26,7 @@
 .modal-img{
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
+    height: 100%;
 }
 
 .modal-img-only{
@@ -120,15 +121,15 @@
         background-color: #0008;
         display:block;
         z-index: 1000;
-        padding: 2rem 1rem;
+        padding: 1.5rem;
         backdrop-filter: grayscale(80%) blur(0.08rem);
         overflow: auto;
     }
     
     .modal-card-container{
-        width: calc(100vw - 2rem);
+        width: calc(100vw - 3rem);
         max-width: none;
-        min-height: calc(100vw - 2rem);
+        min-height: calc(100vw - 3rem);
         height: fit-content;
         display: flex;
         flex-direction: column;
@@ -141,12 +142,12 @@
     .modal-img{
         border-top-right-radius: 0.5rem;
         border-bottom-left-radius: 0;
-        width: calc(100vw - 2rem);
+        width: calc(100vw - 3rem);
     }
     
     .modal-img-only{
         border-radius: 0.5rem;
-        width: calc(100vw - 2rem);
+        width: calc(100vw - 3rem);
     }
     
     .modal-text-container{
@@ -158,7 +159,7 @@
         border-top-right-radius: 0;
         border-bottom-right-radius: 0.5rem;
         border-bottom-left-radius: 0.5rem;
-        width: calc(100vw - 2rem);
+        width: calc(100vw - 3rem);
         max-height: none;
         height: fit-content;
     }
@@ -166,7 +167,7 @@
     .item-info-container{
         overflow: auto;
         height: 100%;
-        padding: 0.5rem 1rem;
+        padding: 1.5rem;
     }
     
     .item-info-container::-webkit-scrollbar {
@@ -190,17 +191,18 @@
     
     .modal-title{
         color: #fff;
-        font-size: 2rem;
+        font-size: 1.5rem;
         text-align: left;
-        padding: 0 7%;
+        padding: 0;
         font-family: Karla;
         letter-spacing: -0.1rem;
+        margin-bottom: 1.5rem;
     }
     
     .modal-text{
         color: #fff;
         margin: 0;
-        padding: 7%;
+        padding: 0;
         text-align: left;
         font-family: 'Roboto';
         font-weight: 400;
@@ -208,17 +210,19 @@
     }
     
     .modal-close-btn-mobile{
-        background: none;
+        background-color: #0003;
         margin-left: auto;
         border: none;
+        border-radius: 0.5rem;
         position: absolute;
         right: 0;
         z-index: 5000;
         display: block;
+        padding: 0;
     }
 
     .modal-close-icon{
-        color: #666;
+        color: #aaa;
         font-size: 2.5rem;
     }
 
