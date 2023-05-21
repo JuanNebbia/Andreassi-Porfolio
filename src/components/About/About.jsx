@@ -8,12 +8,6 @@ import me from '../../img/icons/adobe/Recurso 10@2x.png'
 import lrc from '../../img/icons/adobe/Recurso 11@2x.png'
 import ai from '../../img/icons/adobe/Recurso 12@2x.png'
 import ae from '../../img/icons/adobe/Recurso 13@2x.png'
-import win from '../../img/icons/productividad/Recurso 2@2x.png'
-import ob from '../../img/icons/productividad/Recurso 3@2x.png'
-import not from '../../img/icons/productividad/Recurso 4@2x.png'
-import gpt from '../../img/icons/productividad/Recurso 5@2x.png'
-import mac from '../../img/icons/productividad/Recurso 6@2x.png'
-import drive from '../../img/icons/productividad/Recurso 7@2x.png'
 import { useUser } from 'reactfire';
 
 const About = ({ info, setInfo, updateContent }) => {
@@ -119,27 +113,17 @@ const About = ({ info, setInfo, updateContent }) => {
         <div className="row">
           <div className="col-6">
             <div className="card">
-              <div className="icons-container">
-                <div className="icons-row">
-                  <img src={win} alt="" className='adobe-logo' />
-                  <img src={ob} alt="" className='adobe-logo' />
-                  <img src={not} alt="" className='adobe-logo' />
-                </div>
-                <div className="icons-row">
-                  <img src={gpt} alt="" className='adobe-logo' />
-                  <img src={mac} alt="" className='adobe-logo' />
-                  <img src={drive} alt="" className='adobe-logo' />
-                </div>
-              </div>
-              <h6 className='tech-title'>Productividad</h6>
-            </div>
-          </div>
-          <div className="col-6">
-            <div className="card">
               <div className="landscape-container">
                 <img src="https://media.tycsports.com/files/2023/02/10/532928/lionel-messi_w416.webp" alt="" className='landscape-img' />
               </div>
               <h6 className='tech-title'>Acá nací</h6>
+            </div>
+          </div>
+          <div className="col-6">
+            <div className="card mateo-gif-card">
+              <div className="card-side front small card-img ">
+                <img src={profileGif} alt="Mateo gif" className='mateo-gif' />
+              </div>
             </div>
           </div>
         </div>
