@@ -10,7 +10,7 @@ import Loading from '../Loading/Loading.jsx';
 
 const ContentDisplayer = () => {
   const {section} = useParams()
-  const [activeTake, setActiveTake] = useState(3)
+  const [activeTake, setActiveTake] = useState(0)
   const [addItem, setAddItem] = useState(false)
   const [sectionNumber, setSectionNumber] = useState(0)
   const navigate = useNavigate()
@@ -47,7 +47,7 @@ const ContentDisplayer = () => {
   // },[section, user])
 
   const newSection = (newSection) => {
-    setActiveTake(3)
+    setActiveTake(0)
     navigate(`/${newSection}`)
   }
 

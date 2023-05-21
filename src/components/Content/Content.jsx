@@ -22,23 +22,20 @@ const Content = ({ section, data, activeTake, setActiveTake }) => {
     useEffect(()=>{
         setContent(data)
         contentId ? setShowModal(true) : setShowModal(false)
+        innerContainer.current.style.transform = `translateX(0)`;
     },[data])
 
     //Move by clicking arrows
     const handleController = (backwards) =>{
         if (backwards){
-            if (content.length > 7){
-                move(activeTake - 1)
-            }
+            move(activeTake -1)
             if (activeTake === (0)){
                 setActiveTake(content.length - 1)
             }else{
                 setActiveTake(activeTake - 1)
             }
         }else{
-            if (content.length > 7){
-                move(activeTake + 1)
-            }
+            move(activeTake + 1)
             if (activeTake === (content.length - 1)){
                 setActiveTake(0)
             }else{
@@ -52,47 +49,25 @@ const Content = ({ section, data, activeTake, setActiveTake }) => {
     }
     
     //Move by clicking thumbnails
-    // const handleOnClick = (event, index) => {
-    //     setActiveTake(index)
-    //     if (content.length > 7){
-    //         move(index)
-    //     }
-    // }
+    const handleOnClick = (event, index) => {
+        setActiveTake(index)
+        if (content.length > 9){
+            move(index)
+        }
+    }
     
     const move = useCallback((index) => {
         innerContainer.current.style.transition = `200ms ease-out all`;
-        if(Math.abs(index - activeTake) === innerContainer.current.children.length - 1){
-            innerContainer.current.style.transform = `translateX(calc(${-1 * 4}vw + 1rem))`;
-        }else{
-            innerContainer.current.style.transform = `translateX(calc(${-1 * (index - activeTake) * 4}vw - ${(index - activeTake)}rem))`;
-        }
-        const distance = Math.abs(index - activeTake)
-        const movingElements = []
-        for(let i = 0; i < distance; i++){
-            if (index > activeTake){
-                movingElements.push(innerContainer.current.children[i])
-            }
-            if (index < activeTake){
-                movingElements.push(innerContainer.current.children[innerContainer.current.children.length - (i + 1)])
-            }
-        }
-        const transition = () => {
-            innerContainer.current.style.transition = 'none';
+        if(index === content.length){
             innerContainer.current.style.transform = `translateX(0)`;
-            if (index > activeTake) {
-                for(let i = 0; i < movingElements.length; i++) {
-                    innerContainer.current.appendChild(movingElements[i]);
-                }
+        }else{
+            if(index + activeTake === -1){
+                innerContainer.current.style.transform = `translateX(calc(${-1 * (content.length -1)} * 4rem))`;
             }
-            if (index < activeTake) {
-                for(let i = 0; i < movingElements.length; i++) {
-                    innerContainer.current.insertBefore(movingElements[i], innerContainer.current.firstChild)
-                }
+            else{
+                innerContainer.current.style.transform = `translateX(calc(${-1 * index} * 4rem))`;
             }
-            innerContainer.current.removeEventListener('transitionend', transition);
         }
-
-        innerContainer.current.addEventListener('transitionend', transition);
     }, [activeTake, setActiveTake])
 
 
@@ -120,7 +95,7 @@ const Content = ({ section, data, activeTake, setActiveTake }) => {
 
     return (
         <>
-        {showModal && <ContentModal contentInfo={content[activeTake]} updateLocalContent={updateLocalContent} setShowModal={setShowModal} /> }
+        {showModal && <ContentModal contentInfo={content[activeTake]} updateLocalContent={updateLocalContent} setShowModal={setShowModal} handleController={handleController} /> }
         {content.length &&
         <div className='content-container'>
             <div className='middle-section'>
@@ -171,7 +146,7 @@ const Content = ({ section, data, activeTake, setActiveTake }) => {
             <ThumbnailDisplayer content={content}>
                 <div className="inner-thumbnail-container" ref={innerContainer}>
                     {content.map((item, index) => {
-                        return <div className={activeTake === index ? 'thumbnail-img-container selected-thumbnail' : 'thumbnail-img-container'} key={index} >
+                        return <div className={activeTake === index ? 'thumbnail-img-container selected-thumbnail' : 'thumbnail-img-container'} key={index} onClick={(event)=>handleOnClick(event, index)} >
                             <img className='thumbnail-img' src={item.picUrl || item.posterUrl} alt='' />
                         </div>
                     })}

@@ -4,7 +4,7 @@ import './ThumbnailDisplayer.css'
 const ThumbnailDisplayer = ({children, content}) => {
 
     const containerStyles = {
-        width: content.length > 6 ? `calc(30vw + 6rem)` : `calc(${content.length - 1 } * 4vw + 6vw + ${content.length}rem)`
+        width: content.length > 9 ? `37rem` : `calc(${content.length - 1 } * 3rem + 5rem + ${content.length}rem)`
     }
 
     return (

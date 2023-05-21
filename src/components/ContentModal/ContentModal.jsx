@@ -7,7 +7,7 @@ import ReactPlayer from 'react-player'
 import { useUser } from 'reactfire';
 import { useState } from 'react';
 
-const ContentModal = ({contentInfo, updateLocalContent, setShowModal}) => {
+const ContentModal = ({contentInfo, updateLocalContent, setShowModal, handleController}) => {
   const {title, description, picUrl, videoUrl, hidden} = contentInfo
   const [editionMode, setEditonMode]= useState(false)
   const { data: user } = useUser();
@@ -21,7 +21,7 @@ const ContentModal = ({contentInfo, updateLocalContent, setShowModal}) => {
   }
 
   return (
-      <div className='modal-container close' onClick={closeModal}>
+      <div className='modal-container close' onClick={closeModal} onDoubleClick={handleController}>
         <motion.div className="modal-card-container" 
             initial={{y: '-100vh'}}
             animate={{y: 0}}>
