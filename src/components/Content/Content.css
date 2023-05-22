@@ -126,6 +126,8 @@
         width: 100%;
         aspect-ratio: 1/1;
         display: flex;
+        height: fit-content;
+        margin-bottom: 1rem;
     }
 
     .content-img{
@@ -195,8 +197,7 @@
     }
     
     .fullscreen-icon{
-        width: 2rem;
-        height: 2rem;
+        display: none;
     }
     
     .full-screen-icon-container{

@@ -8,8 +8,9 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import ThumbnailDisplayer from '../ThumbnailDisplayer/ThumbnailDisplayer.jsx';
 import ReactPlayer from 'react-player'
 import ContentModal from '../ContentModal/ContentModal.jsx';
+import DotsDisplayer from '../DotsDisplayer/DotsDisplayer.jsx';
 
-const Content = ({ section, data, activeTake, setActiveTake }) => {
+const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
     const navigate = useNavigate()
     const { contentId } = useParams()
     const [show, setShow] = useState(false);
@@ -22,20 +23,27 @@ const Content = ({ section, data, activeTake, setActiveTake }) => {
     useEffect(()=>{
         setContent(data)
         contentId ? setShowModal(true) : setShowModal(false)
-        innerContainer.current.style.transform = `translateX(0)`;
+        if(innerContainer.current){
+            console.log(innerContainer);
+            innerContainer.current.style.left = `0`
+        }
     },[data])
 
     //Move by clicking arrows
     const handleController = (backwards) =>{
         if (backwards){
-            move(activeTake -1)
+            if(activeTake < (content.length - 7)){
+                move(activeTake - 1)
+            }
             if (activeTake === (0)){
                 setActiveTake(content.length - 1)
             }else{
                 setActiveTake(activeTake - 1)
             }
         }else{
-            move(activeTake + 1)
+            if(activeTake > 7){
+                move(activeTake + 1)
+            }
             if (activeTake === (content.length - 1)){
                 setActiveTake(0)
             }else{
@@ -57,15 +65,18 @@ const Content = ({ section, data, activeTake, setActiveTake }) => {
     }
     
     const move = useCallback((index) => {
-        innerContainer.current.style.transition = `200ms ease-out all`;
+        innerContainer.current.style.transition = `200ms ease-out all`
         if(index === content.length){
-            innerContainer.current.style.transform = `translateX(0)`;
+            innerContainer.current.style.left = `0`
+            // innerContainer.current.style.transform = `translateX(0)`
         }else{
             if(index + activeTake === -1){
-                innerContainer.current.style.transform = `translateX(calc(${-1 * (content.length -1)} * 4rem))`;
+                innerContainer.current.style.left = `calc(${-1 * (content.length -9)} * 4rem)`
+                // innerContainer.current.style.transform = `translateX(calc(${-1 * (content.length -1)} * 4rem))`
             }
             else{
-                innerContainer.current.style.transform = `translateX(calc(${-1 * index} * 4rem))`;
+                innerContainer.current.style.left = `calc(${innerContainer.current.style.left} - 4rem * ${index - activeTake})`
+                // innerContainer.current.style.transform = `translateX(calc(${-1 * index} * 4rem))`
             }
         }
     }, [activeTake, setActiveTake])
@@ -143,15 +154,25 @@ const Content = ({ section, data, activeTake, setActiveTake }) => {
                     <SlArrowRight className={!showModal ? 'next-icon' : 'icon-invisible'}/>
                 </button>
             </div>
-            <ThumbnailDisplayer content={content}>
-                <div className="inner-thumbnail-container" ref={innerContainer}>
-                    {content.map((item, index) => {
-                        return <div className={activeTake === index ? 'thumbnail-img-container selected-thumbnail' : 'thumbnail-img-container'} key={index} onClick={(event)=>handleOnClick(event, index)} >
-                            <img className='thumbnail-img' src={item.picUrl || item.posterUrl} alt='' />
-                        </div>
-                    })}
-                </div>
-            </ThumbnailDisplayer>
+            {windowSize.current[0] > 768 ?
+                <ThumbnailDisplayer content={content}>
+                    <div className="inner-thumbnail-container" ref={innerContainer}>
+                        {content.map((item, index) => {
+                            return <div className={activeTake === index ? 'thumbnail-img-container selected-thumbnail' : 'thumbnail-img-container'} key={index} onClick={(event)=>handleOnClick(event, index)} >
+                                <img className='thumbnail-img' src={item.picUrl || item.posterUrl} alt='' />
+                            </div>
+                        })}
+                    </div>
+                </ThumbnailDisplayer>:
+                <DotsDisplayer>
+                    <div className="inner-dots-container" ref={innerContainer}>
+                        {content.map((item, index) => {
+                            return <div className={activeTake === index ? 'dot selected-dot' : 'dot'} key={index} onClick={(event)=>handleOnClick(event, index)} >
+                                    </div>
+                        })}
+                    </div>
+                </DotsDisplayer>
+             }
         </div>}
         </>  
     )

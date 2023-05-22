@@ -89,7 +89,7 @@ const ContentDisplayer = () => {
               <div className="section-selector" style={selectorStyle}></div>
             </div>
           </div>
-          <Content section={section} data={data} activeTake={activeTake} setActiveTake={setActiveTake} />
+          <Content section={section} data={data} activeTake={activeTake} setActiveTake={setActiveTake} windowSize={windowSize} />
           {user && <button className='add-content-btn' onClick={()=>setAddItem(!addItem)}><RiAddFill className='add-content-icon' /></button>}
      </div>
     </>

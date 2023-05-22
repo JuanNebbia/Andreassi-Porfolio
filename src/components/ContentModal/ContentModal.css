@@ -130,7 +130,7 @@
     .modal-card-container{
         width: calc(100vw - 3rem);
         max-width: none;
-        min-height: calc(100vw - 3rem);
+        min-height: 0;
         height: fit-content;
         display: flex;
         flex-direction: column;
