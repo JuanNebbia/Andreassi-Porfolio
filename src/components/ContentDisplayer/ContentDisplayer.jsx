@@ -25,6 +25,9 @@ const ContentDisplayer = () => {
 
   useEffect(()=>{
     setSectionNumber(sections.indexOf(section))
+    if(!sections.includes(section)){
+      navigate('/not-found')
+    }
   },[user, section] )
 
   // useEffect(()=>{
@@ -77,7 +80,6 @@ const ContentDisplayer = () => {
   }
 
   return (
-    
     <>
       {addItem && <AddView setAddItem={setAddItem}/>}
       <div className="content-displayer-container" id='content-displayer-container'>

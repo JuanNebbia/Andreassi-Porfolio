@@ -6,7 +6,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Overlay from 'react-bootstrap/Overlay';
 import Tooltip from 'react-bootstrap/Tooltip';
 import ThumbnailDisplayer from '../ThumbnailDisplayer/ThumbnailDisplayer.jsx';
-import ReactPlayer from 'react-player'
 import ContentModal from '../ContentModal/ContentModal.jsx';
 import DotsDisplayer from '../DotsDisplayer/DotsDisplayer.jsx';
 
@@ -15,7 +14,7 @@ const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
     const { contentId } = useParams()
     const [show, setShow] = useState(false);
     const [clickeable, setClickleable] = useState(true)
-    const [content, setContent] = useState(data)
+    const [content, setContent] = useState([])
     const [showModal, setShowModal] = useState(false)
     const fullscreenIcon = useRef(null);
     const innerContainer = useRef(null)
@@ -24,7 +23,6 @@ const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
         setContent(data)
         contentId ? setShowModal(true) : setShowModal(false)
         if(innerContainer.current){
-            console.log(innerContainer);
             innerContainer.current.style.left = `0`
         }
     },[data])
@@ -99,7 +97,10 @@ const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
         setContent(newContent)
     }    
 
-    const openElement = () =>{
+    const openElement = (event) =>{
+        if(section === 'video' || section === 'animation' ){
+            event.target.pause()
+        }
         setShowModal(true)
         contentId !== content[activeTake].id  && navigate(`/${section}/${content[activeTake].id}`)
     }
@@ -116,16 +117,16 @@ const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
                 <div className='photography-img-container'>
                     {(section === 'video' || section === 'animation') ?
                         <div className="content-video-container">
-                            <ReactPlayer 
-                                playing = {!showModal}
+                            <video 
+                                autoPlay
                                 loop
                                 muted
-                                width='100%'
-                                height='100%'
-                                url={content[activeTake].videoUrl}
+                                poster={content[activeTake].posterUrl}
+                                src={content[activeTake].videoUrl}
                                 className={content[activeTake].hidden ? "content-video-hidden" : "content-video"}
-                                onClick={openElement}
-                            />
+                                onClick={(event)=>openElement(event)}
+                            >
+                            </video>
                         </div>
                         :
                         <div className="content-img-container" >

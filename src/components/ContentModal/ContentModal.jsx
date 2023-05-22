@@ -3,17 +3,14 @@ import { motion } from 'framer-motion'
 import { IoIosClose } from 'react-icons/io';
 import EditModal from '../EditModal/EditModal';
 import EditView from '../EditView/EditView';
-import ReactPlayer from 'react-player'
 import { useUser } from 'reactfire';
 import { useState } from 'react';
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 
-const ContentModal = ({contentInfo, updateLocalContent, setShowModal, handleController}) => {
-  const {title, description, picUrl, videoUrl, hidden} = contentInfo
-  const [editionMode, setEditonMode]= useState(false)
+const ContentModal = ({ contentInfo, updateLocalContent, setShowModal, handleController }) => {
+  const { title, description, picUrl, videoUrl, posterUrl, hidden } = contentInfo
+  const [ editionMode, setEditonMode ]= useState(false)
   const { data: user } = useUser();
-
-
 
   const closeModal = (event) =>{
     if (event.target.classList.contains('close')){
@@ -34,13 +31,16 @@ const ContentModal = ({contentInfo, updateLocalContent, setShowModal, handleCont
             <button className='modal-close-btn-mobile close' onClick={closeModal}>
               <IoIosClose className='modal-close-icon close' onClick={closeModal}/>
             </button>
-            <ReactPlayer 
-              playing
+            <video 
+              autoPlay
               loop
               controls
-              width='fit-content'
-              height='100%'
-              url={videoUrl}  />
+              src={videoUrl}
+              poster={posterUrl}
+              className={description || title? 'modal-img' : 'modal-img-only'}
+              style={{width:'fit-content', height:'100%' }}
+            >
+            </video>
           </div>
             :
             <div>

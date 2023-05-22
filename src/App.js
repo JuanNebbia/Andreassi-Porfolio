@@ -21,6 +21,7 @@ function App() {
         <AuthProvider sdk={auth}>
           <FirestoreProvider sdk={firestoreInstance}>
             <Routes>
+              <Route path='/not-found' element={<Page404 />} />
               <Route path="/" element={<Navigate to="/photography" replace />} />
               <Route path='/:section' element={<Main />} />
               <Route path='/:section/:contentId' element={<Main />} />
