@@ -10,13 +10,13 @@
     justify-content: center;
     z-index: 1000;
     padding: 3%;
-    backdrop-filter: grayscale(80%) blur(0.08rem);
+    backdrop-filter: grayscale(70%) blur(0.2rem);
 }
 
 .modal-card-container{
     width: fit-content;
-    max-width: 85vw;
-    height: 100%;
+    max-width: 80vw;
+    height: fit-content;
     display: flex;
     justify-content: center;
     box-shadow: 0 0 5px #000;
@@ -27,11 +27,12 @@
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
     height: 100%;
+    max-height: 85vh;
 }
 
 .modal-img-only{
     border-radius: 0.5rem;
-    height: 100%;
+    max-height: 85vh;
 }
 
 .item-info-container{
@@ -94,6 +95,15 @@
     border: none;
 }
 
+.modal-close-btn-img-only{
+    position: absolute;
+    right: 0;
+    background: none;
+    border: none;
+    color: #777;
+    margin: 0.8rem;
+}
+
 .modal-close-btn-mobile{
     display: none;
 }
@@ -109,6 +119,40 @@
 
 #hidden-content{
     filter: grayscale(1);
+}
+
+.modal-controller-prev, .modal-controller-next{
+    width: 100%;
+    height: 80%;
+    background-color: transparent;
+    border: none;
+    z-index: 6000;
+}
+
+.modal-controller-prev:hover .modal-prev-icon, .modal-controller-next:hover .modal-next-icon{
+    color: #fff;
+}
+
+.modal-controller-prev{
+    margin-left: calc((100vw - 71vh) / -2);
+}
+
+.modal-controller-next{
+    margin-right: calc((100vw - 71vh) / -2);
+}
+
+.modal-prev-icon, .modal-next-icon{
+    font-size: 2rem;
+    color: #777;
+    margin: 0 2rem;
+}
+
+.modal-prev-icon{
+    float: right;
+}
+
+.modal-next-icon{
+    float: left;
 }
 
 @media (max-width: 768px) {
@@ -233,5 +277,17 @@
     
     #hidden-content{
         filter: grayscale(1);
+    }
+
+    .modal-controller-prev, .modal-controller-next{
+        display: none;
+    }
+    
+    .modal-prev-icon{
+        float: right;
+    }
+    
+    .modal-next-icon{
+        float: left;
     }
 }

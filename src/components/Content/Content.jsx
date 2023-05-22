@@ -159,7 +159,7 @@ const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
                     <div className="inner-thumbnail-container" ref={innerContainer}>
                         {content.map((item, index) => {
                             return <div className={activeTake === index ? 'thumbnail-img-container selected-thumbnail' : 'thumbnail-img-container'} key={index} onClick={(event)=>handleOnClick(event, index)} >
-                                <img className='thumbnail-img' src={item.picUrl || item.posterUrl} alt='' />
+                                <img className={content[index].hidden ? "thumbnail-img-hidden" : "thumbnail-img"} src={item.picUrl || item.posterUrl} alt='' />
                             </div>
                         })}
                     </div>
