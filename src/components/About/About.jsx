@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react'
 import { MdModeEditOutline } from 'react-icons/md'
 import './About.css'
 import profileGif from '../../img/GifFoto.gif'
+import timelapse from '../../img/timelapse.mp4'
+import landscape from '../../img/landscape.jpg'
 import ps from '../../img/icons/adobe/Recurso 8@2x.png'
 import pr from '../../img/icons/adobe/Recurso 9@2x.png'
 import me from '../../img/icons/adobe/Recurso 10@2x.png'
@@ -114,15 +116,15 @@ const About = ({ info, setInfo, updateContent }) => {
           <div className="col-6">
             <div className="card">
               <div className="landscape-container">
-                <img src="https://media.tycsports.com/files/2023/02/10/532928/lionel-messi_w416.webp" alt="" className='landscape-img' />
+                <img src={landscape} alt="" className='landscape-img' />
               </div>
               <h6 className='tech-title'>Acá nací</h6>
             </div>
           </div>
           <div className="col-6">
-            <div className="card mateo-gif-card">
+            <div className="card timelapse-card">
               <div className="card-side front small card-img ">
-                <img src={profileGif} alt="Mateo gif" className='mateo-gif' />
+                <video src={timelapse} alt="time lapse video" className='timelapse-video' autoPlay loop muted></video>
               </div>
             </div>
           </div>

@@ -13,7 +13,6 @@ const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
     const navigate = useNavigate()
     const { contentId } = useParams()
     const [show, setShow] = useState(false);
-    const [clickeable, setClickleable] = useState(true)
     const [content, setContent] = useState([])
     const [showModal, setShowModal] = useState(false)
     const fullscreenIcon = useRef(null);
@@ -48,10 +47,6 @@ const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
                 setActiveTake(activeTake +1)
             }
         }
-        setClickleable(false)
-        setTimeout(()=> {
-            setClickleable(true)
-        }, 300)
     }
     
     //Move by clicking thumbnails
@@ -65,16 +60,16 @@ const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
     const move = useCallback((index) => {
         innerContainer.current.style.transition = `200ms ease-out all`
         if(index === content.length){
-            innerContainer.current.style.left = `0`
-            // innerContainer.current.style.transform = `translateX(0)`
+            // innerContainer.current.style.left = `0`
+            innerContainer.current.style.transform = `translateX(0)`
         }else{
             if(index + activeTake === -1){
-                innerContainer.current.style.left = `calc(${-1 * (content.length -9)} * 4rem)`
-                // innerContainer.current.style.transform = `translateX(calc(${-1 * (content.length -1)} * 4rem))`
+                // innerContainer.current.style.left = `calc(${-1 * (content.length -9)} * 4rem)`
+                innerContainer.current.style.transform = `translateX(calc(${-1 * (content.length -1)} * 4rem))`
             }
             else{
-                innerContainer.current.style.left = `calc(${innerContainer.current.style.left} - 4rem * ${index - activeTake})`
-                // innerContainer.current.style.transform = `translateX(calc(${-1 * index} * 4rem))`
+                // innerContainer.current.style.left = `calc(${innerContainer.current.style.left} - 4rem * ${index - activeTake})`
+                innerContainer.current.style.transform = `translateX(calc(${-1 * index} * 4rem))`
             }
         }
     }, [activeTake, setActiveTake])
@@ -111,7 +106,7 @@ const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
         {content.length &&
         <div className='content-container'>
             <div className='middle-section'>
-                <button className="controller-prev" onClick={()=> clickeable && handleController(true)}>
+                <button className="controller-prev" onClick={()=> handleController(true)}>
                     <SlArrowLeft className={!showModal ? 'prev-icon' : 'icon-invisible'}/>
                 </button>
                 <div className='photography-img-container'>
@@ -151,7 +146,7 @@ const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
                     </div>
                     }
                 </div>
-                <button className="controller-next" onClick={()=> clickeable && handleController(false)}>
+                <button className="controller-next" onClick={()=>handleController(false)}>
                     <SlArrowRight className={!showModal ? 'next-icon' : 'icon-invisible'}/>
                 </button>
             </div>

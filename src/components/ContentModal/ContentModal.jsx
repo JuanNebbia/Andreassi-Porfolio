@@ -28,7 +28,7 @@ const ContentModal = ({ contentInfo, updateLocalContent, setShowModal, handleCon
             animate={{y: 0}}>
           {videoUrl ? 
           <div>
-            <button className='modal-close-btn-mobile close' onClick={closeModal}>
+            <button className={description || title ? 'modal-close-btn-mobile close' : 'modal-close-btn-img-only close'} onClick={closeModal}>
               <IoIosClose className='modal-close-icon close' onClick={closeModal}/>
             </button>
             <video 
@@ -38,7 +38,6 @@ const ContentModal = ({ contentInfo, updateLocalContent, setShowModal, handleCon
               src={videoUrl}
               poster={posterUrl}
               className={description || title? 'modal-img' : 'modal-img-only'}
-              style={{width:'fit-content', height:'100%' }}
             >
             </video>
           </div>
