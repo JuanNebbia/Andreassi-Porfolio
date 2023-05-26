@@ -10,15 +10,23 @@ import me from '../../img/icons/adobe/Recurso 10@2x.png'
 import lrc from '../../img/icons/adobe/Recurso 11@2x.png'
 import ai from '../../img/icons/adobe/Recurso 12@2x.png'
 import ae from '../../img/icons/adobe/Recurso 13@2x.png'
-import { useUser } from 'reactfire';
+import { useFirestore, useFirestoreCollectionData, useUser } from 'reactfire';
+import { addDoc, collection, doc, getFirestore, updateDoc } from 'firebase/firestore'
+import { storage } from '../../index.js'
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 
 const About = ({ info, setInfo, updateContent }) => {
   const { data: user } = useUser();
-  const [editMode, setEditMode] = useState(false)
+  const [ editMode, setEditMode ] = useState(false)
+  const [ uploadCv, setUploadCv ] = useState(false)
   const aboutTitleInput = useRef()
   const aboutDescriptionInput = useRef()
   const trainingTitleInput = useRef()
   const trainingDescriptionInput = useRef()
+  const cvFileInput = useRef()
+
+  const collectionRef = collection(useFirestore(), 'cv')
+  const  { status: dataStatus , data} = useFirestoreCollectionData(collectionRef, { idField: 'id' });
 
   const setNewInfo = (event) =>{
     event.preventDefault()
@@ -38,6 +46,26 @@ const About = ({ info, setInfo, updateContent }) => {
     setInfo(newInfo)
     updateContent(newInfo)
     setEditMode(false)
+  }
+
+  const addCv = async (event) =>{
+    event.preventDefault()
+    const file = cvFileInput.current.files[0]
+    const storageRef = ref(storage, `cv/cv`)
+    await uploadBytes(storageRef, file)
+    const fileUrl = await getDownloadURL(storageRef)
+    const newContent = {
+        cvUrl: fileUrl
+    }
+    const db = getFirestore()
+    const docRef = doc(db, 'cv', data[0].id)
+    updateDoc(docRef, newContent)
+    .catch(error => {console.log(error)})
+    .finally(()=>{
+      setEditMode(false)
+      setUploadCv(false)
+    }
+      )
   }
 
   return (
@@ -104,7 +132,7 @@ const About = ({ info, setInfo, updateContent }) => {
                   />
                   <div className="buttons-container">
                     <input type="submit" value='Guardar' className='submit-about-general'/>
-                    <button onClick={()=>setEditMode(false)}>Cancelar</button>
+                    <button onClick={()=>setEditMode(false)} className='cancel-btn'>Cancelar</button>
                   </div>
                 </form>
               </div>
@@ -124,7 +152,7 @@ const About = ({ info, setInfo, updateContent }) => {
           <div className="col-6">
             <div className="card timelapse-card">
               <div className="card-side front small card-img ">
-                <video src={timelapse} alt="time lapse video" className='timelapse-video' autoPlay loop muted></video>
+                <video src={timelapse} alt="time lapse video" className='timelapse-video' autoPlay loop muted playsInline></video>
               </div>
             </div>
           </div>
@@ -165,7 +193,7 @@ const About = ({ info, setInfo, updateContent }) => {
                   />
                   <div className="buttons-container">
                     <input type="submit" value='Guardar' className='submit-about-training'/>
-                    <button onClick={()=>setEditMode(false)}>Cancelar</button>
+                    <button onClick={()=>setEditMode(false)} className='cancel-btn'>Cancelar</button>
                   </div>
                 </form>
               </div>
@@ -173,6 +201,22 @@ const About = ({ info, setInfo, updateContent }) => {
             </div>
           </div>
         </div>
+        { dataStatus === 'success' &&
+          <>
+            <div className='about-btn-container'>
+              <button className='cv-button'><a href={data[0].cvUrl} target='blank'> Ver Currículum</a></button>
+              { user && 
+                <button className='upload-cv-button' onClick={()=>setUploadCv(!uploadCv)}>Subir nuevo CV</button>
+              }
+            </div>
+            { uploadCv && 
+              <form action="" className='upload-cv-form' onSubmit={addCv}>
+                <input type='file' accept="application/pdf" required name='cv-file' ref={cvFileInput} />
+                <input type="submit"  value='cargar' className='upload-cv-btn'/>
+              </form>
+            }
+          </>
+        }
     </div>
   )
 }

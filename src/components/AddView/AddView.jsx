@@ -117,7 +117,7 @@ const AddView = ({setAddItem}) => {
                         type='file' 
                         accept='image/*'
                         id="add-video-thumbnail-file-input" 
-                        name='thumnbailFile'
+                        name='thumbnailFile'
                         ref={fileInputVideoThumbnail}
                     />
                     <label htmlFor='add-video-thumbnail-input' className='add-input-label'>Link a la miniatura</label>

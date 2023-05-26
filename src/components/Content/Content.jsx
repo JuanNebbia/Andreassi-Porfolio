@@ -116,6 +116,7 @@ const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
                                 autoPlay
                                 loop
                                 muted
+                                playsInline
                                 poster={content[activeTake].posterUrl}
                                 src={content[activeTake].videoUrl}
                                 className={content[activeTake].hidden ? "content-video-hidden" : "content-video"}
