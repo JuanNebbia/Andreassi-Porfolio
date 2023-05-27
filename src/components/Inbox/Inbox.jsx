@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react'
-import { doc, updateDoc, collection, getDocs, getFirestore} from "firebase/firestore";
+import { deleteDoc, doc, updateDoc, collection, getDocs, getFirestore} from "firebase/firestore";
 import Loading from '../Loading/Loading'
+import { BsFillTrashFill } from 'react-icons/bs'
 import './Inbox.css'
 import Welcome from '../Welcome/Welcome';
 
@@ -53,6 +54,14 @@ function Inbox() {
         .catch(error => {console.log(error)})
     }
        
+    const deleteMsg = (id) =>{
+        const confirm = window.confirm('estas tíste?')
+        if(confirm){
+            const db = getFirestore();
+            const docRef = doc(db, 'messages', id)
+            deleteDoc(docRef)
+        }
+    }
 
     return (
         <>
@@ -66,6 +75,9 @@ function Inbox() {
                                     return (
                                         !message.hidden &&
                                         <div key={i} className='message-box' onDoubleClick={()=>switchVisibility(message.id)}>
+                                            <button className='delete-msg-btn' onClick={()=>deleteMsg(message.id)}>
+                                                <BsFillTrashFill className='delete-msg-icon' />
+                                            </button>
                                             <p className='message-subject'>{message.subject}:</p>
                                             <p className='message-text'>"{message.message}"</p>
                                             <p className='message-date'>{renderDate(message.date.toDate())}</p>
@@ -79,6 +91,9 @@ function Inbox() {
                                     return (
                                         message.hidden &&
                                         <div key={i} className='message-box hidden' onDoubleClick={()=>switchVisibility(message.id)}>
+                                            <button className='delete-msg-btn' onClick={()=>deleteMsg(message.id)}>
+                                                <BsFillTrashFill className='delete-msg-icon' />
+                                            </button>
                                             <p className='message-subject'>{message.subject}:</p>
                                             <p className='message-text'>"{message.message}"</p>
                                             <p className='message-date'>{renderDate(message.date.toDate())}</p>

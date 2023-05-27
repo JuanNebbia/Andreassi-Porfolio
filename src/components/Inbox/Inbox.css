@@ -33,6 +33,18 @@
     border-bottom-right-radius: 0;
 }
 
+.delete-msg-btn{
+    background-color: transparent;
+    border: none;
+    width: fit-content;
+    margin-left: auto;
+}
+
+.delete-msg-icon{
+    color: #ccc;
+    font-size: 1rem;
+}
+
 hr{
     color: #aaa;
     margin: 0 0 4rem;
@@ -46,6 +58,7 @@ hr{
     width: fit-content;
     font-weight: 600;
     color: #da9401;
+    margin-top: -1.3rem;
 }
 
 .message-text{
