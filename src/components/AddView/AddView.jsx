@@ -11,6 +11,7 @@ const AddView = ({setAddItem}) => {
     const {section} = useParams()
     const titleInput = useRef()
     const descriptionInput = useRef()
+    const orderInput = useRef()
     const urlInput = useRef()
     const fileInput = useRef()
     const urlInputVideo = useRef()
@@ -30,6 +31,7 @@ const AddView = ({setAddItem}) => {
             picUrl: fileUrl || urlInput.current.value,
             description: descriptionInput.current.value,
             title: titleInput.current.value,
+            order: +orderInput.current.value,
         }
         const db = getFirestore()
         const sectionCollection = collection(db, section)
@@ -52,6 +54,7 @@ const AddView = ({setAddItem}) => {
             hidden: hideInput.current.checked,
             videoUrl: fileVideoUrl || urlInputVideo.current.value,
             posterUrl: fileThumbnailUrl || urlInputVideoThumbnail.current.value,
+            order: +orderInput.current.value,
             description: descriptionInput.current.value,
             title: titleInput.current.value,
         }
@@ -78,79 +81,85 @@ const AddView = ({setAddItem}) => {
             </button>
             <h6 className='add-mode-title'>NUEVO CONTENIDO PARA {section.toUpperCase()}</h6>
             <form action="" className='add-item-form' onSubmit={ section === 'video' || section === 'animation' ? addVideoContent : addContent}>
-            <label htmlFor='add-title-input' className='add-input-label'>Titulo</label>
-            <input 
-                type='text' 
-                id="add-title-input" 
-                name='title'
-                ref={titleInput} 
-                className='text-input'
-            />
-            <label htmlFor='add-description-input' className='add-input-label'>Descripción</label>
-            <textarea 
-                type='text' 
-                id="add-description-input" 
-                name='description'
-                ref={descriptionInput} 
-                className='text-input'
-            />
-            {   section === 'video' || section === 'animation' ?
-                <>
-                    <label htmlFor='add-video-file-input' className='add-input-label'>Subir un archivo de video</label>
-                    <input 
-                        type='file' 
-                        accept='video/*'
-                        id="add-video-file-input" 
-                        name='videoFile'
-                        ref={fileInputVideo}
-                    />
-                    <label htmlFor='add-video-input' className='add-input-label'>Link al video</label>
-                    <input 
-                        type='text' 
-                        id="add-video-input" 
-                        name='videoUrl'
-                        ref={urlInputVideo}
-                        className='text-input'
-                    />
-                    <label htmlFor='add-video-thumbnail-file-input' className='add-input-label'>Subir un archivo de para miniatura</label>
-                    <input 
-                        type='file' 
-                        accept='image/*'
-                        id="add-video-thumbnail-file-input" 
-                        name='thumbnailFile'
-                        ref={fileInputVideoThumbnail}
-                    />
-                    <label htmlFor='add-video-thumbnail-input' className='add-input-label'>Link a la miniatura</label>
-                    <input 
-                        type='text' 
-                        id="add-video-thumbnail-input" 
-                        name='videoThumbnailUrl'
-                        ref={urlInputVideoThumbnail}
-                        className='text-input'
-                    />
-                </>:
-                <>
-                    <label htmlFor='add-img-input' className='add-input-label'>Link a la imagen</label>
-                    <input 
-                        type='text' 
-                        id="add-img-input" 
-                        name='picUrl'
-                        ref={urlInput}
-                        className='text-input'
-                    />
-                    <label htmlFor='add-img-file-input' className='add-input-label'>Subir un archivo de imagen</label>
-                    <input 
-                        type='file' 
-                        accept='image/*'
-                        id="add-img-file-input" 
-                        name='picFile'
-                        ref={fileInput}
-                    />
-                </>
-            }
-            <label htmlFor='hide-input-false' className='hide-input-label'>Ocultar</label>
-            <input type='checkbox' name='hidden' id='hide-input-false' ref={hideInput} />
-            <button type='submit' className='add-submit'>Guardar Cambios</button>
+                <label htmlFor='add-title-input' className='add-input-label'>Titulo</label>
+                <input 
+                    type='text' 
+                    id="add-title-input" 
+                    name='title'
+                    ref={titleInput} 
+                    className='text-input'
+                />
+                <label htmlFor='add-description-input' className='add-input-label'>Descripción</label>
+                <textarea 
+                    type='text' 
+                    id="add-description-input" 
+                    name='description'
+                    ref={descriptionInput} 
+                    className='text-input'
+                />
+                <label htmlFor='edit-order-input' className='edit-input-label'>N° de orden</label>
+                <input 
+                type='number' 
+                id="add-order-input" 
+                name='order'
+                ref={orderInput} />
+                {   section === 'video' || section === 'animation' ?
+                    <>
+                        <label htmlFor='add-video-file-input' className='add-input-label'>Subir un archivo de video</label>
+                        <input 
+                            type='file' 
+                            accept='video/*'
+                            id="add-video-file-input" 
+                            name='videoFile'
+                            ref={fileInputVideo}
+                        />
+                        <label htmlFor='add-video-input' className='add-input-label'>Link al video</label>
+                        <input 
+                            type='text' 
+                            id="add-video-input" 
+                            name='videoUrl'
+                            ref={urlInputVideo}
+                            className='text-input'
+                        />
+                        <label htmlFor='add-video-thumbnail-file-input' className='add-input-label'>Subir un archivo de para miniatura</label>
+                        <input 
+                            type='file' 
+                            accept='image/*'
+                            id="add-video-thumbnail-file-input" 
+                            name='thumbnailFile'
+                            ref={fileInputVideoThumbnail}
+                        />
+                        <label htmlFor='add-video-thumbnail-input' className='add-input-label'>Link a la miniatura</label>
+                        <input 
+                            type='text' 
+                            id="add-video-thumbnail-input" 
+                            name='videoThumbnailUrl'
+                            ref={urlInputVideoThumbnail}
+                            className='text-input'
+                        />
+                    </>:
+                    <>
+                        <label htmlFor='add-img-input' className='add-input-label'>Link a la imagen</label>
+                        <input 
+                            type='text' 
+                            id="add-img-input" 
+                            name='picUrl'
+                            ref={urlInput}
+                            className='text-input'
+                        />
+                        <label htmlFor='add-img-file-input' className='add-input-label'>Subir un archivo de imagen</label>
+                        <input 
+                            type='file' 
+                            accept='image/*'
+                            id="add-img-file-input" 
+                            name='picFile'
+                            ref={fileInput}
+                        />
+                    </>
+                }
+                <label htmlFor='hide-input-false' className='hide-input-label'>Ocultar</label>
+                <input type='checkbox' name='hidden' id='hide-input-false' ref={hideInput} />
+                <button type='submit' className='add-submit'>Guardar Cambios</button>
             </form>
         </motion.div>
     </div>

@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import './EditView.css'
 
 const EditView = ({contentInfo,updateLocalContent}) => {
-  const {title, description, picUrl, videoUrl, posterUrl, hidden} = contentInfo
+  const {title, description, picUrl, videoUrl, posterUrl, hidden, order} = contentInfo
   const [updatedContent, setUpdatedContent] = useState({})
   const {section} = useParams()
   const navigate = useNavigate()
@@ -21,6 +21,12 @@ const EditView = ({contentInfo,updateLocalContent}) => {
   }
     
   const handleOnChange = (event) =>{
+    if(event.target.name === 'order'){
+      return setUpdatedContent({
+        ...updatedContent, 
+        [event.target.name]: +event.target.value
+      })
+    }
     setUpdatedContent({
       ...updatedContent, 
       [event.target.name]: event.target.value
@@ -46,6 +52,13 @@ const EditView = ({contentInfo,updateLocalContent}) => {
             id="edit-description-input" 
             name='description'
             onChange={handleOnChange} />
+            <label htmlFor='edit-order-input' className='edit-input-label'>N° de orden</label>
+            <input 
+              type='number' 
+              defaultValue={order} 
+              id="edit-order-input" 
+              name='order'
+              onChange={handleOnChange} />
           {section === 'video' || section === 'animation' ? 
             <>
               <label htmlFor='edit-video-input' className='edit-input-label'>Link al video</label>

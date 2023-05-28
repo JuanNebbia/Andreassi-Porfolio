@@ -8,8 +8,10 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import ThumbnailDisplayer from '../ThumbnailDisplayer/ThumbnailDisplayer.jsx';
 import ContentModal from '../ContentModal/ContentModal.jsx';
 import DotsDisplayer from '../DotsDisplayer/DotsDisplayer.jsx';
+import { useUser } from 'reactfire';
 
 const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
+    const { data: user } = useUser();
     const navigate = useNavigate()
     const { contentId } = useParams()
     const [show, setShow] = useState(false);
@@ -107,6 +109,7 @@ const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
         {showModal && <ContentModal contentInfo={content[activeTake]} updateLocalContent={updateLocalContent} setShowModal={setShowModal} handleController={handleController} /> }
         {content.length &&
         <div className='content-container'>
+            {user && <p className='order-tag'>N° de orden: <span>{content[activeTake].order ?? 'nada'}</span></p>}
             <div className='middle-section'>
                 <button className="controller-prev" onClick={()=> handleController(true)}>
                     <SlArrowLeft className={!showModal ? 'prev-icon' : 'icon-invisible'}/>

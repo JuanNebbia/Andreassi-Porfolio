@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Content from '../Content/Content'
 import './ContentDisplayer.css'
 import { useNavigate, useParams } from 'react-router-dom';
-import { collection, query, where } from "firebase/firestore";
+import { collection, orderBy, query, where } from "firebase/firestore";
 import { RiAddFill} from 'react-icons/ri'
 import AddView from '../AddView/AddView';
 import { useFirestore, useFirestoreCollectionData, useUser } from 'reactfire';
@@ -18,7 +18,13 @@ const ContentDisplayer = () => {
   const windowSize = useRef([window.innerWidth, window.innerHeight]);
 
   const collectionRef = collection(useFirestore(), section)
-  const collectionQuery = user ? collectionRef : query(collectionRef, where("hidden", "!=", true))
+  let collectionQuery
+  if (user) {
+    collectionQuery = query(collectionRef, orderBy('order'));
+  } else {
+    collectionQuery = query(collectionRef, where('hidden', '==', false), orderBy('order'));
+  }
+  
   const  { status: dataStatus , data} = useFirestoreCollectionData(collectionQuery, {
     idField: 'id'
   });
