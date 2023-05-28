@@ -22,7 +22,7 @@ function App() {
           <FirestoreProvider sdk={firestoreInstance}>
             <Routes>
               <Route path='/not-found' element={<Page404 />} />
-              <Route path="/" element={<Navigate to="/photography" replace />} />
+              <Route path="/" element={<Navigate to="/video" replace />} />
               <Route path='/:section' element={<Main />} />
               <Route path='/:section/:contentId' element={<Main />} />
               <Route 

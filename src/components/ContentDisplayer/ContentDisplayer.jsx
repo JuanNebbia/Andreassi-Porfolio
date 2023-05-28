@@ -30,25 +30,6 @@ const ContentDisplayer = () => {
     }
   },[user, section] )
 
-  // useEffect(()=>{
-    // const db = getFirestore();
-    // const contentCollection = collection(db, section)
-    // const q = user ? contentCollection : query(contentCollection, where("hidden", "!=", true))
-    // getDocs(q)
-    //   .then((snapshot) => {
-    //     const data = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}));
-    //     setContent(data)
-    //     return data})
-    //   .then((data)=> {
-    //     if(data.length > 6){
-    //       setActiveTake(3)
-    //     }else{
-    //       setActiveTake(0)
-    //     }
-    //   }).then(()=> setSectionNumber(sections.indexOf(section)))
-    //   .catch((err) => console.log('err: ' + err))
-  // },[section, user])
-
   const newSection = (newSection) => {
     setActiveTake(0)
     navigate(`/${newSection}`)

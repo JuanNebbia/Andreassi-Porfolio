@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './Content.css'
 import { SlArrowLeft, SlArrowRight } from 'react-icons/sl';
 import { RxEnterFullScreen } from 'react-icons/rx'
@@ -22,14 +22,14 @@ const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
         setContent(data)
         contentId ? setShowModal(true) : setShowModal(false)
         if(innerContainer.current){
-            innerContainer.current.style.left = `0`
+            innerContainer.current.style.left = '0px'
         }
     },[data])
 
     //Move by clicking arrows
     const handleController = (backwards) =>{
         if (backwards){
-            if(activeTake < (content.length - 7)){
+            if(activeTake < (content.length - 7) && data.length > 8){
                 move(activeTake - 1)
             }
             if (activeTake === (0)){
@@ -38,7 +38,7 @@ const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
                 setActiveTake(activeTake - 1)
             }
         }else{
-            if(activeTake > 7){
+            if(activeTake > 7 && data.length > 8){
                 move(activeTake + 1)
             }
             if (activeTake === (content.length - 1)){
@@ -57,22 +57,24 @@ const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
         }
     }
     
-    const move = useCallback((index) => {
+    const move = (index) => {
         innerContainer.current.style.transition = `200ms ease-out all`
         if(index === content.length){
-            // innerContainer.current.style.left = `0`
-            innerContainer.current.style.transform = `translateX(0)`
-        }else{
-            if(index + activeTake === -1){
-                // innerContainer.current.style.left = `calc(${-1 * (content.length -9)} * 4rem)`
-                innerContainer.current.style.transform = `translateX(calc(${-1 * (content.length -1)} * 4rem))`
-            }
-            else{
-                // innerContainer.current.style.left = `calc(${innerContainer.current.style.left} - 4rem * ${index - activeTake})`
-                innerContainer.current.style.transform = `translateX(calc(${-1 * index} * 4rem))`
-            }
+            return innerContainer.current.style.left = `0`
         }
-    }, [activeTake, setActiveTake])
+        if(index + activeTake === -1){
+            return innerContainer.current.style.left = `calc(${-1 * (data.length - 7)} * ((70vh - 9rem) / 9))`
+        }
+        if(!innerContainer.current.style.left){
+            return innerContainer.current.style.left = `calc( 0px - (70vh - 9rem) / 9 - 1rem)`
+        }
+        if(index > activeTake){
+            return innerContainer.current.style.left = `calc(${innerContainer.current.style.left} - (70vh - 9rem) / 9 - 1rem)`
+        }
+        if(index < activeTake){
+            return innerContainer.current.style.left = `calc(${innerContainer.current.style.left} + (70vh - 9rem) / 9 + 1rem)`
+        }
+    }
 
 
     const updateLocalContent = (newContentObject) =>{
@@ -134,7 +136,6 @@ const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
                                 />
                         </div>
                     }
-                    {(content[activeTake].description || content[activeTake].title) && 
                     <div className="full-screen-icon-container" ref={fullscreenIcon} onMouseEnter={(()=>setShow(true))} onMouseLeave={(()=>setShow(false))}>
                         <RxEnterFullScreen className='fullscreen-icon' onClick={()=>navigate(`/${section}/${content[activeTake].id}`)}/>
                         <Overlay target={fullscreenIcon.current} show={show} placement="left">
@@ -145,7 +146,6 @@ const Content = ({ section, data, activeTake, setActiveTake, windowSize }) => {
                             )}
                         </Overlay>
                     </div>
-                    }
                 </div>
                 <button className="controller-next" onClick={()=>handleController(false)}>
                     <SlArrowRight className={!showModal ? 'next-icon' : 'icon-invisible'}/>

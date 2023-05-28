@@ -3,12 +3,8 @@ import './ThumbnailDisplayer.css'
 
 const ThumbnailDisplayer = ({children, content}) => {
 
-    const containerStyles = {
-        width: '70vh'
-    }
-
     return (
-        <div className="thumbnail-displayer-container" style={containerStyles}>
+        <div className="thumbnail-displayer-container">
             {children}
         </div>
     )
