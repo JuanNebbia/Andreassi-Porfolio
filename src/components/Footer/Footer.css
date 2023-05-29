@@ -1,5 +1,7 @@
 .footer-outer-container{
     background-color: #030303;
+    z-index: 10;
+    position: relative;
 }
 
 .footer-container{
@@ -38,6 +40,26 @@
 
 .dev-link{
     color: #999;
+}
+
+.game-btn{
+    margin-top: -1rem;
+    position: absolute;
+    z-index: 8;
+    background-color: #da9401;
+    border: none;
+    padding: 1rem;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    transition: all 200ms;
+}
+
+.game-btn svg{
+    font-size: 2rem;
+}
+
+.game-btn:hover{
+    margin-top: -3rem
 }
 
 @media (max-width: 768px) { 
