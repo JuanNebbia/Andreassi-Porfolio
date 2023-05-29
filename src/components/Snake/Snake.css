@@ -2,3 +2,9 @@
   margin: 5rem auto;
   width: 70vh;
 }
+
+@media (max-width: 768px) {
+  .game-container{
+    display: none;
+  }
+}
