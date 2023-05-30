@@ -21,7 +21,7 @@ const Main = () => {
         <AboutContainer />
         <div className="section-divider"></div>
         <Contact />
-        {gameMode && <Snake />}
+        {gameMode && <Snake gameMode={gameMode} setGameMode={setGameMode} />}
         <Footer gameMode={gameMode} setGameMode={setGameMode} /> 
     </div>
   )

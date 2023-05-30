@@ -1,12 +1,11 @@
 import React from 'react'
 import './Footer.css'
-import { MdPause } from 'react-icons/md'
 import { GiSnakeSpiral } from 'react-icons/gi'
 
 const Footer = ({ gameMode, setGameMode }) => {
   return (
     <>
-    <button className='game-btn' onClick={()=>setGameMode(!gameMode)}>{!gameMode? <GiSnakeSpiral /> : <MdPause />}</button>
+    <button className='game-btn' onClick={()=>setGameMode(!gameMode)}><GiSnakeSpiral /> </button>
     <div className='footer-outer-container'>
       <div className='footer-container'>
         <div className="link-container">
