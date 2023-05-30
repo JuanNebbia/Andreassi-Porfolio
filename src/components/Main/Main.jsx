@@ -6,19 +6,15 @@ import ContentDisplayer from '../ContentDisplayer/ContentDisplayer'
 import Footer from '../Footer/Footer'
 import Banner from '../Banner/Banner'
 import Welcome from '../Welcome/Welcome'
-import Snake from '../Snake/Snake.js'
+import Snake from '../Snake/Snake'
 import './Main.css'
 
 const Main = () => {
     const {section} = useParams()
     const [ gameMode, setGameMode ] = useState(false)
 
-  const test = (event) =>{
-    console.log(event);
-  }
-
   return (
-    <div className='main-container' onScroll={test}>
+    <div className='main-container'>
         <Welcome parent='main' />
         <Banner />
         <ContentDisplayer section={section} />
