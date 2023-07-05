@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import profilePicture from '../../img/favicon.jpg'
+import profilePicture from '../../img/favicon.jpeg'
 import './Welcome.css'
 import { getAuth, signOut } from 'firebase/auth'
 import { useUser } from 'reactfire'
